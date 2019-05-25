@@ -11,25 +11,25 @@
 
 비주얼 스튜디오 실행 - 확장(맨위)- 확장 관리- github 검색 후 `github extension for visual studio`설치
 
-![extension](./etc/extension.jpg)
+![extension](./etc/extension.JPG)
 <br>
 <br>
 
 #### 1. 로컬 저장소 연결하기 (vs2019 기준)
 
-![run vs](./etc/vsrun2.jpg)
+![run vs](./etc/vsrun2.JPG)
 
 코드 복제 또는 체크 아웃 - 리포지토리 위치 입력 (https://github.com/Sunmon/PlusPlusValley.git) - 로컬 디렉토리 입력(원하는 곳 아무데나)
 
 <br>
 
-![team](./etc/team.jpg)
+![team](./etc/team.JPG)
 
 팀 탐색기 - PlusPlusValley 더블클릭(빨간 아이콘)
 
 <br>
 
-![sln](./etc/sln.jpg)
+![sln](./etc/sln.JPG)
 
 솔루션 - PlusPlusValley.sln 더블클릭
 
@@ -40,7 +40,7 @@
 
 '팀 탐색기' 대신 '솔루션 탐색기'로 변경
 
-![code][./etc/code.jpg)
+![code][./etc/code.JPG)
 
 익숙한 화면이 보임
 
@@ -51,7 +51,7 @@
 
 `팀 탐색기` - `홈` 클릭 - `동기화` - `끌어오기`
 
-![pull][./etc/pull.jpg)
+![pull][./etc/pull.JPG)
 
 원격 저장소의 내용이 내 컴퓨터의 로컬 저장소로 동기화된다.
 
@@ -74,6 +74,13 @@
 <br>
 
 <br>
+
+### 오류 뜬 경우(conflict)
+
+아직 오류 안 떠서 설명 불가
+
+오류 뜨면 설명 추가 예정
+
 
 
 ## 폴더 설명
