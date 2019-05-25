@@ -2,7 +2,9 @@
 
 2019-1학기 전공기초프로젝트2 팀 프로젝트
 
-## `./PlusPlusValley`
+## 폴더 설명
+
+`./PlusPlusValley`
 
 메인 솔루션 폴더.
 
