@@ -42,17 +42,13 @@
 
 '팀 탐색기' 대신 '솔루션 탐색기'로 변경
 
-![code][./etc/code.JPG)
+![code](./etc/code.JPG)
 
 익숙한 화면이 보임
 
 여기에다 코드 작성하면 된다.
 
 
-
-#### 2. 코드 작성하기
-
-![code][./etc/code.JPG)
 
 ### PULL
 
