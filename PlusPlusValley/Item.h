@@ -5,15 +5,21 @@
 * @author KIM SUN JUNG
 * @date 2019.05.26
 */
+#include <string>
+
 class Item
 {
 public:
+	enum ItemType {SEED, CROP, STONE, WOOD, TOOL};	//아이템 타입. 씨앗, 수확작물, 돌, 나무, 도구
 	Item();
-	Item(enum itemType);
+	Item(enum ItemType, std::string name);
 	~Item();
+	
+	ItemType itemType;
+	std::string name;
+	int num = 0;
 
 private:
-	enum itemType {SEED, CROP, STONE, WOOD, TOOL};	//아이템 타입. 씨앗, 수확작물, 돌, 나무, 도구
-	const int MAX_NUM_OF_ITEM;	//아이템별 가질 수 있는 최대 수
-	int cost;	//가격
+	int max_num_of_item = -1;	//아이템별 가질 수 있는 최대 수
+	int cost = -1;	//가격
 };
