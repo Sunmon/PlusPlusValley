@@ -3,7 +3,7 @@
 
 Item::Item()
 {
-	Item::itemType = Item::ItemType::SEED;	//초기화해야해서 일단 넣음
+	Item::itemType = Item::ItemType::NONE;	//초기화
 }
 
 Item::Item(ItemType itemType, const std::string& name)

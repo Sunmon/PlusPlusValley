@@ -10,7 +10,7 @@
 class Item
 {
 public:
-	enum ItemType {SEED, CROP, STONE, WOOD, TOOL};	//아이템 타입. 씨앗, 수확작물, 돌, 나무, 도구
+	enum ItemType {NONE, SEED, CROP, STONE, WOOD, TOOL};	//아이템 타입. NONE(NULL대신), 씨앗, 수확작물, 돌, 나무, 도구
 	Item();
 	Item(enum ItemType, const std::string& name);
 	~Item();
