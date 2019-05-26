@@ -31,6 +31,16 @@ void Item::setCost(int cost)
 	Item::cost = cost;
 }
 
+void Item::setItemType(ItemType itemType)
+{
+	Item::itemType = itemType;
+}
+
+Item::ItemType Item::getItemType()
+{
+	return Item::itemType;
+}
+
 
 int Item::getMAX_NUM()
 {

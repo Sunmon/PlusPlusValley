@@ -47,7 +47,7 @@ void Inventory::clearItem(Item *item)
 void Inventory::printItems()
 {
 	for (auto& item : items)
-		std::cout << "type: " << item.first->itemType << " /name: " << item.first->getName() << " /number: " << item.second << std::endl;
+		std::cout << "type: " << item.first->getItemType() << " /name: " << item.first->getName() << " /number: " << item.second << std::endl;
 }
 
 

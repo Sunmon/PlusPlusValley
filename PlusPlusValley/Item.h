@@ -18,6 +18,8 @@ public:
 	void setName(const std::string& name);
 	void setMAX_NUM(int num);
 	void setCost(int cost);
+	void setItemType(ItemType itemType);
+	ItemType getItemType();
 	int getMAX_NUM();
 	int getCost();
 	std::string& getName();
