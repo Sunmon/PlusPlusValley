@@ -4,6 +4,7 @@
 
 Inventory::Inventory()
 {
+	Inventory::money = 0;
 }
 
 
@@ -48,6 +49,16 @@ void Inventory::printItems()
 {
 	for (auto& item : items)
 		std::cout << "type: " << item.first->getItemType() << " /name: " << item.first->getName() << " /number: " << item.second << std::endl;
+}
+
+void Inventory::setMoney(int money)
+{
+	this->money = money;
+}
+
+int Inventory::getMoney()
+{
+	return money;
 }
 
 

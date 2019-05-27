@@ -1,42 +1,4 @@
-#include <iostream>
-#include <iomanip>
-#include "MoveThread.h"
-#include "character.h"
-#include "Map.h"
 
-using namespace std;
-
-class usetime
-{
-private:
-	int gmtime;
-public:
-
-	void settime(int time)
-	{
-		this->gmtime = time;
-	}
-	usetime(int initialtime)
-	{
-		settime(initialtime);
-	}
-	int gethour()
-	{
-		int newtime = (this->gmtime) / 60;
-		return newtime;
-	}
-	int getminute()
-	{
-		int newtime = (this->gmtime) % 60;
-		return newtime;
-	}
-	void nexttime()
-	{
-		int newtime = this->gmtime;
-		settime(newtime + 10);
-	}
-
-};
 int main()
 {
 
