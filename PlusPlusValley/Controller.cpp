@@ -20,9 +20,6 @@ void Controller::init()
 
 void Controller::test_move()
 {
-
-	//MoveThread move(&player);
-	//UseTime time(9 * 60);
 	movethread->start();
 	while (1)
 	{

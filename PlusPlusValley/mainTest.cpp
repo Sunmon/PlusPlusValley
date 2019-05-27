@@ -8,17 +8,11 @@ using namespace std;
 
 Controller controller;
 void test_inventory();
-/*
+
 int main()
 {
-
 	controller.test_move();
-	
-	return 0;
-
-
 }
-*/
 
 void test_inventory()
 {

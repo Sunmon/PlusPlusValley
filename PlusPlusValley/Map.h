@@ -7,17 +7,16 @@ private:
 	const static int MAX_Y = 20, MAX_X = 30;
 
 	Tile* map[MAX_X][MAX_Y];
+
 	//tile간의 연결을 설정한다. 
 	void setmap()
 	{
+		//초기화
 		for (int j = 0; j < MAX_Y; j++)
-		{
 			for (int i = 0; i < MAX_X; i++)
-			{
 				map[i][j] = new Tile(i, j);
-			}
-		}
 
+		//맵 간 링크
 		for (int j = 0; j < MAX_Y; j++)
 		{
 			for (int i = 0; i < MAX_X; i++)
