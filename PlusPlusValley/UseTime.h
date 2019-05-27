@@ -9,12 +9,8 @@ public:
 	UseTime(int initialtime);
 	~UseTime();
 	void settime(int time);
-
 	int gethour();
-	
 	int getminute();
 	void nexttime();
-	
-
 };
 
