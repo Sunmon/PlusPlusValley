@@ -32,9 +32,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="character.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="InitialPage.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -54,6 +51,21 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Harvest.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveThread.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

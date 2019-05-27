@@ -1,40 +1,43 @@
 #pragma once
 #include <iostream>
+#include "Tile.h"
 
 using namespace std;
 
-class character
+enum status
+{
+	faceleft = 1, faceright, faceup, facedown,
+};
+
+class Character
 {
 private:
-	int x;
-	int y;
+	Tile* nowtile;
+	Tile* target;
 	int hp;
-
+	status statue = facedown;
 
 public:
-	int getx()
+	int getX()
 	{
-		return this->x;
+		return nowtile->getx();
 	}
 	int gety()
 	{
-		return this->y;
+		return nowtile->gety();
 	}
-	void setx(int tox)
+	void setTile(Tile* tile)
 	{
-		x = tox;
+		nowtile = tile;
 	}
-	void sety(int toy)
-	{
-		y = toy;
-	}
+
 	int gethp()
 	{
 		return this->hp;
 	}
 	void where()
 	{
-		int wherex = this->getx();
+		int wherex = this->getX();
 		int wherey = this->gety();
 		cout << "(" << wherex << "," << wherey << ")" << endl;
 	}
@@ -43,19 +46,31 @@ public:
 	{
 		if (tomove == 75)
 		{
-			this->setx(this->getx() - 1);
+			Tile* totile = nowtile->getleft();
+			if (totile != NULL)
+				this->nowtile = totile;
+			statue = faceleft;
 		}
 		if (tomove == 77)
 		{
-			this->setx(this->getx() + 1);
+			Tile* totile = nowtile->getright();
+			if (totile != NULL)
+				this->nowtile = totile;
+			statue = faceright;
 		}
 		if (tomove == 72)
 		{
-			this->sety(this->gety() + 1);
+			Tile* totile = nowtile->getup();
+			if (totile != NULL)
+				this->nowtile = totile;
+			statue = faceup;
 		}
 		if (tomove == 80)
 		{
-			this->sety(this->gety() - 1);
+			Tile* totile = nowtile->getdown();
+			if (totile != NULL)
+				this->nowtile = totile;
+			statue = facedown;
 		}
 
 		this->where();
@@ -64,17 +79,3 @@ public:
 
 };
 
-class mainchara : public character
-{
-public:
-	mainchara(int tox, int toy)
-	{
-		this->setx(tox);
-		this->sety(toy);
-	}
-	void act()
-	{
-		cout << "act" << endl;
-		where();
-	}
-};
