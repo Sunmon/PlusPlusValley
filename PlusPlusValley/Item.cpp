@@ -53,6 +53,7 @@ int Item::getCost()
 
 std::string& Item::getName()
 {
+	//
 	return this->name;
 }
 
