@@ -3,22 +3,42 @@
 #include <iostream>
 #include "Inventory.h"
 #include "Item.h"
-#include "character.h"
+#include "Character.h"
+#include "UseTime.h"
+
 using namespace std;
 
 void test_inventory();
-/*
+void test_char_move();
+
 int main()
 {
 
-	test_inventory();
+	//test_inventory();
+	test_char_move();
 	
 	return 0;
 
 
 }
-*/
 
+void test_char_move()
+{
+	Map map;
+
+	Tile* maketile = map.gettile(15, 10);
+	Player player(maketile);
+	MoveThread move(&player);
+	UseTime time(9 * 60);
+	move.start();
+
+	while (1)
+	{
+		Sleep(1000);
+		time.nexttime();
+		cout << setw(2) << setfill('0') << time.gethour() << ':' << setw(2) << setfill('0') << time.getminute() << endl;
+	}
+}
 
 void test_inventory()
 {

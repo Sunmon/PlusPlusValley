@@ -1,10 +1,4 @@
 #include "UseTime.h"
-#include <iostream>
-#include <iomanip>
-#include "MoveThread.h"
-#include "character.h"
-#include "Map.h"
-
 
 UseTime::UseTime()
 {

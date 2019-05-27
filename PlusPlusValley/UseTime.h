@@ -1,4 +1,9 @@
 #pragma once
+#include <iomanip>
+#include "MoveThread.h"
+#include "Character.h"
+#include "Map.h"
+
 class UseTime
 {
 private:
