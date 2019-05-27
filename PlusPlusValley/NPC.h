@@ -2,19 +2,20 @@
 #include "Character.h"
 #include "Inventory.h"
 
-class Player : public Character
+#include <string>
+class NPC : public Character
 {
 private:
 	string name;
-public:
-	Player();
-	~Player();
 
-	Player(string name);
-	Player(Tile* totile);
+public:
+	NPC();
+	NPC(string name);
+	~NPC();
+
 	void setName(string name);
 	string getName();
-	void act();
-	void playerInventory();
+	void npcInventory();
+
 
 };

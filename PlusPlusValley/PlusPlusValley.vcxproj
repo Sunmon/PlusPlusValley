@@ -127,6 +127,8 @@
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="mainTest.cpp" />
+    <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Tool.cpp" />
     <ClCompile Include="UseTime.cpp" />
   </ItemGroup>
@@ -140,6 +142,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="MoveThread.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tool.h" />

@@ -33,6 +33,12 @@
     <ClCompile Include="UseTime.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="NPC.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InitialPage.h">
@@ -72,6 +78,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="UseTime.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="NPC.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
