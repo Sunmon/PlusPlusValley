@@ -130,13 +130,17 @@
     <ClCompile Include="Tool.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="character.h" />
+    <ClInclude Include="Character.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Harvest.h" />
     <ClInclude Include="InitialPage.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="MapObject.h" />
+    <ClInclude Include="MoveThread.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="Tool.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
