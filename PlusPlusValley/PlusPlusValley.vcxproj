@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="character.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="Harvest.h" />
     <ClInclude Include="InitialPage.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
