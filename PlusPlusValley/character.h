@@ -42,37 +42,20 @@ public:
 		cout << "(" << wherex << "," << wherey << ")" << endl;
 	}
 
+	
 	void move(int tomove)
 	{
-		if (tomove == 75)
+		Tile* totile = NULL;
+		const int LEFT = 75, RIGHT = 77, UP = 72, DOWN = 80;
+		switch (tomove)
 		{
-			Tile* totile = nowtile->getleft();
-			if (totile != NULL)
-				this->nowtile = totile;
-			statue = faceleft;
+		case LEFT: totile = nowtile->getleft(); statue = faceleft;break;
+		case RIGHT: totile = nowtile->getright(); statue = faceright; break;
+		case UP: totile = nowtile->getup(); statue = faceup; break;
+		case DOWN: totile = nowtile->getdown(); statue = facedown; break;
+		default: break;
 		}
-		if (tomove == 77)
-		{
-			Tile* totile = nowtile->getright();
-			if (totile != NULL)
-				this->nowtile = totile;
-			statue = faceright;
-		}
-		if (tomove == 72)
-		{
-			Tile* totile = nowtile->getup();
-			if (totile != NULL)
-				this->nowtile = totile;
-			statue = faceup;
-		}
-		if (tomove == 80)
-		{
-			Tile* totile = nowtile->getdown();
-			if (totile != NULL)
-				this->nowtile = totile;
-			statue = facedown;
-		}
-
+		if(totile!=NULL) this->nowtile = totile;
 		this->where();
 	}
 

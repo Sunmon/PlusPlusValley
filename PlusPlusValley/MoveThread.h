@@ -46,7 +46,7 @@ private:
 	}
 
 public:
-	MoveThread() {}
+	MoveThread(){}
 	void test()
 	{
 		cout << "check" << endl;

@@ -16,31 +16,43 @@ private:
 	Tile* rightTile;
 	Tile* upTile;
 	Tile* downTile;
+
 public:
+	Tile(){}
 	Tile(int x, int y)
 	{
 		setXY(x, y);
+		init();
 	}
+
+	void init()
+	{
+		leftTile = NULL;
+		rightTile = NULL;
+		upTile = NULL;
+		downTile = NULL;
+	}
+
 	void setXY(int x, int y)
 	{
 		this->x = x;
 		this->y = y;
 	}
-	void setleft(Tile* toTIle)
+	void setleft(Tile* toTile)
 	{
-		this->leftTile = toTIle;
+		this->leftTile = toTile;
 	}
-	void setright(Tile* toTIle)
+	void setright(Tile* toTile)
 	{
-		this->rightTile = toTIle;
+		this->rightTile = toTile;
 	}
-	void setup(Tile* toTIle)
+	void setup(Tile* toTile)
 	{
-		this->upTile = toTIle;
+		this->upTile = toTile;
 	}
-	void setdown(Tile* toTIle)
+	void setdown(Tile* toTile)
 	{
-		this->downTile = toTIle;
+		this->downTile = toTile;
 	}
 	int getx()
 	{
