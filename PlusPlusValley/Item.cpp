@@ -2,13 +2,13 @@
 
 Item::Item()
 {
-	Item::itemType = ItemType::NONE;	//초기화
+	this->itemType = ItemType::NONE;	//초기화
 }
 
 Item::Item(ItemType itemType, const std::string& name)
 {
-	Item::itemType = itemType;
-	Item::name = name;
+	this->itemType = itemType;
+	this->name = name;
 }
 
 Item::~Item()
@@ -17,42 +17,42 @@ Item::~Item()
 
 void Item::setName(const std::string& name)
 {
-	Item::name = name;
+	this->name = name;
 }
 
 void Item::setMAX_NUM(int num)
 {
-	MAX_NUM = num;
+	this->MAX_NUM = num;
 }
 
 void Item::setCost(int cost)
 {
-	Item::cost = cost;
+	this->cost = cost;
 }
 
 void Item::setItemType(ItemType itemType)
 {
-	Item::itemType = itemType;
+	this->itemType = itemType;
 }
 
 ItemType Item::getItemType()
 {
-	return Item::itemType;
+	return itemType;
 }
 
 
 int Item::getMAX_NUM()
 {
-	return Item::MAX_NUM;
+	return MAX_NUM;
 }
 
 int Item::getCost()
 {
-	return Item::cost;
+	return cost;
 }
 
 std::string& Item::getName()
 {
-	return Item::name;
+	return this->name;
 }
 
