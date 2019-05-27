@@ -8,7 +8,7 @@ using namespace std;
 
 Controller controller;
 void test_inventory();
-
+/*
 int main()
 {
 
@@ -18,6 +18,7 @@ int main()
 
 
 }
+*/
 
 void test_inventory()
 {
