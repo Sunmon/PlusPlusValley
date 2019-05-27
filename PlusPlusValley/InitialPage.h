@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "character.h"
+#include "Character.h"
+#include "Player.h"
 
 class InitialPage
 {
