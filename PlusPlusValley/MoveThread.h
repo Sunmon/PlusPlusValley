@@ -46,10 +46,12 @@ private:
 	}
 
 public:
+	MoveThread(){}
 	void test()
 	{
 		cout << "check" << endl;
 	}
+	
 	MoveThread(Player* player)
 	{
 		this->player = player;

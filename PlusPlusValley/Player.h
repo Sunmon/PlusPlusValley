@@ -8,6 +8,7 @@ class Player : public Character
 private:
 	string name;
 public:
+	Player() {};
 	Player(Tile* totile)
 	{
 		this->setTile(totile);

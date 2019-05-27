@@ -3,22 +3,16 @@
 #include <iostream>
 #include "Inventory.h"
 #include "Item.h"
-#include "character.h"
+#include "Controller.h"
 using namespace std;
 
+Controller controller;
 void test_inventory();
-/*
+
 int main()
 {
-
-	test_inventory();
-	
-	return 0;
-
-
+	controller.test_move();
 }
-*/
-
 
 void test_inventory()
 {

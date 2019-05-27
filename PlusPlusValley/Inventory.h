@@ -27,8 +27,11 @@ public:
 	void removeItem(Item *item, int num = 1);
 	void clearItem(Item *item);
 	void printItems();
+	void setMoney(int money);
+	int getMoney();
 
 private:
 	std::map<Item*, int>::iterator itemIter;
+	int money;
 };
 
