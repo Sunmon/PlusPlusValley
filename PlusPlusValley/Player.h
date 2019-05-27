@@ -4,6 +4,7 @@
 class Player : public Character
 {
 public:
+	Player() {};
 	Player(Tile* totile)
 	{
 		this->setTile(totile);
