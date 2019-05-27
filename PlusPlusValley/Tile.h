@@ -26,21 +26,21 @@ public:
 		this->x = x;
 		this->y = y;
 	}
-	void setleft(Tile* toTIle)
+	void setleft(Tile* toTile)
 	{
-		this->leftTile = toTIle;
+		this->leftTile = toTile;
 	}
-	void setright(Tile* toTIle)
+	void setright(Tile* toTile)
 	{
-		this->rightTile = toTIle;
+		this->rightTile = toTile;
 	}
-	void setup(Tile* toTIle)
+	void setup(Tile* toTile)
 	{
-		this->upTile = toTIle;
+		this->upTile = toTile;
 	}
-	void setdown(Tile* toTIle)
+	void setdown(Tile* toTile)
 	{
-		this->downTile = toTIle;
+		this->downTile = toTile;
 	}
 	int getx()
 	{
