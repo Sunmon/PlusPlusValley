@@ -31,12 +31,12 @@ public:
 	}
 
 
-	void addItem(int n, Item::ItemType itemType) {
+	void addItem(int n, ItemType itemType) {
 		itemArray[n].setItemType(itemType);
 	}
 
 	Item getItem(int n) {
-		if (itemArray[n].getItemType() == Item::NONE) {
+		if (itemArray[n].getItemType() == ItemType::NONE) {
 			cout << "해당 위치에 Item이 없습니다" << endl;
 			exit(0);
 		}
