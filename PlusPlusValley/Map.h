@@ -15,12 +15,20 @@ private:
 			for (int i = 0; i < MAX_X; i++)
 			{
 				map[i][j] = new Tile(i, j);
-				if(i > 0) map[i][j]->setleft(map[i - 1][j]);
+			}
+		}
+
+		for (int j = 0; j < MAX_Y; j++)
+		{
+			for (int i = 0; i < MAX_X; i++)
+			{
+				if (i > 0) map[i][j]->setleft(map[i - 1][j]);
 				if (i < MAX_X - 1) map[i][j]->setright(map[i + 1][j]);
-				if (j > 0) map[i][j]->setdown(map[i][j-1]);
+				if (j > 0) map[i][j]->setdown(map[i][j - 1]);
 				if (j < MAX_Y - 1) map[i][j]->setup(map[i][j + 1]);
 			}
 		}
+
 
 	}
 
