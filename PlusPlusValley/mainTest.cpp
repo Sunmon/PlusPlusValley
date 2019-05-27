@@ -1,10 +1,14 @@
 // testing git solution
 // 테스트용 코드
 #include <iostream>
+#include <iomanip>
 #include "Inventory.h"
 #include "Item.h"
 #include "Character.h"
 #include "UseTime.h"
+#include "MoveThread.h"
+#include "Map.h"
+
 
 using namespace std;
 

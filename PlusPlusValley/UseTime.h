@@ -1,8 +1,4 @@
 #pragma once
-#include <iomanip>
-#include "MoveThread.h"
-#include "Character.h"
-#include "Map.h"
 
 class UseTime
 {
@@ -13,12 +9,8 @@ public:
 	UseTime(int initialtime);
 	~UseTime();
 	void settime(int time);
-
 	int gethour();
-	
 	int getminute();
 	void nexttime();
-	
-
 };
 
