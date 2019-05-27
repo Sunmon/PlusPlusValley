@@ -3,7 +3,7 @@
 
 Tool::Tool():Item()
 {
-	Tool::itemType = Tool::TOOL;
+	Tool::itemType = ItemType::TOOL;
 }
 
 Tool::~Tool()

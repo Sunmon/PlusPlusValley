@@ -2,17 +2,16 @@
 // 테스트용 코드
 #include <iostream>
 #include "Inventory.h"
+#include "Item.h"
 #include "character.h"
 using namespace std;
 
 void test_inventory();
 
-
 int main()
 {
 
 	test_inventory();
-	
 	
 	return 0;
 
@@ -22,18 +21,19 @@ int main()
 
 void test_inventory()
 {
+	//FIXME: map을 쓰면 자동으로 정렬됨. 순서가 필요하다면 vector를 써야 함.
 	//test for inventory
 	Inventory* inven = new Inventory();
 
 	//add item to inventory
-	Item* seed = new Item(Item::SEED, "Seed");
-	Item* wood = new Item(Item::ItemType::WOOD, "Wood");
-	Item* stone = new Item(Item::ItemType::STONE, "Stone");
+	Item* seed = new Item(ItemType::SEED, "Seed");
+	Item* wood = new Item(ItemType::WOOD, "Wood");
+	Item* stone = new Item(ItemType::STONE, "Stone");
 	inven->addItem(seed, 10);
 	inven->addItem(wood);
 	inven->addItem(stone, 2);
 	inven->addItem(stone);
-	inven->addItem(new Item(Item::CROP, "Crop"));
+	inven->addItem(new Item(ItemType::CROP, "Crop"));
 
 	Item* tool = new Tool("Hammer");
 	inven->addItem(tool);

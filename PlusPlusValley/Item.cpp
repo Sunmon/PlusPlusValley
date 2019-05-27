@@ -1,9 +1,8 @@
 #include "Item.h"
 
-
 Item::Item()
 {
-	Item::itemType = Item::ItemType::NONE;	//초기화
+	Item::itemType = ItemType::NONE;	//초기화
 }
 
 Item::Item(ItemType itemType, const std::string& name)
@@ -36,7 +35,7 @@ void Item::setItemType(ItemType itemType)
 	Item::itemType = itemType;
 }
 
-Item::ItemType Item::getItemType()
+ItemType Item::getItemType()
 {
 	return Item::itemType;
 }
