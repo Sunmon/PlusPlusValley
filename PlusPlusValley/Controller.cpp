@@ -1,57 +1,32 @@
-#include <iostream>
-#include <iomanip>
-#include "MoveThread.h"
-#include "character.h"
-#include "Map.h"
-
-using namespace std;
-
-class usetime
+#include "Controller.h"
+Controller::Controller()
 {
-private:
-	int gmtime;
-public:
+	init();
+}
 
-	void settime(int time)
-	{
-		this->gmtime = time;
-	}
-	usetime(int initialtime)
-	{
-		settime(initialtime);
-	}
-	int gethour()
-	{
-		int newtime = (this->gmtime) / 60;
-		return newtime;
-	}
-	int getminute()
-	{
-		int newtime = (this->gmtime) % 60;
-		return newtime;
-	}
-	void nexttime()
-	{
-		int newtime = this->gmtime;
-		settime(newtime + 10);
-	}
-
-};
-int main()
+Controller::~Controller()
 {
+}
 
-	Map map;
+void Controller::init()
+{
+	map = new Map();
+	startTile = map->gettile(15, 10);
+	player = new Player(startTile);
+	movethread = new MoveThread(player);
+	time = new UseTime(9 * 60);
 
-	Tile* maketile = map.gettile(15, 10);
-	Player player(maketile);
-	MoveThread move(&player);
-	usetime time(9 * 60);
-	move.start();
+}
 
+void Controller::test_move()
+{
+	movethread->start();
 	while (1)
 	{
 		Sleep(1000);
-		time.nexttime();
-		cout << setw(2) << setfill('0') << time.gethour() << ':' << setw(2) << setfill('0') << time.getminute() << endl;
+		time->nexttime();
+		cout << setw(2) << setfill('0') << time->gethour() << ':' << setw(2) << setfill('0') << time->getminute() << endl;
 	}
 }
+
+

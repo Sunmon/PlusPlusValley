@@ -16,11 +16,23 @@ private:
 	Tile* rightTile;
 	Tile* upTile;
 	Tile* downTile;
+
 public:
+	Tile(){}
 	Tile(int x, int y)
 	{
 		setXY(x, y);
+		init();
 	}
+
+	void init()
+	{
+		leftTile = NULL;
+		rightTile = NULL;
+		upTile = NULL;
+		downTile = NULL;
+	}
+
 	void setXY(int x, int y)
 	{
 		this->x = x;
