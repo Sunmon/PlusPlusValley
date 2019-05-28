@@ -1,6 +1,6 @@
 #include "Item.h"
 
-Item::Item(): Item(ItemType::NONE, NULL)
+Item::Item(): Item(ItemType::NONE, "")
 {
 	//this->itemType = ItemType::NONE;	//√ ±‚»≠
 }
