@@ -1,8 +1,8 @@
 #include "Item.h"
 
-Item::Item()
+Item::Item(): Item(ItemType::NONE, NULL)
 {
-	this->itemType = ItemType::NONE;	//초기화
+	//this->itemType = ItemType::NONE;	//초기화
 }
 
 Item::Item(ItemType itemType, const std::string& name)
