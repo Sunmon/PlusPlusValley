@@ -26,7 +26,3 @@ string NPC::getName()
 	return this->name;
 }
 
-void NPC::npcInventory()
-{
-	Inventory* nInven;
-}

@@ -15,7 +15,6 @@ public:
 
 	void setName(string name);
 	string getName();
-	void npcInventory();
 
 
 };

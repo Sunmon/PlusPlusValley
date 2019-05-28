@@ -16,6 +16,7 @@ Player::~Player()
 Player::Player(string name)
 {
 	this->name = name;
+	Inventory* Inven = new Inventory();
 }
 
 Player::Player(Tile * totile)
@@ -41,8 +42,7 @@ void Player::act()
 
 void Player::playerInventory()
 {
-	Inventory* pInven;
-
+	Inventory* pInven = new Inventory();
 
 }
 

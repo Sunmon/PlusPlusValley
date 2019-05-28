@@ -81,12 +81,10 @@ void InitialPage::menu()
 	}
 }
 
-//int main(void) {
-//
-//	InitialPage IP;
-//	IP.makePlayer();
-//	IP.menu();
-//	IP.showInfoPlayer();
-//
-//	system("pause");
-//}
+int main(void) {
+
+	InitialPage IP;
+	IP.makePlayer();
+	IP.showInfoPlayer();
+	IP.menu();
+}

@@ -130,6 +130,7 @@
     <ClCompile Include="mainTest.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Store.cpp" />
     <ClCompile Include="Tool.cpp" />
     <ClCompile Include="UseTime.cpp" />
   </ItemGroup>
@@ -145,6 +146,7 @@
     <ClInclude Include="MoveThread.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Store.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tool.h" />
     <ClInclude Include="UseTime.h" />
