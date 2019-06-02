@@ -5,6 +5,7 @@
 class Player : public Character
 {
 private:
+	Inventory* inven;
 	string name;
 public:
 	Player();
@@ -15,6 +16,14 @@ public:
 	void setName(string name);
 	string getName();
 	void act();
-	void playerInventory();
+	void InitInventory();
+	void setInven(Inventory* inven);
+	Inventory* getInven();
+
+
+
+
+
+
 
 };

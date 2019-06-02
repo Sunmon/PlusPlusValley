@@ -4,6 +4,9 @@
 #include <iostream>
 #include <utility>
 #include <map>
+#include <string>
+
+using namespace std;
 
 /**
 * 인벤토리를 관리하는 클래스
@@ -29,6 +32,7 @@ public:
 	void printItems();
 	void setMoney(int money);
 	int getMoney();
+	Item* findItem(string name);
 
 private:
 	std::map<Item*, int>::iterator itemIter;

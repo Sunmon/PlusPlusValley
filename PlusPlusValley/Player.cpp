@@ -5,7 +5,9 @@ using namespace std;
 
 Player::Player()
 {
+	InitInventory();
 	cout << "플레이어 생성!" << endl;
+	
 }
 
 
@@ -39,12 +41,22 @@ void Player::act()
 	cout << "act" << endl;
 	where();
 }
-
-void Player::playerInventory()
+void Player:: InitInventory()
 {
-	Inventory* pInven = new Inventory();
-
+	this->inven = new Inventory();
+	inven->setMoney(500);
 }
+
+void Player::setInven(Inventory* inven)
+{
+	this->inven = inven;
+}
+
+Inventory* Player::getInven()
+{
+	return this->inven;
+}
+
 
 
 

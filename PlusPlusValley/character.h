@@ -17,7 +17,13 @@ private:
 	int hp;
 	status statue = facedown;
 
+
 public:
+
+	Character() {
+	}
+	
+
 	int getX()
 	{
 		return nowtile->getx();
@@ -58,6 +64,9 @@ public:
 		if(totile!=NULL) this->nowtile = totile;
 		this->where();
 	}
+
+	
+
 
 
 };

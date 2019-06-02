@@ -60,5 +60,15 @@ int Inventory::getMoney()
 {
 	return money;
 }
+Item* Inventory::findItem(string name) {
+
+	
+	for (auto& item : items)
+	{
+		if (name == item.first->getName()) return item.first;
+	}
+	return NULL;
+
+}
 
 
