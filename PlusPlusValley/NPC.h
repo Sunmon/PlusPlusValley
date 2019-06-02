@@ -3,9 +3,10 @@
 #include "Inventory.h"
 #include "Store.h"
 #include "Player.h"
-
-
 #include <string>
+using namespace std;
+
+
 class NPC : public Character
 {
 private:
@@ -13,13 +14,14 @@ private:
 	
 
 public:
+	Store* store;
+
 	NPC();
 	NPC(string name);
 	~NPC();
 
 	void setName(string name);
 	string getName();
-	Store* store;
 	void goStore(Player* player);
 
 

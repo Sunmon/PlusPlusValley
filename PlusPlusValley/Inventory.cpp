@@ -67,6 +67,7 @@ Item* Inventory::findItem(string name) {
 	{
 		if (name == item.first->getName()) return item.first;
 	}
+
 	return NULL;
 
 }

@@ -44,7 +44,7 @@ void Player::act()
 void Player:: InitInventory()
 {
 	this->inven = new Inventory();
-	inven->setMoney(500);
+	inven->setMoney(5000);
 }
 
 void Player::setInven(Inventory* inven)

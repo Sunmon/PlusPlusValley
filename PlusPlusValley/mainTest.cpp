@@ -14,7 +14,8 @@ void test_store();
 
 int main()
 {
-	controller.test_move();
+	//controller.test_move();
+	test_store();
 }
 
 void test_inventory()
@@ -52,10 +53,11 @@ void test_inventory()
 void test_store()
 {
 	Player* player = new Player();
+
 	NPC* npc = new NPC();
 
 	npc->store->showItemList();
 
-	npc->goStore();
+	npc->goStore(player);
 
 }
