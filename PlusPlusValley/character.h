@@ -49,6 +49,21 @@ public:
 	}
 	Tile* getTarget()
 	{
+		switch (statue)
+		{
+		case faceleft:
+			target = nowtile->getleft();
+			break;
+		case faceright:
+			target = nowtile->getright();
+			break;
+		case faceup:
+			target = nowtile->getup();
+			break;
+		case facedown:
+			target = nowtile->getdown();
+			break;
+		}
 		return target;
 	}
 	

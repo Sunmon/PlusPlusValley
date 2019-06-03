@@ -9,9 +9,7 @@ Player::Player()
 	cout << "플레이어 생성!" << endl;
 	
 }
-<<<<<<< HEAD
- 
-=======
+
 
 
 Player::~Player()
@@ -43,18 +41,12 @@ void Player::act()
 {
 	cout << "act" << endl;
 	where();
->>>>>>> 22166ae2bc17a0dd7ae0f60436fbbd1f74e002a6
 }
 void Player:: InitInventory()
 {
 	this->inven = new Inventory();
 	Item* ax = new Item(ItemType::TOOL, "ax");
 	Item* crop = new Item(ItemType::TOOL, "crop");
-<<<<<<< HEAD
-	pInven->addItem(ax, 1);
-	pInven->addItem(crop);
-=======
->>>>>>> 22166ae2bc17a0dd7ae0f60436fbbd1f74e002a6
 	inven->addItem(ax, 1);
 	inven->addItem(crop);
 	inven->setMoney(5000);
