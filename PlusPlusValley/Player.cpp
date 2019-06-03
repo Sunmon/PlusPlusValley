@@ -9,43 +9,7 @@ Player::Player()
 	cout << "플레이어 생성!" << endl;
 	
 }
-
-
-Player::~Player()
-{
-}
-
-Player::Player(string name)
-{
-	this->name = name;
-	Inventory* Inven = new Inventory();
-}
-
-Player::Player(Tile * totile)
-{
-	this->setTile(totile);
-}
-
-void Player::setName(string name)
-{
-	this->name = name;
-}
-
-string Player::getName()
-{
-	return this->name;
-}
-
-void Player::act()
-{
-	cout << "act" << endl;
-	where();
-}
-void Player::playerInventory()
-{
-
-	Inventory* pInven = new Inventory();
-	
+ 
 }
 void Player:: InitInventory()
 {
@@ -53,7 +17,9 @@ void Player:: InitInventory()
 	Item* ax = new Item(ItemType::TOOL, "ax");
 	Item* crop = new Item(ItemType::TOOL, "crop");
 	pInven->addItem(ax, 1);
-	pInven->addItem(crop, 2);
+	pInven->addItem(crop);
+	inven->addItem(ax, 1);
+	inven->addItem(crop);
 	inven->setMoney(5000);
 }
 
@@ -65,12 +31,13 @@ void Player::setInven(Inventory* inven)
 
 Inventory* Player::getInven()
 {
-	return this->pInven;
+	return this->inven;
 }
 
 void Player::Interact()
 {
-	Item* firstitem = pInven->getfirstItem();
+
+	Item* firstitem = inven->getfirstItem();
 	Tile* target = this->getTarget();
 	if (firstitem->getItemType() == TOOL)
 	{
