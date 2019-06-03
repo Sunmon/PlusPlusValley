@@ -34,7 +34,7 @@ void Inventory::removeItem(Item *item, int num)
 	if (itemIter->second <= num) clearItem(item);
 	else itemIter->second -= num;
 }
-
+ 
 //해당 아이템 전부 제거
 void Inventory::clearItem(Item *item)
 {
@@ -61,4 +61,7 @@ int Inventory::getMoney()
 	return money;
 }
 
-
+Item* Inventory::getfirstItem()
+{
+	return itemIter->first;
+}

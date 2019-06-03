@@ -80,7 +80,7 @@ void InitialPage::menu()
 
 	}
 }
-
+/*
 int main(void) {
 
 	InitialPage IP;
@@ -88,3 +88,4 @@ int main(void) {
 	IP.showInfoPlayer();
 	IP.menu();
 }
+*/

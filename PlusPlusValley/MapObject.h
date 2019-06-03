@@ -5,9 +5,13 @@
 
 using namespace std;
 
+enum ObjectType
+{
+	tree = 1, stone, harvest,
+};
 class MapObject {
 private:
-	string objectType;
+	ObjectType objectType;
 	int health;
 	int place[2];
 	Item itemArray[3] = { Item(),Item(),Item() };
@@ -27,11 +31,11 @@ public:
 	int* getPlace() {
 		return place;
 	}
-	void setObjectType(string objectType) {
+	void setObjectType(ObjectType objectType) {
 		this->objectType = objectType;
 	}
 
-	string getObjectType() {
+	ObjectType getObjectType() {
 		return this->objectType;
 	}
 
@@ -58,5 +62,9 @@ public:
 		}
 	}
 
-
+	MapObject(ObjectType object)
+	{
+		objectType = object;
+		health = 5;
+	}
 };

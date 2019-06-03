@@ -29,6 +29,7 @@ public:
 	void printItems();
 	void setMoney(int money);
 	int getMoney();
+	Item* getfirstItem();
 
 private:
 	std::map<Item*, int>::iterator itemIter;

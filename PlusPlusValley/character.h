@@ -41,7 +41,10 @@ public:
 		int wherey = this->gety();
 		cout << "(" << wherex << "," << wherey << ")" << endl;
 	}
-
+	Tile* getTarget()
+	{
+		return target;
+	}
 	
 	void move(int tomove)
 	{

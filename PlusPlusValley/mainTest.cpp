@@ -12,6 +12,7 @@ void test_inventory();
 int main()
 {
 	controller.test_move();
+
 }
 
 void test_inventory()
