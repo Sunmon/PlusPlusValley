@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include <vector>
-
+#include "MapObject.h"
 
 using namespace std;
 
@@ -10,13 +10,13 @@ class Tile
 private:
 	int x;
 	int y;
-	bool canmove;
-	bool isvalue;
+	bool canmove;	//플레이어가 위로 올라갈 수 있으면 true
+	bool isvalue;	//설치된 상태면 true
 	Tile* leftTile;
 	Tile* rightTile;
 	Tile* upTile;
 	Tile* downTile;
-
+	MapObject* mapobject;
 public:
 	Tile(){}
 	Tile(int x, int y)
@@ -27,6 +27,9 @@ public:
 
 	void init()
 	{
+		canmove = true;
+		isvalue = false;
+		mapobject = NULL;
 		leftTile = NULL;
 		rightTile = NULL;
 		upTile = NULL;
@@ -79,11 +82,37 @@ public:
 		return this->downTile;
 	}
 
+	bool getIsvalue()
+	{
+		return this->isvalue;
+	}
 	bool getcanmove()
 	{
 		return this->canmove;
 	}
+	void setObject(MapObject* object)
+	{
+		if (this->isvalue == true)
+		{
+			cout << "설치가 불가능합니다." << endl;
+		}
+		else
+		{
+			this->mapobject = object;
+			if (object->getObjectType() != harvest)
+			{
+				canmove = false;
+				
+			}
+			
+			isvalue = true;
+		}
+	}
 
+	MapObject* getObject()
+	{
+		return mapobject;
+	}
 };
 
 

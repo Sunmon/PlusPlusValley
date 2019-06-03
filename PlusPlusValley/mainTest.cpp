@@ -6,7 +6,6 @@
 #include "Controller.h"
 #include "Character.h"
 #include "NPC.h"
-#include "InitialPage.h"
 
 using namespace std;
 
@@ -15,6 +14,14 @@ void test_inventory();
 void test_store();
 
 
+
+int main()
+{
+	//controller.test_move();
+
+	controller.test_move();
+	//test_store();
+}
 
 void test_inventory()
 {
@@ -58,18 +65,4 @@ void test_store()
 
 	npc->goStore(player);
 
-}
-
-void test_initPage() {
-	
-	InitialPage* initPage = new InitialPage();
-	initPage->makePlayer();
-	initPage->showInfoPlayer();
-}
-
-int main()
-{
-	//controller.test_move();
-	test_store();
-	//test_initPage();
 }

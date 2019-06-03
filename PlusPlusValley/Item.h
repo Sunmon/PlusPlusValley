@@ -34,7 +34,7 @@ public:
 	
 
 private:
-	int MAX_NUM = -1;	/*아이템별 가질 수 있는 최대 수*/
+	int MAX_NUM = 10;	/*아이템별 가질 수 있는 최대 수*/
 	int cost = -1;
 	std::string name;
 

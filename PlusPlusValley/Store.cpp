@@ -25,7 +25,7 @@ void Store::InitInventoty()
 
 	storeInven->addItem(makeItem(ItemType::CROP, "딸기", 100));
 	storeInven->addItem(makeItem(ItemType::CROP, "수박", 160));
-	storeInven->addItem(makeItem(ItemType::CROP, "배추", 300));
+		storeInven->addItem(makeItem(ItemType::CROP, "배추", 300));
 
 	storeInven->addItem(makeItem(ItemType::STONE, "모래", 100));
 	storeInven->addItem(makeItem(ItemType::STONE, "자갈", 200));

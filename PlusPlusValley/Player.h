@@ -16,12 +16,10 @@ public:
 	void setName(string name);
 	string getName();
 	void act();
+	Inventory* getInven();
+	void Interact();
 	void InitInventory();
 	void setInven(Inventory* inven);
-	Inventory* getInven();
-
-
-
 
 
 
