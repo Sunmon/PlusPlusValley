@@ -16,6 +16,7 @@ private:
 	void move()
 	{
 		int getkey = _getch();
+
 		if (getkey == 72)
 		{
 			player->move(72);
@@ -32,7 +33,10 @@ private:
 		{
 			player->move(80);
 		}
-
+		if (getkey == 32)
+		{
+			player->Interact();
+		}
 	}
 	static unsigned int __stdcall move(void* arg)
 	{
