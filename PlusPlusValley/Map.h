@@ -89,4 +89,8 @@ public:
 		else
 			return NULL;
 	}
+	void saveObject()
+	{
+
+	}
 };

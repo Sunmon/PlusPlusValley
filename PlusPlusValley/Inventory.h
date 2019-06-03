@@ -32,6 +32,8 @@ public:
 	void printItems();
 	void setMoney(int money);
 	int getMoney();
+	Item* getfirstItem();
+
 	Item* findItem(string name);
 
 private:

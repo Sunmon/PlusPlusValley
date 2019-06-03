@@ -41,6 +41,14 @@ void Player::act()
 	cout << "act" << endl;
 	where();
 }
+void Player::playerInventory()
+{
+
+	Inventory* pInven = new Inventory();
+	Item* ax = new Item(ItemType::TOOL, "ax");
+	Item* crop = new Item(ItemType::TOOL, "crop");
+	pInven->addItem(ax, 1);
+}
 void Player:: InitInventory()
 {
 	this->inven = new Inventory();
@@ -50,11 +58,60 @@ void Player:: InitInventory()
 void Player::setInven(Inventory* inven)
 {
 	this->inven = inven;
+
 }
 
 Inventory* Player::getInven()
 {
-	return this->inven;
+	return this->pInven;
+}
+
+void Player::Interact()
+{
+	Item* firstitem = pInven->getfirstItem();
+	Tile* target = this->getTarget();
+	if (firstitem->getItemType() == TOOL)
+	{
+		if (firstitem->getName() == "ax")
+		{
+			if (target->getObject()->getObjectType() == tree)
+			{
+				cout << "³ª¹«¸¦ º£¾ú´Ù" << endl;
+			}
+			else
+			{
+				cout << "µµ³¢¸¦ ÈÖµÑ·¶´Ù" << endl;
+			}
+		}
+		else if (firstitem->getName() == "crop")
+		{
+			if (target->getObject()->getObjectType() == stone)
+			{
+				cout << "µ¹À» ºÎ¼Ì´Ù." << endl;
+			}
+			else
+			{
+				cout << "°î°»ÀÌ¸¦ ÈÖµÑ·¶´Ù" << endl;
+			}
+		}
+	}
+	else if (firstitem->getItemType() == SEED)
+	{
+		if (target->getIsvalue() == false)
+		{
+			MapObject* seed = new MapObject(harvest);
+			target->setObject(seed);
+		}
+		else
+		{
+			cout << "¾¾¸¦ »Ñ¸± ¼ö ¾ø½À´Ï´Ù." << endl;
+		}
+	}
+	else
+	{
+		cout << "¾Æ¹«ÀÏµµ ÀÏ¾î³ªÁö ¾Ê¾Ò´Ù." << endl;
+	}
+	
 }
 
 

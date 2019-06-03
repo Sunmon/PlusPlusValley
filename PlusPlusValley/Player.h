@@ -7,6 +7,7 @@ class Player : public Character
 private:
 	Inventory* inven;
 	string name;
+	Inventory* pInven;
 public:
 	Player();
 	~Player();
@@ -16,12 +17,11 @@ public:
 	void setName(string name);
 	string getName();
 	void act();
+	void playerInventory();
+	Inventory* getInven();
+	void Interact();
 	void InitInventory();
 	void setInven(Inventory* inven);
-	Inventory* getInven();
-
-
-
 
 
 
