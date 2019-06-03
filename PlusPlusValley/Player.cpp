@@ -45,13 +45,15 @@ void Player::playerInventory()
 {
 
 	Inventory* pInven = new Inventory();
-	Item* ax = new Item(ItemType::TOOL, "ax");
-	Item* crop = new Item(ItemType::TOOL, "crop");
-	pInven->addItem(ax, 1);
+	
 }
 void Player:: InitInventory()
 {
 	this->inven = new Inventory();
+	Item* ax = new Item(ItemType::TOOL, "ax");
+	Item* crop = new Item(ItemType::TOOL, "crop");
+	pInven->addItem(ax, 1);
+	pInven->addItem(crop, 2);
 	inven->setMoney(5000);
 }
 

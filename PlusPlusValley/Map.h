@@ -89,8 +89,16 @@ public:
 		else
 			return NULL;
 	}
-	void saveObject()
+	void	 saveObject()
 	{
+		
+	}
 
+	void initialmap()
+	{
+		MapObject* stoneobject =new MapObject(stone);
+		MapObject* treeobject = new MapObject(tree);
+		map[3][4]->setObject(stoneobject);
+		map[13][23]->setObject(treeobject);
 	}
 };

@@ -14,6 +14,7 @@ void test_store();
 
 int main()
 {
+
 	controller.test_move();
 
 	//controller.test_move();
