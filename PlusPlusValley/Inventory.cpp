@@ -1,5 +1,6 @@
 #include "Inventory.h"
-#define MAX(a,b) a>b? a:b
+#define MAX(a,b)	((a>b)? a: b)
+
 
 
 Inventory::Inventory()
@@ -18,15 +19,15 @@ Inventory::~Inventory()
 }
 
 //item을 num만큼 추가. 개수가 정해지지 않았다면 1개 추가.
-void Inventory::addItem(Item *item, int num = 1)
+void Inventory::addItem(Item *item, int num)
 {
 	itemIter = items.find(item);
 	if (itemIter == items.end()) items.insert(std::make_pair(item, num));
-	else itemIter->second = MAX(itemIter->second + num, item->getMAX_NUM);
+	else itemIter->second = MAX(itemIter->second + num, item->getMAX_NUM());
 }
 
 //item을 num만큼 제거한다. 개수가 정해지지 않았다면 1개 제거.
-void Inventory::removeItem(Item *item, int num = 1)
+void Inventory::removeItem(Item *item, int num)
 {
 	itemIter = items.find(item);
 	if (itemIter->second <= num) clearItem(item);
