@@ -66,13 +66,15 @@ void Store::sellItem( Player* player)
 	int num;
 	string itemName;
 
-	cout << "\n---판매할 상품을 선택하세요---" << endl;
+	cout << "\n--------------------------판매할 상품을 선택하세요--------------------------" << endl;
 	cin >> itemName;
 
 	Item* selltemp = playerInven->findItem(itemName);
 
 	if (selltemp == NULL) {
+		system("cls");
 		cout << "인벤토리에 상품이 없습니다!" << endl << endl;
+		
 		sellItem(player);
 		return;
 	}
@@ -82,6 +84,7 @@ void Store::sellItem( Player* player)
 
 	//플레이어 인벤토리의 상품 개수 < 판매하려는 상품 개수이면 false
 	if (playerInven->items.find(selltemp)->second < num) {
+		system("cls");
 		cout << "인벤토리에 상품이 부족합니다!" << endl << endl;
 		sellItem(player);
 		return;
@@ -112,9 +115,10 @@ void Store::buyItem(Player* player)
 
 	int num;
 	
-	cout << "---구입 할 상품을 선택하세요---" << endl;
+	cout << "--------------------------구입 할 상품을 선택하세요--------------------------" << endl;
 	cout << " 1. 씨앗(SEED) 2. 수확작물(CROP) 3. 돌(STONE) 4. 나무(WOOD) 5. 도구(TOOL)" << endl;
 	cin >> num;
+	system("cls");
 
 	switch (num) {
 	case 1:

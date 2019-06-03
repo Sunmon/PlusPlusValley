@@ -43,7 +43,7 @@ void InitialPage::showInfoPlayer()
 	cout << "=======플레이어 정보=======" << endl;
 	cout << "이름 : " << player->getName() << endl;
 	cout << "체력: " << player->gethp() << endl;
-	cout << "돈: " << endl << endl;
+	//cout << "돈: " << endl << endl;
 }
 
 void InitialPage::menu()

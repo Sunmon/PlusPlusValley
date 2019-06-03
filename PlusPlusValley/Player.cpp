@@ -6,7 +6,7 @@ using namespace std;
 Player::Player()
 {
 	InitInventory();
-	cout << "플레이어 생성!" << endl;
+	// cout << "플레이어 생성!" << endl;
 	
 }
 
