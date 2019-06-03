@@ -19,8 +19,8 @@ int main()
 {
 	//controller.test_move();
 
-	//controller.test_move();
-	test_store();
+	controller.test_move();
+	//test_store();
 }
 
 void test_inventory()

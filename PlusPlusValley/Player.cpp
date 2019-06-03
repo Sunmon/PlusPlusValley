@@ -15,13 +15,12 @@ Player::~Player()
 {
 }
 
-Player::Player(string name)
+Player::Player(string name):Player()
 {
 	this->name = name;
-	Inventory* Inven = new Inventory();
 }
 
-Player::Player(Tile * totile)
+Player::Player(Tile * totile):Player()
 {
 	this->setTile(totile);
 }
@@ -66,7 +65,10 @@ void Player::Interact()
 {
 
 	Item* firstitem = inven->getfirstItem();
+
 	Tile* target = this->getTarget();
+
+
 	if (firstitem->getItemType() == TOOL)
 	{
 		if (firstitem->getName() == "ax")
