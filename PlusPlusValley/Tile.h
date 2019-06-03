@@ -10,8 +10,8 @@ class Tile
 private:
 	int x;
 	int y;
-	bool canmove;
-	bool isvalue;
+	bool canmove;	//플레이어가 위로 올라갈 수 있으면 true
+	bool isvalue;	//설치된 상태면 true
 	Tile* leftTile;
 	Tile* rightTile;
 	Tile* upTile;
@@ -106,6 +106,7 @@ public:
 			isvalue = true;
 		}
 	}
+
 	MapObject* getObject()
 	{
 		return mapobject;
