@@ -73,5 +73,6 @@ Item* Inventory::findItem(string name) {
 
 Item* Inventory::getfirstItem()
 {
+	itemIter = items.begin();
 	return itemIter->first;
 }

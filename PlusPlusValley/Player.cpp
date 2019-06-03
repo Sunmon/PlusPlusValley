@@ -41,19 +41,13 @@ void Player::act()
 	cout << "act" << endl;
 	where();
 }
-void Player::playerInventory()
-{
-
-	Inventory* pInven = new Inventory();
-	
-}
 void Player:: InitInventory()
 {
 	this->inven = new Inventory();
 	Item* ax = new Item(ItemType::TOOL, "ax");
 	Item* crop = new Item(ItemType::TOOL, "crop");
-	pInven->addItem(ax, 1);
-	pInven->addItem(crop, 2);
+	inven->addItem(ax, 1);
+	inven->addItem(crop);
 	inven->setMoney(5000);
 }
 
@@ -65,12 +59,13 @@ void Player::setInven(Inventory* inven)
 
 Inventory* Player::getInven()
 {
-	return this->pInven;
+	return this->inven;
 }
 
 void Player::Interact()
 {
-	Item* firstitem = pInven->getfirstItem();
+
+	Item* firstitem = inven->getfirstItem();
 	Tile* target = this->getTarget();
 	if (firstitem->getItemType() == TOOL)
 	{
