@@ -5,7 +5,9 @@ using namespace std;
 
 Player::Player()
 {
+	InitInventory();
 	cout << "플레이어 생성!" << endl;
+	
 }
 
 
@@ -41,11 +43,21 @@ void Player::act()
 }
 void Player::playerInventory()
 {
-	
+
 	Inventory* pInven = new Inventory();
 	Item* ax = new Item(ItemType::TOOL, "ax");
 	Item* crop = new Item(ItemType::TOOL, "crop");
 	pInven->addItem(ax, 1);
+}
+void Player:: InitInventory()
+{
+	this->inven = new Inventory();
+	inven->setMoney(5000);
+}
+
+void Player::setInven(Inventory* inven)
+{
+	this->inven = inven;
 
 }
 
@@ -99,7 +111,9 @@ void Player::Interact()
 	{
 		cout << "아무일도 일어나지 않았다." << endl;
 	}
+	
 }
+
 
 
 

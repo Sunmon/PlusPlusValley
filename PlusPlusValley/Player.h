@@ -5,6 +5,7 @@
 class Player : public Character
 {
 private:
+	Inventory* inven;
 	string name;
 	Inventory* pInven;
 public:
@@ -19,4 +20,10 @@ public:
 	void playerInventory();
 	Inventory* getInven();
 	void Interact();
+	void InitInventory();
+	void setInven(Inventory* inven);
+
+
+
+
 };
