@@ -102,7 +102,9 @@ public:
 			if (object->getObjectType() != harvest)
 			{
 				canmove = false;
+				
 			}
+			
 			isvalue = true;
 		}
 	}

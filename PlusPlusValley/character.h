@@ -73,13 +73,14 @@ public:
 		const int LEFT = 75, RIGHT = 77, UP = 72, DOWN = 80;
 		switch (tomove)
 		{
-		case LEFT: totile = nowtile->getleft(); statue = faceleft;break;
+		case LEFT:totile = nowtile->getleft(); statue = faceleft;break;
 		case RIGHT: totile = nowtile->getright(); statue = faceright; break;
 		case UP: totile = nowtile->getup(); statue = faceup; break;
 		case DOWN: totile = nowtile->getdown(); statue = facedown; break;
 		default: break;
 		}
-		if(totile!=NULL) this->nowtile = totile;
+		if(totile!=NULL && totile->getcanmove() == true)
+			this->nowtile = totile;
 		this->where();
 	}
 

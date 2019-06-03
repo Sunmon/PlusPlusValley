@@ -28,7 +28,7 @@ private:
 			}
 		}
 
-
+		initialmap();
 	}
 
 public:
