@@ -27,6 +27,13 @@ public:
 	MapObject(){
 
 	}
+
+	MapObject(ObjectType object)
+	{
+		objectType = object;
+		health = 5;
+	}
+
 	MapObject(ItemType it, const string& name): MapObject() {
 		this->setItemArray(it, name);
 	}
@@ -81,9 +88,4 @@ public:
 		}
 	}
 
-	MapObject(ObjectType object)
-	{
-		objectType = object;
-		health = 5;
-	}
 };
