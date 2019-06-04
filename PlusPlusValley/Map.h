@@ -1,5 +1,6 @@
 #pragma once
 #include "Tile.h"
+#include <time.h>
 
 class  Map
 {
@@ -50,11 +51,19 @@ public:
 
 	void initialmap()
 	{
-		MapObject* stoneObject =new MapObject(stone);
-		MapObject* treeObject = new MapObject(tree);
+		MapObject* stoneObject = new MapObject(stone, "µ¹");
+		MapObject* treeObject = new MapObject(tree, "³ª¹«");
 
-		map[3][4]->setObject(stoneObject);
+		srand((unsigned int)time(0));
+
+		for (int i = 0; i < (rand()%5 +1); i++)
+		{
+			map[(rand() % 20 + 1)][rand() % 30 + 1]->setObject(stoneObject);
+			map[(rand() % 20 + 1)][rand() % 30 + 1]->setObject(treeObject);
+		}
+		
+		/*map[3][4]->setObject(stoneObject);
 		map[13][18]->setObject(treeObject);
-		map[10][11]->setObject(&(*stoneObject));
+		map[10][11]->setObject(&(*stoneObject));*/
 	}
 };

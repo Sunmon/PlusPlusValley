@@ -25,13 +25,37 @@ public:
 	MapObject(){
 
 	}
-	MapObject(ItemType it, const string& name): MapObject() {
-		this->setItemArray(it, name);
+	MapObject(ObjectType ot, const string& name): MapObject(ot) {
+		setEarnItem(ot, name);
 	}
 
-	void setItemArray(ItemType it, const string& name)
+	MapObject(ObjectType object) : MapObject()
 	{
-		itemArray[0] = new Item(it,name);
+		objectType = object;
+		health = 5;
+	}
+
+	//Object ºÎ¼ÌÀ» ¶§ È¹µæÇÏ´Â item »ý¼º
+	void setEarnItem(ObjectType ot, const string& name) {
+		switch (ot)
+		{
+		case tree:
+			setItemArray(ItemType::WOOD, "³ª¹«Á¶°¢", 0);
+			break;
+		case stone:
+			setItemArray(ItemType::STONE, "µ¹Á¶°¢", 0);
+			break;
+		case harvest:
+			setItemArray(ItemType::CROP, name, 0);
+			setItemArray(ItemType::SEED, name+"¾¾¾Ñ", 1);
+			break;
+		default:
+			break;
+		}
+	}
+	void setItemArray(ItemType it, const string& name, int index)
+	{
+		itemArray[index] = new Item(it,name);
 	}
 
 
@@ -79,9 +103,5 @@ public:
 		}
 	}
 
-	MapObject(ObjectType object)
-	{
-		objectType = object;
-		health = 5;
-	}
+
 };
