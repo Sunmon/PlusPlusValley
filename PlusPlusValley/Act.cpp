@@ -1,6 +1,6 @@
 #include "Act.h"
 
-//map object와 tool별로 맞는 상호작용
+//map object와 tool별로 맞는 상호작용을 한 후 obj의 hp가 남았다면 true리턴
 bool Act::interact(MapObject* mo, Tool* tool)
 {
 	std::string str[4] = { "나무를 베었다", "돌을 부쉈다", "작물을 수확했다", "씨를 뿌렸다" };
