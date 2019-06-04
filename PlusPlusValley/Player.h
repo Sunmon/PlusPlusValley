@@ -9,7 +9,7 @@ class Player : public Character
 private:
 	Inventory* inven;
 	string name;
-	Tool* onHand;	//현재 손에 쥐고 있는 도구
+	Item* onHand;	//현재 손에 쥐고 있는 아이템
 public:
 	Player();
 	~Player();
@@ -20,6 +20,7 @@ public:
 
 
 
+	Act action;
 	void setName(string name);
 	string getName();
 	void act();
@@ -28,7 +29,6 @@ public:
 	void interact();
 	void InitInventory();
 	void setInven(Inventory* inven);
-	void setOnHand(Tool* item);
-	Tool* getOnHand();
-	Act action;
+	void setOnHand(Item* item);
+	Item* getOnHand();
 };

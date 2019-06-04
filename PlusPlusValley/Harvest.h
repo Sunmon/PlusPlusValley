@@ -3,7 +3,7 @@
 #include "MapObject.h"
 using namespace std;
 
-class Harvest : MapObject {
+class Harvest : public MapObject {
 private:
 	int growth;
 	int growingPoint = 70;
@@ -16,18 +16,18 @@ public:
 		level = 0;
 	}
 
-	Harvest(ItemType it, const string& name):  MapObject(it,name){
+	Harvest(ObjectType ot, const string& name):  MapObject(ot,name){
 		this->health = 1;
 	}
 
-	bool checkPlace(int x, int y) {
-		if (mo->getPlace[0] == x && mo->getPlace[1] == y) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
+	//bool checkPlace(int x, int y) {
+	//	if (mo->getPlace[0] == x && mo->getPlace[1] == y) {
+	//		return true;
+	//	}
+	//	else {
+	//		return false;
+	//	}
+	//}
 
 
 	int growing() {

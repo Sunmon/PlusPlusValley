@@ -63,12 +63,14 @@ void Player:: InitInventory()
 
 	//Item* ax = new Item(ItemType::TOOL, "ax");
 	//Item* crop = new Item(ItemType::TOOL, "crop");
-	//inven->addItem(crop);
 	inven->addItem(ax, 1);
 	inven->addItem(sickle);
 	inven->setMoney(5000);
 
-	this->onHand = hammer;
+	Item* strawSeed = new Item(ItemType::SEED, "strawSeed");
+	inven->addItem(strawSeed, 3);
+	//this->onHand = hammer;
+	this->onHand = strawSeed;
 }
 
 void Player::setInven(Inventory* inven)
@@ -77,12 +79,14 @@ void Player::setInven(Inventory* inven)
 
 }
 
-void Player::setOnHand(Tool* item)
+
+
+void Player::setOnHand(Item* item)
 {
 	this->onHand = item;
 }
 
-Tool* Player::getOnHand()
+Item* Player::getOnHand()
 {
 	return this->onHand;
 }
@@ -154,9 +158,9 @@ void Player::Interact()
 void Player::interact()
 {
 	Tile* target = this->getTarget();
-
 	//손에 쥔 아이템에 맞는 행동을 한다
 	this->action.interact(this->getTarget(), this->onHand);
+
 
 }
 
