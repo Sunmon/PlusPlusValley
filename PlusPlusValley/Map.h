@@ -55,5 +55,6 @@ public:
 
 		map[3][4]->setObject(stoneObject);
 		map[13][18]->setObject(treeObject);
+		map[10][11]->setObject(&(*stoneObject));
 	}
 };

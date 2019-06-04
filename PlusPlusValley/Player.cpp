@@ -141,15 +141,9 @@ void Player::Interact()
 void Player::interact_temp()
 {
 	Tile* target = this->getTarget();
-	/*if (target == NULL || target->getObject() == NULL)
-	{
-		cout << "아무것도 할 수 없다." << endl;
-		return;
-	}*/
 
 	//손에 쥔 아이템에 맞는 행동을 한다
 	this->action.interact(this->getTarget(), this->onHand);
-
 
 }
 

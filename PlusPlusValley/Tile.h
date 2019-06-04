@@ -113,7 +113,17 @@ public:
 	{
 		return mapobject;
 	}
+
+	//tile¿¡ ÀÖ´Â object ¾ø¾Ú
+	void removeObj()
+	{
+		delete(mapobject);
+		this->canmove = true;
+		this->mapobject = NULL;
+		this->isvalue = false;
+	}
 };
+
 
 
 
