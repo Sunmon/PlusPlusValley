@@ -14,7 +14,13 @@ void Controller::init()
 	startTile = map->gettile(15, 10);
 	//TODO: initPage 이용하도록
 	//player->setTile(startTile);
+	
 	player = new Player(startTile);
+	//InitialPage itp = new InitialPage();
+	//itp.makePlayer(player);
+
+	//player->setTile(startTile);
+	//new InitialPage()->makePlayer(player);
 	movethread = new MoveThread(player);
 	time = new UseTime(9 * 60);
 

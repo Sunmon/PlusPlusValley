@@ -22,6 +22,8 @@ public:
 	~InitialPage();
 
 	void makePlayer();
+	void makePlayer(Player* player);
+
 	void showInfoPlayer();
 	void menu();
 };

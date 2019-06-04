@@ -7,7 +7,8 @@ using namespace std;
 
 enum ObjectType
 {
-	tree = 1, stone, harvest,
+	//tree = 1, stone, harvest,
+	tree, stone, harvest
 };
 class MapObject {
 private:

@@ -181,6 +181,19 @@ void Store::buySeed(Player* player) {
 		return;
 	}
 
+	
+	//buy 다른 방법
+	//playerInven->itemIter = playerInven->findIter(itemName);
+	//if (playerInven->itemIter != playerInven->items.end())
+	//{
+	//	playerInven->itemIter->second += itemNum;
+	//}
+	//else
+	//{
+	//	playerInven->addItem(new Item(*tempItem), itemNum);
+	//}
+
+
 	Item* newItem = playerInven->findItem(itemName);
 	if (newItem!= NULL)
 	{

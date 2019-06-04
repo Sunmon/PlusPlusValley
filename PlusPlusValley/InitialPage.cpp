@@ -14,6 +14,7 @@ InitialPage::~InitialPage()
 {
 }
 
+
 void InitialPage::makePlayer()
 {
 	int button;
@@ -31,9 +32,23 @@ void InitialPage::makePlayer()
 
 	Player* player = new Player(name);
 	cout << "이름 : " << player->getName() << "으(로) 플레이어 생성!" << endl;
+}
 
 
+void InitialPage::makePlayer(Player* player)
+{
+	int button = 2;
 
+	while (button == 2)
+	{
+		cout << "Player 이름 : ";
+		cin >> name;
+		cout << "이 이름으로 하시겠습니까?(확인: 1, 다시 설정: 2)" << endl;
+		cin >> button;
+	}
+
+	player = new Player(name);
+	cout << "이름 : " << player->getName() << "으(로) 플레이어 생성!" << endl;
 }
 
 void InitialPage::showInfoPlayer()

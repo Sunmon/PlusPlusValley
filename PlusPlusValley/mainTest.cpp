@@ -10,6 +10,9 @@
 using namespace std;
 
 Controller controller;
+Player* player;
+Map* map;
+
 void test_inventory();
 void test_store();
 
@@ -17,6 +20,7 @@ void test_store();
 
 int main()
 {
+	
 	//controller.test_move();
 
 	controller.test_move();
