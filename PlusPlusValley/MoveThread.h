@@ -12,11 +12,11 @@ using namespace std;
 class MoveThread
 {
 private:
-	Player* player;
+	Player* player = NULL;
 	void move()
 	{
 		int getkey = _getch();
-
+		const int SPACE = 32;
 		if (getkey == 72)
 		{
 			player->move(72);
@@ -33,7 +33,7 @@ private:
 		{
 			player->move(80);
 		}
-		if (getkey == 32)
+		if (getkey == SPACE)
 		{
 			//player->Interact();
 			player->interact();
