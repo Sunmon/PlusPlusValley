@@ -66,9 +66,16 @@ Item* Inventory::findItem(string name) {
 	{
 		if (name == item.first->getName()) return item.first;
 	}
-
 	return NULL;
+}
 
+map<Item*, int>::iterator Inventory::findIter(string name)
+{
+	for (auto item = items.begin(); item!= items.end(); item++)
+	{
+		if (name == item->first->getName()) return item;
+	}
+	return items.end();
 }
 
 Item* Inventory::getfirstItem()
@@ -76,3 +83,5 @@ Item* Inventory::getfirstItem()
 	itemIter = items.begin();
 	return itemIter->first;
 }
+
+

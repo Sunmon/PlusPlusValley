@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Map.h"
 #include "UseTime.h"
+#include "InitialPage.h"
 class Controller
 {
 private:

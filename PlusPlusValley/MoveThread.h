@@ -35,7 +35,8 @@ private:
 		}
 		if (getkey == 32)
 		{
-			player->Interact();
+			//player->Interact();
+			player->interact_temp();
 		}
 	}
 	static unsigned int __stdcall move(void* arg)
