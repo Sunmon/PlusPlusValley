@@ -12,14 +12,12 @@ enum ObjectType
 };
 class MapObject {
 private:
-	
-
-protected:
 	ObjectType objectType;
 	int health;
 	int place[2];
+	Item *itemArray[3];
 	// Item수를 정할건지 아니면 동적으로 늘어나게 할건지 얘기가 안되어서 일단 3개로 대충 잡아놨습니다!
-	Item* itemArray[3];
+
 public:
 
 	//TODO: 생성자 정리 필요..
@@ -27,20 +25,37 @@ public:
 	MapObject(){
 
 	}
+	MapObject(ObjectType ot, const string& name): MapObject(ot) {
+		setEarnItem(ot, name);
+	}
 
-	MapObject(ObjectType object)
+	MapObject(ObjectType object) : MapObject()
 	{
 		objectType = object;
 		health = 5;
 	}
 
-	MapObject(ItemType it, const string& name): MapObject() {
-		this->setItemArray(it, name);
+	//Object 부셨을 때 획득하는 item 생성
+	void setEarnItem(ObjectType ot, const string& name) {
+		switch (ot)
+		{
+		case tree:
+			setItemArray(ItemType::WOOD, "나무조각", 0);
+			break;
+		case stone:
+			setItemArray(ItemType::STONE, "돌조각", 0);
+			break;
+		case harvest:
+			setItemArray(ItemType::CROP, name, 0);
+			setItemArray(ItemType::SEED, name+"씨앗", 1);
+			break;
+		default:
+			break;
+		}
 	}
-
-	void setItemArray(ItemType it, const string& name)
+	void setItemArray(ItemType it, const string& name, int index)
 	{
-		itemArray[0] = new Item(it,name);
+		itemArray[index] = new Item(it,name);
 	}
 
 
@@ -87,5 +102,6 @@ public:
 			return itemArray[n];
 		}
 	}
+
 
 };
