@@ -3,7 +3,7 @@
 #include "MapObject.h"
 using namespace std;
 
-class Harvest {
+class Harvest : MapObject {
 private:
 	int growth;
 	int growingPoint = 70;
@@ -14,6 +14,10 @@ public:
 	Harvest() {
 		growth = 0;
 		level = 0;
+	}
+
+	Harvest(ItemType it, const string& name): MapObject(it,name){
+		
 	}
 
 	bool checkPlace(int x, int y) {
