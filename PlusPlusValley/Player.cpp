@@ -138,7 +138,7 @@ void Player::Interact()
 
 
 //임시로 만든 interact. 위에 저 ifelse 대신할거임. 
-void Player::interact_temp()
+void Player::interact()
 {
 	Tile* target = this->getTarget();
 

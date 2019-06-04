@@ -20,7 +20,7 @@ public:
 	void act();
 	Inventory* getInven();
 	void Interact();
-	void interact_temp();
+	void interact();
 	void InitInventory();
 	void setInven(Inventory* inven);
 	void setOnHand(Tool* item);
