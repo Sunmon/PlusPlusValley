@@ -2,7 +2,6 @@
 
 using namespace std;
 
-Player* Player::inst = nullptr;
 
 Player::Player()
 {
@@ -26,13 +25,13 @@ Player::Player(Tile * totile):Player()
 	this->setTile(totile);
 }
 
-Player* Player::getInstance()
-{
-	if (inst == nullptr) {
-		inst == new Player();
-	}
-	return inst; 
-}
+//Player* Player::getInstance()
+//{
+//	if (inst == nullptr) {
+//		inst == new Player();
+//	}
+//	return inst; 
+//}
 
 void Player::test()
 {
