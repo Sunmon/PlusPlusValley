@@ -12,7 +12,7 @@ bool Act::interact(MapObject* mo, Tool* tool)
 }
 
 
-//tile과 item별로 상호작용
+//tile과 tool별로 알맞는 상호작용 하기
 void Act::interact(Tile* target, Tool* item)
 {
 	if (target == NULL || target->getObject() == NULL)
@@ -28,6 +28,8 @@ void Act::interact(Tile* target, Tool* item)
 	cout << "removed obj" << endl;
 }
 
+
+//mapobject의 체력을 감소. 부서지면 false 리턴
 bool Act::reduceHP(MapObject* mo)
 {
 	int hp = mo->getHealth();

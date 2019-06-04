@@ -16,8 +16,8 @@ public:
 		level = 0;
 	}
 
-	Harvest(ItemType it, const string& name): MapObject(it,name){
-		
+	Harvest(ItemType it, const string& name):  MapObject(it,name){
+		this->health = 1;
 	}
 
 	bool checkPlace(int x, int y) {

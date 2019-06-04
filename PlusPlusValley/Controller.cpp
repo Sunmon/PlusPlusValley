@@ -1,4 +1,6 @@
 #include "Controller.h"
+Controller* Controller::instance = nullptr;
+
 Controller::Controller()
 {
 	init();
@@ -6,6 +8,12 @@ Controller::Controller()
 
 Controller::~Controller()
 {
+}
+
+Controller* Controller::getInstance()
+{
+	if (instance == nullptr) instance = new Controller();
+	return instance;
 }
 
 void Controller::init()
