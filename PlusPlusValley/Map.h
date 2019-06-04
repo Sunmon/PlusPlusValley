@@ -58,8 +58,12 @@ public:
 
 		for (int i = 0; i < (rand()%5 +1); i++)
 		{
-			map[(rand() % 20 + 1)][rand() % 30 + 1]->setObject(stoneObject);
-			map[(rand() % 20 + 1)][rand() % 30 + 1]->setObject(treeObject);
+			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
+			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(treeObject);
+
+
+
+			
 		}
 		
 		/*map[3][4]->setObject(stoneObject);

@@ -2,6 +2,7 @@
 
 using namespace std;
 
+Player* Player::inst = nullptr;
 
 Player::Player()
 {
@@ -23,6 +24,19 @@ Player::Player(string name):Player()
 Player::Player(Tile * totile):Player()
 {
 	this->setTile(totile);
+}
+
+Player* Player::getInstance()
+{
+	if (inst == nullptr) {
+		inst == new Player();
+	}
+	return inst; 
+}
+
+void Player::test()
+{
+	cout << "singleton test" << endl;
 }
 
 void Player::setName(string name)
