@@ -9,7 +9,7 @@
 
 using namespace std;
 
-Controller controller;
+Controller* controller = Controller::getInstance();
 Player* player;
 Map* map;
 
@@ -17,13 +17,9 @@ void test_inventory();
 void test_store();
 
 
-
 int main()
 {
-	
-	//controller.test_move();
-
-	controller.test_move();
+	controller->test_move();
 	//test_store();
 }
 
