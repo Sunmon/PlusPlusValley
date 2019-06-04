@@ -14,10 +14,12 @@ private:
 	ObjectType objectType;
 	int health;
 	int place[2];
-	Item itemArray[3] = { Item(),Item(),Item() };
+	Item itemArray[3];
 	// Item수를 정할건지 아니면 동적으로 늘어나게 할건지 얘기가 안되어서 일단 3개로 대충 잡아놨습니다!
 
 public:
+	MapObject() {
+	}
 	void setPlace(int p[]) {
 		place[0] = p[0];
 		place[1] = p[1];
