@@ -15,13 +15,16 @@ protected:
 	ObjectType objectType;
 	int place[2];
 	int health;
-	Item *itemArray[3];
+	Item* itemArray[3];
 	// Item수를 정할건지 아니면 동적으로 늘어나게 할건지 얘기가 안되어서 일단 3개로 대충 잡아놨습니다!
 
 public:
 
 	MapObject(){
-
+		for (auto& i : itemArray)
+		{
+			i = nullptr;
+		}
 	}
 	MapObject(ObjectType ot, const string& name): MapObject(ot) {
 		setEarnItem(ot, name);
@@ -54,7 +57,14 @@ public:
 	void setItemArray(ItemType it, const string& name, int index)
 	{
 		itemArray[index] = new Item(it,name);
+		
 	}
+
+	Item** getItemArray()
+	{
+		return itemArray;
+	}
+
 
 
 	void setPlace(int p[]) {

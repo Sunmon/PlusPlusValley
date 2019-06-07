@@ -1,11 +1,9 @@
 #pragma once
 #include "Character.h"
 #include "Inventory.h"
-#include "Act.h"
 
 class Player : public Character
 {
-	//외부에서 생성자 통한 싱글톤 생성 막기 위해 private으로 생성자 정의
 private:
 	Inventory* inven;
 	string name;
@@ -20,15 +18,17 @@ public:
 
 
 
-	Act action;
 	void setName(string name);
 	string getName();
 	void act();
 	Inventory* getInven();
 	void Interact();
 	void interact();
+	void reduce_MO_HP(MapObject* mo);
+	void seeding(Item* seed, Tile* target);
 	void InitInventory();
 	void setInven(Inventory* inven);
 	void setOnHand(Item* item);
 	Item* getOnHand();
+	void doAction(Item* tool, Tile* target);
 };
