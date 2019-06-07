@@ -45,9 +45,6 @@
     <ClCompile Include="Store.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Act.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InitialPage.h">
@@ -93,9 +90,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Store.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Act.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,6 +2,7 @@
 
 Item::Item(): Item(ItemType::NONE, "")
 {
+	this->MAX_NUM = 10;
 	//this->itemType = ItemType::NONE;	//√ ±‚»≠
 }
 

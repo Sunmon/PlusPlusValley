@@ -61,9 +61,6 @@ public:
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(treeObject);
 
-
-
-			
 		}
 		
 	}

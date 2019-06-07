@@ -123,7 +123,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Act.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="InitialPage.cpp" />
     <ClCompile Include="Inventory.cpp" />
@@ -136,7 +135,6 @@
     <ClCompile Include="UseTime.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Act.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Harvest.h" />

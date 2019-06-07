@@ -26,7 +26,6 @@ int main()
 
 void test_inventory()
 {
-	//FIXME: map을 쓰면 자동으로 정렬됨. 순서가 필요하다면 vector를 써야 함.
 	//test for inventory
 	Inventory* inven = new Inventory();
 

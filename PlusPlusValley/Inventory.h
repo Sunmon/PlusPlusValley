@@ -5,6 +5,7 @@
 #include <utility>
 #include <map>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -26,19 +27,24 @@ public:
 	Inventory();
 	~Inventory();
 
-	//TODO: map -> vector·Î º¯°æ
+	//std::map<Item*, int> items;
+	std::vector<pair<Item*, int> > items;
 
-	std::map<Item*, int> items;
-	void addItem(Item *item, int num = 1);
-	void removeItem(Item *item, int num = 1);
-	void clearItem(Item *item);
+
+	void addItem(Item* item, int num = 1);
+	void removeItem(Item* item, int num = 1);
+	void clearItem(Item* item);
 	void printItems();
 	void setMoney(int money);
 	int getMoney();
 	Item* getfirstItem();
 	Item* findItem(string name);
-	std::map<Item*, int>::iterator findIter(string name);
-	std::map<Item*, int>::iterator itemIter;
+
+	//std::map<Item*, int>::iterator findIter(string name);
+	//std::map<Item*, int>::iterator itemIter;
+
+	std::vector<pair<Item*, int>>::iterator findIter(Item* item);
+	std::vector<pair<Item*, int>>::iterator itemIter;
 
 private:
 	int money;
