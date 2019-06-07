@@ -89,7 +89,7 @@ public:
 	void savemap()
 	{
 		ofstream ofs;
-		ofs.open("map.txt");
+		ofs.open("./map.txt");
 		if (!ofs)
 		{
 			cout << "파일을 열 수 없습니다." << endl;
@@ -129,7 +129,7 @@ public:
 	void loadmap()
 	{
 		ifstream ifs;
-		ifs.open("map.txt");
+		ifs.open("./map.txt");
 		if (!ifs)
 		{
 			cout << "파일을 열 수 없습니다." << endl;

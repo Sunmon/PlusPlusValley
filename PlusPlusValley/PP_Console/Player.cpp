@@ -161,7 +161,7 @@ void Player::interact()
 {
 	//플레이어가 가진 도구와 타일 얻음
 	Tile* target = this->getTarget();
-	if (onHand == nullptr) return;
+	if (onHand == nullptr || target == nullptr) return;
 
 	//MapObject* & mo = target->getObject();
 

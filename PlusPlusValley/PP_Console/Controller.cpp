@@ -3,7 +3,6 @@ Controller* Controller::instance = nullptr;
 
 Controller::Controller()
 {
-	init();
 }
 
 Controller::~Controller()
@@ -50,6 +49,11 @@ void Controller::Nextday()
 	
 	map->savemap();
 	
+}
+
+Player* Controller::getPlayer()
+{
+	return player;
 }
 
 
