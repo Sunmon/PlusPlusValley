@@ -1,9 +1,4 @@
 #pragma once
-#ifdef DLL2_EXPORTS
-#define DLL2_API__declspec(dllexport)
-#else
-#define DLL2_API__declspec(dllimport)
-#endif
 #include <iostream>
 #include "Tile.h"
 
@@ -52,7 +47,25 @@ public:
 		int wherey = this->gety();
 		cout << "(" << wherex << "," << wherey << ")" << endl;
 	}
-
+	Tile* getTarget()
+	{
+		switch (statue)
+		{
+		case faceleft:
+			target = nowtile->getleft();
+			break;
+		case faceright:
+			target = nowtile->getright();
+			break;
+		case faceup:
+			target = nowtile->getup();
+			break;
+		case facedown:
+			target = nowtile->getdown();
+			break;
+		}
+		return target;
+	}
 	
 	void move(int tomove)
 	{
@@ -60,13 +73,14 @@ public:
 		const int LEFT = 37, RIGHT = 39, UP = 40, DOWN = 38;
 		switch (tomove)
 		{
-		case LEFT: totile = nowtile->getleft(); statue = faceleft;break;
+		case LEFT:totile = nowtile->getleft(); statue = faceleft;break;
 		case RIGHT: totile = nowtile->getright(); statue = faceright; break;
 		case UP: totile = nowtile->getup(); statue = faceup; break;
 		case DOWN: totile = nowtile->getdown(); statue = facedown; break;
 		default: break;
 		}
-		if (totile != NULL) this->nowtile = totile;
+		if(totile!=NULL && totile->getcanmove() == true)
+			this->nowtile = totile;
 		this->where();
 	}
 

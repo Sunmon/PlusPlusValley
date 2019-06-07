@@ -50,6 +50,9 @@ void InitialPage::makePlayer(Player* player)
 	cout << "이름 : " << player->getName() << "으(로) 플레이어 생성!" << endl;
 }
 
+
+
+
 void InitialPage::showInfoPlayer()
 {
 	//system("cls");

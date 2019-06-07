@@ -1,14 +1,9 @@
 #pragma once
-#ifdef DLL2_EXPORTS
-#define DLL2_API__declspec(dllexport)
-#else
-#define DLL2_API__declspec(dllimport)
-#endif
 #include <iostream>
 #include "MapObject.h"
 using namespace std;
 
-class Harvest {
+class Harvest : public MapObject {
 private:
 	int growth;
 	int growingPoint = 70;
@@ -21,14 +16,18 @@ public:
 		level = 0;
 	}
 
-	bool checkPlace(int x, int y) {
-		if (mo->getPlace[0] == x && mo->getPlace[1] == y) {
-			return true;
-		}
-		else {
-			return false;
-		}
+	Harvest(ObjectType ot, const string& name):  MapObject(ot,name){
+		this->health = 1;
 	}
+
+	//bool checkPlace(int x, int y) {
+	//	if (mo->getPlace[0] == x && mo->getPlace[1] == y) {
+	//		return true;
+	//	}
+	//	else {
+	//		return false;
+	//	}
+	//}
 
 
 	int growing() {

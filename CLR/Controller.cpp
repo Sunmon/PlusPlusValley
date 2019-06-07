@@ -1,9 +1,5 @@
 #include "Controller.h"
-#include "MyForm.h"
-
-using namespace System;
-using namespace System::Windows::Forms;
-
+Controller* Controller::instance = nullptr;
 
 Controller::Controller()
 {
@@ -14,13 +10,25 @@ Controller::~Controller()
 {
 }
 
-
+Controller* Controller::getInstance()
+{
+	if (instance == nullptr) instance = new Controller();
+	return instance;
+}
 
 void Controller::init()
 {
 	map = new Map();
 	startTile = map->gettile(15, 10);
+	//TODO: initPage 이용하도록
+	//player->setTile(startTile);
+	
 	player = new Player(startTile);
+	//InitialPage itp = new InitialPage();
+	//itp.makePlayer(player);
+
+	//player->setTile(startTile);
+	//new InitialPage()->makePlayer(player);
 	movethread = new MoveThread(player);
 	time = new UseTime(9 * 60);
 
@@ -35,6 +43,8 @@ void Controller::test_move()
 		time->nexttime();
 		cout << setw(2) << setfill('0') << time->gethour() << ':' << setw(2) << setfill('0') << time->getminute() << endl;
 	}
+
+
 }
 
 void Controller::setName(string name)
@@ -61,4 +71,5 @@ void Controller::setPlayerPlace(int a)
 {
 	player->move(a);
 }
+
 

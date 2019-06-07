@@ -6,7 +6,6 @@
 #include "Controller.h"
 #include "Character.h"
 #include "NPC.h"
-	 
 using namespace std;
 
 Controller* controller = Controller::getInstance();
@@ -19,9 +18,10 @@ void test_saveharvest();
 
 int main()
 {
-	//controller->test_move();
+	controller->init();
+	controller->test_move();
 	//test_store();
-	test_saveharvest();
+	//test_saveharvest();
 }
 
 void test_inventory()

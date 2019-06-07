@@ -1,32 +1,25 @@
 #pragma once
-#include <iostream>
-#include <string>
-
-using namespace std;
-
-#ifdef DLL2_EXPORTS
-#define DLL2_API__declspec(dllexport)
-#else
-#define DLL2_API__declspec(dllimport)
-#endif
-
 #include <iomanip>
 #include "MoveThread.h"
 #include "Character.h"
 #include "Player.h"
 #include "Map.h"
 #include "UseTime.h"
+#include "InitialPage.h"
+
 class Controller
 {
 private:
+	Controller();
+	~Controller();
+	static Controller* instance;	//static 변수 -> 클래스 외부에서 선언 필요!
 	Map *map;
 	Tile *startTile;
 	Player *player;
 	MoveThread *movethread;
 	UseTime *time;
 public:
-	Controller();
-	~Controller();
+	static Controller* getInstance();
 	void init();
 	void test_move();	//이동 테스트
 	void setName(string);
@@ -35,4 +28,3 @@ public:
 	int getPlayerY();
 	void setPlayerPlace(int);
 };
-

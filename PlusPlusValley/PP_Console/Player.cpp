@@ -104,6 +104,8 @@ void Player::Interact()
 
 	Tile* target = this->getTarget();
 
+	
+
 	if (target == NULL || target->getObject() == NULL)
 	{
 		cout << "아무것도 할 수 없다." << endl;
@@ -152,6 +154,7 @@ void Player::Interact()
 			cout << "아무일도 일어나지 않았다." << endl;
 		}
 	}
+
 }
 
 
@@ -162,7 +165,22 @@ void Player::interact()
 {
 	//플레이어가 가진 도구와 타일 얻음
 	Tile* target = this->getTarget();
-	if (onHand == nullptr) return;
+	if (onHand == nullptr || target == nullptr) return;
+
+	//타겟이 npc이면 gostore 실행
+	//손에 무기를 들고 있어도 실행 
+	if (target->getObject()->getObjectType() == npc) {
+		
+	}
+
+	
+	/*if (target->getNPC() !=NULL) {
+		target->getNPC()->goStore(this);
+	}*/
+
+	//if (target->getObject()->getObjectType() == npc) {
+	//	target->getNPC.goStore(this);
+	//}
 
 	//MapObject* & mo = target->getObject();
 
@@ -172,6 +190,7 @@ void Player::interact()
 	{
 	case TOOL: doAction(onHand, target); break;
 	case SEED: seeding(onHand, target); break;
+
 	default: break;
 	}
 }

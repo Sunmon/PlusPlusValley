@@ -1,7 +1,6 @@
 #include "InitialPage.h"
 #include <iostream>
 
-
 using namespace std;
 
 
@@ -14,6 +13,7 @@ InitialPage::InitialPage()
 InitialPage::~InitialPage()
 {
 }
+
 
 void InitialPage::makePlayer()
 {
@@ -32,9 +32,22 @@ void InitialPage::makePlayer()
 
 	Player* player = new Player(name);
 	cout << "이름 : " << player->getName() << "으(로) 플레이어 생성!" << endl;
+}
 
 
+void InitialPage::makePlayer(Player* player)
+{
+	int button = 2;
 
+	while (button == 2)
+	{
+		cout << "Player 이름 : ";
+		cin >> name;
+		cout << "이 이름으로 하시겠습니까?(확인: 1, 다시 설정: 2)" << endl;
+		cin >> button;
+	}
+	player = new Player(name);
+	cout << "이름 : " << player->getName() << "으(로) 플레이어 생성!" << endl;
 }
 
 void InitialPage::showInfoPlayer()
@@ -44,7 +57,7 @@ void InitialPage::showInfoPlayer()
 	cout << "=======플레이어 정보=======" << endl;
 	cout << "이름 : " << player->getName() << endl;
 	cout << "체력: " << player->gethp() << endl;
-	cout << "돈: " << endl << endl;
+	//cout << "돈: " << endl << endl;
 }
 
 void InitialPage::menu()
@@ -64,7 +77,7 @@ void InitialPage::menu()
 			continue;
 		}
 
-		if (iMenu == MM_EXIT)
+		if (iMenu = MM_EXIT)
 			break;
 
 		switch (iMenu)
@@ -81,3 +94,13 @@ void InitialPage::menu()
 
 	}
 }
+/*
+int main(void) {
+
+	InitialPage IP;
+	IP.makePlayer();
+	IP.showInfoPlayer();
+	IP.menu();
+}
+*/
+

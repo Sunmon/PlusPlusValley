@@ -134,6 +134,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Act.h" />
     <ClInclude Include="character.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Harvest.h" />
@@ -157,20 +158,22 @@
     <ClInclude Include="UseTime.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MyForm.resx" />
+    <EmbeddedResource Include="MyForm1.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Act.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="InitialPage.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Store.cpp" />
     <ClCompile Include="Tool.cpp" />
     <ClCompile Include="UseTime.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="MyForm.resx" />
-    <EmbeddedResource Include="MyForm1.resx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

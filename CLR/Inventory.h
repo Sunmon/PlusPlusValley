@@ -1,9 +1,4 @@
 #pragma once
-#ifdef DLL2_EXPORTS
-#define DLL2_API__declspec(dllexport)
-#else
-#define DLL2_API__declspec(dllimport)
-#endif
 #include "Item.h"
 #include "Tool.h"
 #include <iostream>
@@ -21,6 +16,7 @@ using namespace std;
 *	removeItem(Item*, num):		num만큼 인벤토리에서 아이템 제거. num이 없다면 1개 제거.
 *	clearItem(Item*):			해당 아이템을 인벤토리에서 전부 삭제 & 아이템 객체까지 삭제
 *	printItem():				아이템 목록 출력
+*	findIter(name):				이름으로 아이템을 찾아 그 item pair의 iterator 리턴
 * @author KIM SUN JUNG
 * @date 2019.05.26
 */
@@ -30,6 +26,8 @@ public:
 	Inventory();
 	~Inventory();
 
+	//TODO: map -> vector로 변경
+
 	std::map<Item*, int> items;
 	void addItem(Item *item, int num = 1);
 	void removeItem(Item *item, int num = 1);
@@ -37,10 +35,12 @@ public:
 	void printItems();
 	void setMoney(int money);
 	int getMoney();
+	Item* getfirstItem();
 	Item* findItem(string name);
+	std::map<Item*, int>::iterator findIter(string name);
+	std::map<Item*, int>::iterator itemIter;
 
 private:
-	std::map<Item*, int>::iterator itemIter;
 	int money;
 };
 

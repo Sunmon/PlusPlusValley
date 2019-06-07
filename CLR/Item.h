@@ -1,9 +1,4 @@
 #pragma once
-#ifdef DLL2_EXPORTS
-#define DLL2_API__declspec(dllexport)
-#else
-#define DLL2_API__declspec(dllimport)
-#endif
 #include <string>
 
 /**
@@ -39,7 +34,7 @@ public:
 	
 
 private:
-	int MAX_NUM = -1;	/*아이템별 가질 수 있는 최대 수*/
+	int MAX_NUM = 10;	/*아이템별 가질 수 있는 최대 수*/
 	int cost = -1;
 	std::string name;
 

@@ -3,6 +3,7 @@
 #include "Harvest.h"
 #include <time.h>
 #include <fstream>
+#include "NPC.h"
 class  Map
 {
 private:
@@ -54,6 +55,7 @@ public:
 	{
 		MapObject* stoneObject = new MapObject(stone, "돌");
 		MapObject* treeObject = new MapObject(tree, "나무");
+		NPC* npc = new NPC("상인");
 
 		srand((unsigned int)time(0));
 		/*
@@ -61,8 +63,8 @@ public:
 		{
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(treeObject);
-
 		}
+
 		
 		Harvest* harv = new Harvest(harvest, "딸기");
 		map[5][5]->setObject(harv);
@@ -92,7 +94,7 @@ public:
 	void savemap()
 	{
 		ofstream ofs;
-		ofs.open("map.txt");
+		ofs.open("./map.txt");
 		if (!ofs)
 		{
 			cout << "파일을 열 수 없습니다." << endl;
@@ -132,7 +134,7 @@ public:
 	void loadmap()
 	{
 		ifstream ifs;
-		ifs.open("map.txt");
+		ifs.open("./map.txt");
 		if (!ifs)
 		{
 			cout << "파일을 열 수 없습니다." << endl;

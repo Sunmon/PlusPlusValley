@@ -1,10 +1,6 @@
 #pragma once
-#ifdef DLL2_EXPORTS
-#define DLL2_API__declspec(dllexport)
-#else
-#define DLL2_API__declspec(dllimport)
-#endif
 #include "Tile.h"
+#include <time.h>
 
 class  Map
 {
@@ -33,55 +29,9 @@ private:
 			}
 		}
 
-
+		initialmap();
 	}
 
-	//혹시 x y 방향 틀렸을까봐 원본 주석처리해서 놔둡니다\
-	//Tile* map[30][20];	
-	/*void setmap()
-	{
-		for (int i = 0; i < 30; i++)
-		{
-			for (int j = 0; j < 20; j++)
-			{
-				map[i][j] = new Tile(i, j);
-				if (i == 0)
-				{
-					map[i][j]->setleft(NULL);
-				}
-				else
-				{
-					map[i][j]->setleft(map[i - 1][j]);
-				}
-				if (i == 30)
-				{
-					map[i][j]->setright(NULL);
-				}
-				else
-				{
-					map[i][j]->setright(map[i + 1][j]);
-				}
-				map[i][j]->setup(map[i][j + 1]);
-				if (j == 20)
-				{
-					map[i][j]->setup(NULL);
-				}
-				else
-				{
-					map[i][j]->setdown(map[i][j + 1]);
-				}
-				if (j == 0)
-				{
-					map[i][j]->setdown(NULL);
-				}
-				else
-				{
-					map[i][j]->setdown(map[i][j - 1]);
-				}
-
-			}
-		}
-	}*/
 public:
 	Map()
 	{
@@ -93,5 +43,31 @@ public:
 			return map[x][y];
 		else
 			return NULL;
+	}
+	void	 saveObject()
+	{
+		
+	}
+
+	void initialmap()
+	{
+		MapObject* stoneObject = new MapObject(stone, "돌");
+		MapObject* treeObject = new MapObject(tree, "나무");
+
+		srand((unsigned int)time(0));
+
+		for (int i = 0; i < (rand()%5 +1); i++)
+		{
+			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
+			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(treeObject);
+
+
+
+			
+		}
+		
+		/*map[3][4]->setObject(stoneObject);
+		map[13][18]->setObject(treeObject);
+		map[10][11]->setObject(&(*stoneObject));*/
 	}
 };
