@@ -27,8 +27,6 @@ public:
 	Inventory();
 	~Inventory();
 
-	//TODO: map -> vector·Î º¯°æ
-
 	//std::map<Item*, int> items;
 	std::vector<pair<Item*, int> > items;
 

@@ -179,7 +179,6 @@ void Player::interact()
 void Player::doAction(Item* tool, Tile* target)
 {
 
-	//TODO: assert null ptr
 	if (target->getObject() == nullptr) return;
 	std::string str[4] = { "나무를 베었다", "돌을 부쉈다", "작물을 수확했다", "씨를 뿌렸다" };
 
@@ -191,12 +190,22 @@ void Player::doAction(Item* tool, Tile* target)
 	if (target->getObject()->getHealth() <= 0)
 	{
 		//TODO: 아이템들 옮기기
+		for (auto& it : target->getObject()->getItemArray())
+		{
+			
+			cout << it->getName() << endl;
+			inven->addItem(it);
+			//cout << target->getObject()->getItemArray()[i]->getName() << endl;
+			//inven->addItem(target->getObject()->getItemArray()[i]);
+
+		}
+/*
 		for (int i = 0; i < 3; i++)
 		{
 			if (target->getObject()->getItemArray()[i] == NULL) continue;
 			cout << target->getObject()->getItemArray()[i]->getName() << endl;
 			inven->addItem(target->getObject()->getItemArray()[i]);
-		}
+		}*/
 		target->removeObj();
 	}
 }
