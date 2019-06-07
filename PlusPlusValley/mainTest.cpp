@@ -6,7 +6,7 @@
 #include "Controller.h"
 #include "Character.h"
 #include "NPC.h"
-
+	 
 using namespace std;
 
 Controller* controller = Controller::getInstance();
@@ -15,12 +15,13 @@ Map* map;
 
 void test_inventory();
 void test_store();
-
+void test_saveharvest();
 
 int main()
 {
-	controller->test_move();
+	//controller->test_move();
 	//test_store();
+	test_saveharvest();
 }
 
 void test_inventory()
@@ -65,4 +66,11 @@ void test_store()
 
 	npc->goStore(player);
 
+}
+
+void test_saveharvest()
+{
+	Map* map = new Map();
+	map->loadmap();
+	map->savemap();
 }

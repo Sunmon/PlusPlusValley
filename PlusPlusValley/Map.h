@@ -55,7 +55,7 @@ public:
 		MapObject* treeObject = new MapObject(tree, "³ª¹«");
 
 		srand((unsigned int)time(0));
-
+		
 		for (int i = 0; i < (rand()%5 +1); i++)
 		{
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
@@ -66,9 +66,6 @@ public:
 			
 		}
 		
-		/*map[3][4]->setObject(stoneObject);
-		map[13][18]->setObject(treeObject);
-		map[10][11]->setObject(&(*stoneObject));*/
 	}
 
 	void growth()
@@ -78,8 +75,12 @@ public:
 			for (int i = 0; i < MAX_X; i++)
 			{
 				MapObject* tempobject = map[i][j]->getObject();
-				if (tempobject->getObjectType == harvest && map[i][i]->getIsWet())
+				if (tempobject->getObjectType() == harvest )
 				{
+					if (map[i][i]->getIsWet())
+					{
+						tempobject->growing();
+					}
 					
 				}
 				

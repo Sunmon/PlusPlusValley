@@ -100,6 +100,9 @@ public:
 			return itemArray[n];
 		}
 	}
-
+	virtual int growing() {
+		cout << "check" << endl;
+		return 0;
+	}
 
 };
