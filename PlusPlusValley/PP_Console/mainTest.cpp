@@ -71,5 +71,6 @@ void test_saveharvest()
 {
 	Map* map = new Map();
 	map->loadmap();
+	map->growth();
 	map->savemap();
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "Tile.h"
+#include "Harvest.h"
 #include <time.h>
 #include <fstream>
 #include "NPC.h"
@@ -59,17 +60,17 @@ public:
 		NPC* npc = new NPC("상인");
 
 		srand((unsigned int)time(0));
-		
-		//npc를 맵위 타일에 위치시킨다
-		npc->setTile(map[3][4]);
-		map[3][4]->setObject(new MapObject(ObjectType::npc, "상인"));
-		for (int i = 0; i < (rand() % 5 + 1); i++)
+		/*
+		for (int i = 0; i < (rand()%5 +1); i++)
 		{
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(treeObject);
 		}
 
 		
+		Harvest* harv = new Harvest(harvest, "딸기");
+		map[5][5]->setObject(harv);
+		*/
 	}
 
 	void growth()
@@ -78,16 +79,15 @@ public:
 		{
 			for (int i = 0; i < MAX_X; i++)
 			{
-				MapObject* tempobject = map[i][j]->getObject();
-				if (tempobject->getObjectType() == harvest )
+				Harvest* tempobject = map[i][j]->getHarvest();
+				if (tempobject != NULL)
+				
 				{
 					if (map[i][i]->getIsWet())
 					{
 						tempobject->growing();
 					}
-					
 				}
-				
 			}
 		}
 		

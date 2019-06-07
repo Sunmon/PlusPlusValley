@@ -1,5 +1,6 @@
 #include "Player.h"
 #include <assert.h>
+#include "Harvest.h"
 using namespace std;
 
 
@@ -140,7 +141,7 @@ void Player::Interact()
 		{
 			if (target->getIsvalue() == false)
 			{
-				MapObject* seed = new MapObject(harvest);
+				Harvest* seed = new Harvest(harvest, "¾¾¾Ñ");
 				target->setObject(seed);
 			}
 			else
