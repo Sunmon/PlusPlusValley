@@ -88,9 +88,7 @@ public:
 	bool getisWet() {
 		return this->isWet;
 	}
-	bool getFertilizer() {
-		return this->fertilizer;
-	}
+
 	bool getIsvalue()
 	{
 		return this->isvalue;

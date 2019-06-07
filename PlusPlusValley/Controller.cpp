@@ -46,9 +46,9 @@ void Controller::test_move()
 }
 void Controller::Nextday()
 {
-
 	
 	map->savemap();
+	
 }
 
 

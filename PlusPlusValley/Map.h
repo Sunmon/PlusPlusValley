@@ -71,6 +71,23 @@ public:
 		map[10][11]->setObject(&(*stoneObject));*/
 	}
 
+	void growth()
+	{
+		for (int j = 0; j < MAX_Y; j++)
+		{
+			for (int i = 0; i < MAX_X; i++)
+			{
+				MapObject* tempobject = map[i][j]->getObject();
+				if (tempobject->getObjectType == harvest && map[i][i]->getIsWet())
+				{
+					
+				}
+				
+			}
+		}
+		
+	}
+
 	void savemap()
 	{
 		ofstream ofs;
@@ -84,7 +101,7 @@ public:
 		{
 			for (int i = 0; i < MAX_X; i++)
 			{
-				MapObject* tempobject = map[i][j]->getObject;
+				MapObject* tempobject = map[i][j]->getObject();
 				if (tempobject == NULL)
 				{
 					ofs << i << " " << j << " " << "NULL" << " " << 0 << endl;
@@ -129,7 +146,7 @@ public:
 			if(type != "NULL")
 			{
 				MapObject* object = new MapObject();
-				object->setHealth = hp;
+				object->setHealth(hp);
 
 				if (type == "tree")
 				{
@@ -150,6 +167,6 @@ public:
 			}
 		}
 
-		ifs.close;
+		ifs.close();
 	}
 };
