@@ -61,9 +61,6 @@ public:
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(treeObject);
 
-
-
-			
 		}
 		
 		/*map[3][4]->setObject(stoneObject);
@@ -78,7 +75,7 @@ public:
 			for (int i = 0; i < MAX_X; i++)
 			{
 				MapObject* tempobject = map[i][j]->getObject();
-				if (tempobject->getObjectType == harvest && map[i][i]->getIsWet())
+				if (tempobject->getObjectType() == harvest && map[i][i]->getIsWet())
 				{
 					
 				}
