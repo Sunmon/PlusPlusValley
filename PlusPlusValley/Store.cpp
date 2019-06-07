@@ -25,7 +25,7 @@ void Store::InitInventoty()
 
 	storeInven->addItem(makeItem(ItemType::CROP, "딸기", 100));
 	storeInven->addItem(makeItem(ItemType::CROP, "수박", 160));
-		storeInven->addItem(makeItem(ItemType::CROP, "배추", 300));
+	storeInven->addItem(makeItem(ItemType::CROP, "배추", 300));
 
 	storeInven->addItem(makeItem(ItemType::STONE, "모래", 100));
 	storeInven->addItem(makeItem(ItemType::STONE, "자갈", 200));
@@ -42,7 +42,7 @@ void Store::InitInventoty()
 
 }
 
-Item* Store::makeItem(ItemType itemType, const string& itemName, int cost){
+Item* Store::makeItem(ItemType itemType, const string& itemName, int cost) {
 
 	Item* item = new Item(itemType, itemName);
 	item->setCost(cost);
@@ -56,7 +56,7 @@ void Store::showItemList() {
 	storeInven->printItems();
 }
 
-void Store::sellItem( Player* player)
+void Store::sellItem(Player* player)
 {
 	//Inventory* playerInven = new Inventory();
 	Inventory* playerInven = player->getInven();
@@ -74,7 +74,7 @@ void Store::sellItem( Player* player)
 	if (selltemp == NULL) {
 		system("cls");
 		cout << "인벤토리에 상품이 없습니다!" << endl << endl;
-		
+
 		sellItem(player);
 		return;
 	}
@@ -83,25 +83,25 @@ void Store::sellItem( Player* player)
 	cin >> num;
 
 	//플레이어 인벤토리의 상품 개수 < 판매하려는 상품 개수이면 false
-	if (playerInven->items.find(selltemp)->second < num) {
+	if (playerInven->findIter(selltemp)->second < num) {
 		system("cls");
 		cout << "인벤토리에 상품이 부족합니다!" << endl << endl;
 		sellItem(player);
 		return;
 	}
 
-	
-	
+
+
 	//판매한 상품의 가격만큼 플레이어의 돈 증가
 	int saletemp = playerInven->getMoney();
-	saletemp+= (selltemp->getCost())*num;
+	saletemp += (selltemp->getCost()) * num;
 	playerInven->setMoney(saletemp);
-	
+
 	cout << "\n아이템 가격:" << selltemp->getCost() * num << endl << endl;
 
 	playerInven->removeItem(selltemp, num);
 
-	
+
 
 	playerInven->printItems();
 	cout << "\n현재 가진 돈 : ";
@@ -114,7 +114,7 @@ void Store::buyItem(Player* player)
 	Inventory* playerInven = player->getInven();
 
 	int num;
-	
+
 	cout << "--------------------------구입 할 상품을 선택하세요--------------------------" << endl;
 	cout << " 1. 씨앗(SEED) 2. 수확작물(CROP) 3. 돌(STONE) 4. 나무(WOOD) 5. 도구(TOOL)" << endl;
 	cin >> num;
@@ -140,16 +140,16 @@ void Store::buyItem(Player* player)
 		cout << "잘못입력하셨습니다!" << endl;
 		break;
 	}
-		playerInven->printItems();
-		cout << "현재 가진 돈 : ";
-		cout << playerInven->getMoney();
+	playerInven->printItems();
+	cout << "현재 가진 돈 : ";
+	cout << playerInven->getMoney();
 
-		
-	}
+
+}
 void Store::buySeed(Player* player) {
 
 	Inventory* playerInven = player->getInven();
-	
+
 	int itemNum;
 	string itemName;
 
@@ -171,7 +171,7 @@ void Store::buySeed(Player* player) {
 	cout << playerInven->getMoney();
 	cout << endl << endl;;
 
-	
+
 
 	cout << "\n아이템 가격:" << tempItem->getCost() * itemNum << endl << endl;
 
@@ -181,7 +181,7 @@ void Store::buySeed(Player* player) {
 		return;
 	}
 
-	
+
 	//buy 다른 방법
 	//playerInven->itemIter = playerInven->findIter(itemName);
 	//if (playerInven->itemIter != playerInven->items.end())
@@ -195,11 +195,11 @@ void Store::buySeed(Player* player) {
 
 
 	Item* newItem = playerInven->findItem(itemName);
-	if (newItem!= NULL)
+	if (newItem != NULL)
 	{
-		playerInven->items.find(newItem)->second += itemNum;
+		playerInven->findIter(newItem)->second += itemNum;
 
-	}	
+	}
 	else {
 
 		newItem = new Item(*tempItem);
@@ -256,7 +256,7 @@ void Store::buyCrop(Player* player)
 	Item* newItem = playerInven->findItem(itemName);
 	if (newItem != NULL)
 	{
-		playerInven->items.find(newItem)->second += itemNum;
+		playerInven->findIter(newItem)->second += itemNum;
 
 	}
 	else {
@@ -314,7 +314,7 @@ void Store::buyStone(Player* player)
 	Item* newItem = playerInven->findItem(itemName);
 	if (newItem != NULL)
 	{
-		playerInven->items.find(newItem)->second += itemNum;
+		playerInven->findIter(newItem)->second += itemNum;
 
 	}
 	else {
@@ -372,7 +372,7 @@ void Store::buyWood(Player* player)
 	Item* newItem = playerInven->findItem(itemName);
 	if (newItem != NULL)
 	{
-		playerInven->items.find(newItem)->second += itemNum;
+		playerInven->findIter(newItem)->second += itemNum;
 
 	}
 	else {
@@ -430,7 +430,7 @@ void Store::buyTool(Player* player)
 	Item* newItem = playerInven->findItem(itemName);
 	if (newItem != NULL)
 	{
-		playerInven->items.find(newItem)->second += itemNum;
+		playerInven->findIter(newItem)->second += itemNum;
 
 	}
 	else {

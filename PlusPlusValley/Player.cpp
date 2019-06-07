@@ -7,7 +7,7 @@ Player::Player()
 {
 	InitInventory();
 	// cout << "ÇÃ·¹ÀÌ¾î »ý¼º!" << endl;
-	
+
 }
 
 Player::~Player()
@@ -15,12 +15,12 @@ Player::~Player()
 }
 
 
-Player::Player(string name):Player()
+Player::Player(string name) :Player()
 {
 	this->name = name;
 }
 
-Player::Player(Tile * totile):Player()
+Player::Player(Tile* totile) : Player()
 {
 	this->setTile(totile);
 }
@@ -53,7 +53,7 @@ void Player::act()
 	cout << "act" << endl;
 	where();
 }
-void Player:: InitInventory()
+void Player::InitInventory()
 {
 	this->inven = new Inventory();
 	Tool* ax = new Tool(TOOLTYPE::AX, "ax");
@@ -69,8 +69,8 @@ void Player:: InitInventory()
 
 	Item* strawSeed = new Item(ItemType::SEED, "strawSeed");
 	inven->addItem(strawSeed, 3);
-	//this->onHand = hammer;
-	this->onHand = strawSeed;
+	this->onHand = hammer;
+	//this->onHand = strawSeed;
 }
 
 void Player::setInven(Inventory* inven)
@@ -98,7 +98,7 @@ Inventory* Player::getInven()
 
 void Player::Interact()
 {
-	
+
 	Item* firstitem = inven->getfirstItem();
 
 	Tile* target = this->getTarget();
@@ -181,11 +181,11 @@ void Player::doAction(Item* tool, Tile* target)
 
 	//TODO: assert null ptr
 	if (target->getObject() == nullptr) return;
-	std::string str[4] = { "³ª¹«¸¦ º£¾ú´Ù", "µ¹À» ºÎ½¥´Ù", "ÀÛ¹°À» ¼öÈ®Çß´Ù", "¾¾¸¦ »Ñ·È´Ù"};
+	std::string str[4] = { "³ª¹«¸¦ º£¾ú´Ù", "µ¹À» ºÎ½¥´Ù", "ÀÛ¹°À» ¼öÈ®Çß´Ù", "¾¾¸¦ »Ñ·È´Ù" };
 
 	cout << "toolType: " << static_cast<Tool*>(tool)->toolType << " objectType: " << target->getObject()->getObjectType() << endl;
 	if (static_cast<Tool*>(tool)->toolType != target->getObject()->getObjectType()) return;
-	
+
 	reduce_MO_HP(target->getObject());
 
 	if (target->getObject()->getHealth() <= 0)
@@ -193,7 +193,7 @@ void Player::doAction(Item* tool, Tile* target)
 		//TODO: ¾ÆÀÌÅÛµé ¿Å±â±â
 		for (int i = 0; i < 3; i++)
 		{
-			if(target->getObject()->getItemArray()[i] == NULL) continue;
+			if (target->getObject()->getItemArray()[i] == NULL) continue;
 			cout << target->getObject()->getItemArray()[i]->getName() << endl;
 			inven->addItem(target->getObject()->getItemArray()[i]);
 		}
@@ -217,18 +217,18 @@ void Player::seeding(Item* seed, Tile* target)
 {
 	//¾¾¾Ñ °³¼ö °¨¼Ò
 	inven->removeItem(seed);
-	if (inven->items.find(seed) == inven->items.end())
+	if (inven->findIter(seed) == inven->items.end())
 	{
 		cout << "¾¾¾ÑÀÌ ¾ø½À´Ï´Ù" << endl;  return;
 	}
 	//if (inven->findItem(seed) == NULL) return;
-	cout << "¾¾¾ÑÀ» »Ñ·È½À´Ï´Ù. ³²Àº ¾¾¾Ñ: " << seed->getName() << " " << inven->items.find(seed)->second << endl;
+	cout << "¾¾¾ÑÀ» »Ñ·È½À´Ï´Ù. ³²Àº ¾¾¾Ñ: " << seed->getName() << " " << inven->findIter(seed)->second << endl;
 
 	//Å¸ÀÏ¿¡ ¾¾ »Ñ¸®±â
 	if (target->getObject() != nullptr) return;
 	string name = seed->getName();
 	size_t pos = name.find("¾¾¾Ñ");
-	if(pos != string::npos)name.erase(pos, 2);
+	if (pos != string::npos)name.erase(pos, 2);
 	MapObject* mo = new MapObject(ObjectType::harvest, name);
 	target->setObject(mo);
 }
