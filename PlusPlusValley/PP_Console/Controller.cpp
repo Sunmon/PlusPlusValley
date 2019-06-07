@@ -30,7 +30,8 @@ void Controller::init()
 	//new InitialPage()->makePlayer(player);
 	movethread = new MoveThread(player);
 	time = new UseTime(9 * 60);
-
+	npc = new NPC();
+	npc->setTile(map->map[3][4]);
 }
 
 void Controller::test_move()

@@ -11,6 +11,7 @@ class NPC : public Character
 {
 private:
 	string name;
+
 	
 
 public:
@@ -22,8 +23,6 @@ public:
 
 	void setName(string name);
 	string getName();
+	void setTile(Tile* totile);
 	void goStore(Player* player);
-
-
-
 };

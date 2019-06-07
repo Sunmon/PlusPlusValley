@@ -6,6 +6,7 @@
 #include "Map.h"
 #include "UseTime.h"
 #include "InitialPage.h"
+#include "NPC.h"
 class Controller
 {
 private:
@@ -17,6 +18,7 @@ private:
 	Player *player;
 	MoveThread *movethread;
 	UseTime *time;
+	NPC* npc;
 public:
 	static Controller* getInstance();
 	void init();

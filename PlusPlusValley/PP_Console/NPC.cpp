@@ -28,6 +28,11 @@ string NPC::getName()
 	return this->name;
 }
 
+void NPC::setTile(Tile* totile)
+{
+	this->nowtile = totile;
+}
+
 void NPC::goStore(Player* player)
 {
 	cout << "어서오세요 상점입니다~!" << endl;

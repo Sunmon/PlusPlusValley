@@ -8,7 +8,7 @@ class  Map
 private:
 	const static int MAX_Y = 20, MAX_X = 30;
 
-	Tile* map[MAX_X][MAX_Y];
+	
 
 	//tile간의 연결을 설정한다. 
 	void setmap()
@@ -34,6 +34,8 @@ private:
 	}
 
 public:
+	Tile* map[MAX_X][MAX_Y];
+
 	Map()
 	{
 		this->setmap();
