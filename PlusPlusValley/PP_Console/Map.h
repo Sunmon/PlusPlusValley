@@ -2,6 +2,7 @@
 #include "Tile.h"
 #include <time.h>
 #include <fstream>
+#include "NPC.h"
 class  Map
 {
 private:
@@ -53,15 +54,19 @@ public:
 	{
 		MapObject* stoneObject = new MapObject(stone, "돌");
 		MapObject* treeObject = new MapObject(tree, "나무");
+		NPC* npc = new NPC("상인");
 
 		srand((unsigned int)time(0));
 		
-		for (int i = 0; i < (rand()%5 +1); i++)
+		//npc를 맵위 타일에 위치시킨다
+		npc->setTile(map[3][4]);
+		map[3][4]->setObject(new MapObject(ObjectType::npc, "상인"));
+		for (int i = 0; i < (rand() % 5 + 1); i++)
 		{
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(treeObject);
-
 		}
+
 		
 	}
 

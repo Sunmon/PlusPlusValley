@@ -9,7 +9,7 @@ using namespace std;
 enum ObjectType
 {
 	//tree = 1, stone, harvest,
-	tree, stone, harvest
+	tree, stone, harvest, npc
 };
 class MapObject {
 protected:
@@ -69,10 +69,11 @@ public:
 		case harvest:
 			setItemArray(ItemType::CROP, name);
 			setItemArray(ItemType::SEED, name + "¾¾¾Ñ");
+			break;
 
 			//setItemArray(ItemType::CROP, name, 0);
 			//setItemArray(ItemType::SEED, name + "¾¾¾Ñ", 1);
-			break;
+		case npc: break;
 		default:
 			break;
 		}

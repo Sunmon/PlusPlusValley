@@ -2,6 +2,7 @@
 #include <map>
 #include <vector>
 #include "MapObject.h"
+//#include "NPC.h"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ private:
 	Tile* upTile;
 	Tile* downTile;
 	MapObject* mapobject;
+	//NPC* npc;
 public:
 	Tile(){}
 	Tile(int x, int y)
@@ -126,6 +128,7 @@ public:
 		{
 			canmove = false;
 		}
+
 			
 		isvalue = true;
 	
@@ -144,6 +147,20 @@ public:
 		this->mapobject = NULL;
 		this->isvalue = false;
 	}
+	//NPC를 타일에 놓는다
+	/*void setNPC() {
+		if (this->isvalue) return;
+		this->mapobject = object;
+		if (object->getObjectType() != harvest)
+		{
+			canmove = false;
+		}
+
+		isvalue = true;
+	}
+	NPC* getNPC() {
+		return this->npc;
+	}*/
 };
 
 
