@@ -1,7 +1,6 @@
 #include "Store.h"
 #include <string>
 
-
 using namespace std;
 
 Store::Store()
@@ -26,7 +25,7 @@ void Store::InitInventoty()
 
 	storeInven->addItem(makeItem(ItemType::CROP, "딸기", 100));
 	storeInven->addItem(makeItem(ItemType::CROP, "수박", 160));
-	storeInven->addItem(makeItem(ItemType::CROP, "배추", 300));
+		storeInven->addItem(makeItem(ItemType::CROP, "배추", 300));
 
 	storeInven->addItem(makeItem(ItemType::STONE, "모래", 100));
 	storeInven->addItem(makeItem(ItemType::STONE, "자갈", 200));
@@ -67,13 +66,15 @@ void Store::sellItem( Player* player)
 	int num;
 	string itemName;
 
-	cout << "\n---판매할 상품을 선택하세요---" << endl;
+	cout << "\n--------------------------판매할 상품을 선택하세요--------------------------" << endl;
 	cin >> itemName;
 
 	Item* selltemp = playerInven->findItem(itemName);
 
 	if (selltemp == NULL) {
+		system("cls");
 		cout << "인벤토리에 상품이 없습니다!" << endl << endl;
+		
 		sellItem(player);
 		return;
 	}
@@ -83,6 +84,7 @@ void Store::sellItem( Player* player)
 
 	//플레이어 인벤토리의 상품 개수 < 판매하려는 상품 개수이면 false
 	if (playerInven->items.find(selltemp)->second < num) {
+		system("cls");
 		cout << "인벤토리에 상품이 부족합니다!" << endl << endl;
 		sellItem(player);
 		return;
@@ -113,9 +115,10 @@ void Store::buyItem(Player* player)
 
 	int num;
 	
-	cout << "---구입 할 상품을 선택하세요---" << endl;
+	cout << "--------------------------구입 할 상품을 선택하세요--------------------------" << endl;
 	cout << " 1. 씨앗(SEED) 2. 수확작물(CROP) 3. 돌(STONE) 4. 나무(WOOD) 5. 도구(TOOL)" << endl;
 	cin >> num;
+	system("cls");
 
 	switch (num) {
 	case 1:
@@ -177,6 +180,19 @@ void Store::buySeed(Player* player) {
 		buyItem(player);
 		return;
 	}
+
+	
+	//buy 다른 방법
+	//playerInven->itemIter = playerInven->findIter(itemName);
+	//if (playerInven->itemIter != playerInven->items.end())
+	//{
+	//	playerInven->itemIter->second += itemNum;
+	//}
+	//else
+	//{
+	//	playerInven->addItem(new Item(*tempItem), itemNum);
+	//}
+
 
 	Item* newItem = playerInven->findItem(itemName);
 	if (newItem!= NULL)

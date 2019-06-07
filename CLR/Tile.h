@@ -1,12 +1,7 @@
 #pragma once
-#ifdef DLL2_EXPORTS
-#define DLL2_API__declspec(dllexport)
-#else
-#define DLL2_API__declspec(dllimport)
-#endif
 #include <map>
 #include <vector>
-
+#include "MapObject.h"
 
 using namespace std;
 
@@ -15,13 +10,15 @@ class Tile
 private:
 	int x;
 	int y;
-	bool canmove;
-	bool isvalue;
+	bool canmove;	//플레이어가 위로 올라갈 수 있으면 true
+	bool isvalue;	//설치된 상태면 true
+	bool isWet;
+	bool fertilizer;
 	Tile* leftTile;
 	Tile* rightTile;
 	Tile* upTile;
 	Tile* downTile;
-
+	MapObject* mapobject;
 public:
 	Tile(){}
 	Tile(int x, int y)
@@ -32,6 +29,11 @@ public:
 
 	void init()
 	{
+		canmove = true;
+		isvalue = false;
+		isWet = false;
+		fertilizer = false;
+		mapobject = NULL;
 		leftTile = NULL;
 		rightTile = NULL;
 		upTile = NULL;
@@ -83,13 +85,63 @@ public:
 	{
 		return this->downTile;
 	}
-
+	bool getisWet() {
+		return this->isWet;
+	}
+	bool getFertilizer() {
+		return this->fertilizer;
+	}
+	bool getIsvalue()
+	{
+		return this->isvalue;
+	}
 	bool getcanmove()
 	{
 		return this->canmove;
 	}
+	bool setIsWet(bool isWet) {
+		this->isWet = isWet;
+	}
+	bool setFertilizer(bool fert) {
+		this->fertilizer = fert;
+	}
+	bool getIsWet() {
 
+		string str;
+		isWet ? str = "땅이 젖어있습니다" : str = "땅이 말라있습니다.";
+		cout << str << endl;
+		return isWet;
+	}
+	
+	void setObject(MapObject* object)
+	{
+		if (this->isvalue) return;
+
+		this->mapobject = object;
+		if (object->getObjectType() != harvest)
+		{
+			canmove = false;
+		}
+			
+		isvalue = true;
+	
+	}
+
+	MapObject* getObject()
+	{
+		return mapobject;
+	}
+
+	//tile에 있는 object 없앰
+	void removeObj()
+	{
+		delete(mapobject);
+		this->canmove = true;
+		this->mapobject = NULL;
+		this->isvalue = false;
+	}
 };
+
 
 
 

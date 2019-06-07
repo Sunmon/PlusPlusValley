@@ -1,9 +1,4 @@
 #pragma once
-#ifdef DLL2_EXPORTS
-#define DLL2_API__declspec(dllexport)
-#else
-#define DLL2_API__declspec(dllimport)
-#endif
 #include <iostream>
 #include <string>
 #include <windows.h>
@@ -17,10 +12,11 @@ using namespace std;
 class MoveThread
 {
 private:
-	Player* player;
+	Player* player = NULL;
 	void move()
 	{
 		int getkey = _getch();
+		const int SPACE = 32;
 		if (getkey == 72)
 		{
 			player->move(72);
@@ -37,7 +33,11 @@ private:
 		{
 			player->move(80);
 		}
-
+		if (getkey == SPACE)
+		{
+			//player->Interact();
+			player->interact();
+		}
 	}
 	static unsigned int __stdcall move(void* arg)
 	{

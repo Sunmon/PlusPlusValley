@@ -15,6 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyForm.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyForm1.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Act.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="character.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -42,12 +51,6 @@
     <ClInclude Include="MoveThread.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="MyForm.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MyForm1.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="NPC.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -68,6 +71,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MyForm.resx">
+      <Filter>리소스 파일</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm1.resx">
+      <Filter>리소스 파일</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Act.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="Controller.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -81,6 +95,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="MyForm.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MyForm1.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="NPC.cpp">
@@ -98,13 +115,5 @@
     <ClCompile Include="UseTime.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="MyForm.resx">
-      <Filter>리소스 파일</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyForm1.resx">
-      <Filter>리소스 파일</Filter>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

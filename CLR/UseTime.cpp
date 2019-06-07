@@ -1,6 +1,5 @@
 #include "UseTime.h"
 
-
 UseTime::UseTime()
 {
 }
