@@ -44,5 +44,11 @@ void Controller::test_move()
 		cout << setw(2) << setfill('0') << time->gethour() << ':' << setw(2) << setfill('0') << time->getminute() << endl;
 	}
 }
+void Controller::Nextday()
+{
+	
+	map->savemap();
+	
+}
 
 

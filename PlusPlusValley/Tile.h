@@ -12,6 +12,8 @@ private:
 	int y;
 	bool canmove;	//플레이어가 위로 올라갈 수 있으면 true
 	bool isvalue;	//설치된 상태면 true
+	bool isWet;
+	bool fertilizer;
 	Tile* leftTile;
 	Tile* rightTile;
 	Tile* upTile;
@@ -29,6 +31,8 @@ public:
 	{
 		canmove = true;
 		isvalue = false;
+		isWet = false;
+		fertilizer = false;
 		mapobject = NULL;
 		leftTile = NULL;
 		rightTile = NULL;
@@ -81,6 +85,9 @@ public:
 	{
 		return this->downTile;
 	}
+	bool getisWet() {
+		return this->isWet;
+	}
 
 	bool getIsvalue()
 	{
@@ -90,23 +97,38 @@ public:
 	{
 		return this->canmove;
 	}
+	bool setIsWet(bool isWet) {
+		this->isWet = isWet;
+	}
+	bool setFertilizer(bool fert) {
+		this->fertilizer = fert;
+	}
+	bool getIsWet() {
+
+		string str;
+		isWet ? str = "땅이 젖어있습니다" : str = "땅이 말라있습니다.";
+		cout << str << endl;
+		return isWet;
+	}
+	bool getFertilizer() {
+
+		string str;
+		fertilizer ? str = "비료를 이미 줬습니다" : str = "비료를 주지 않았습니다";
+		cout << str << endl;
+		return fertilizer;
+	}
 	void setObject(MapObject* object)
 	{
-		if (this->isvalue == true)
+		if (this->isvalue) return;
+
+		this->mapobject = object;
+		if (object->getObjectType() != harvest)
 		{
-			cout << "설치가 불가능합니다." << endl;
+			canmove = false;
 		}
-		else
-		{
-			this->mapobject = object;
-			if (object->getObjectType() != harvest)
-			{
-				canmove = false;
-				
-			}
 			
-			isvalue = true;
-		}
+		isvalue = true;
+	
 	}
 
 	MapObject* getObject()

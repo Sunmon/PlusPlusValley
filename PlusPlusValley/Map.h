@@ -1,7 +1,7 @@
 #pragma once
 #include "Tile.h"
 #include <time.h>
-
+#include <fstream>
 class  Map
 {
 private:
@@ -69,5 +69,104 @@ public:
 		/*map[3][4]->setObject(stoneObject);
 		map[13][18]->setObject(treeObject);
 		map[10][11]->setObject(&(*stoneObject));*/
+	}
+
+	void growth()
+	{
+		for (int j = 0; j < MAX_Y; j++)
+		{
+			for (int i = 0; i < MAX_X; i++)
+			{
+				MapObject* tempobject = map[i][j]->getObject();
+				if (tempobject->getObjectType == harvest && map[i][i]->getIsWet())
+				{
+					
+				}
+				
+			}
+		}
+		
+	}
+
+	void savemap()
+	{
+		ofstream ofs;
+		ofs.open("map.txt");
+		if (!ofs)
+		{
+			cout << "파일을 열 수 없습니다." << endl;
+			exit(0);
+		}
+		for (int j = 0; j < MAX_Y; j++)
+		{
+			for (int i = 0; i < MAX_X; i++)
+			{
+				MapObject* tempobject = map[i][j]->getObject();
+				if (tempobject == NULL)
+				{
+					ofs << i << " " << j << " " << "NULL" << " " << 0 << endl;
+				}
+				else
+				{
+					string str;
+					switch (tempobject->getObjectType())
+					{
+					case tree:
+						str = "tree";
+						break;
+					case stone:
+						str = "stone";
+						break;
+					case harvest:
+						str = "harvest";
+						break;
+					}
+					ofs << i << " " << j << " " << str << " " << tempobject->getHealth() << endl;
+				}
+			}
+		}
+		ofs.close();
+	}
+
+	void loadmap()
+	{
+		ifstream ifs;
+		ifs.open("map.txt");
+		if (!ifs)
+		{
+			cout << "파일을 열 수 없습니다." << endl;
+			exit(0);
+		}
+
+		int x, y;
+		string type;
+		int hp;
+		while (ifs >> x >> y >> type >> hp)
+		{
+			if(type != "NULL")
+			{
+				MapObject* object = new MapObject();
+				object->setHealth(hp);
+
+				if (type == "tree")
+				{
+					object->setObjectType(tree);
+				}
+				if (type == "stone")
+				{
+					object->setObjectType(stone);
+				}
+				if (type == "harvest")
+				{
+					object->setObjectType(harvest);
+				}
+				
+				map[x][y]->setObject(object);
+
+				cout << "(" << x << ","<< y << ") " << ":" << type << " 로드" << endl;
+			}
+		}
+
+		ifs.close();
 	}
 };
