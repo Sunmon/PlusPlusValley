@@ -1,5 +1,6 @@
 #pragma once
 #include "Tile.h"
+#include "Harvest.h"
 #include <time.h>
 #include <fstream>
 class  Map
@@ -55,7 +56,7 @@ public:
 		MapObject* treeObject = new MapObject(tree, "³ª¹«");
 
 		srand((unsigned int)time(0));
-		
+		/*
 		for (int i = 0; i < (rand()%5 +1); i++)
 		{
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
@@ -63,6 +64,9 @@ public:
 
 		}
 		
+		Harvest* harv = new Harvest(harvest, "µþ±â");
+		map[5][5]->setObject(harv);
+		*/
 	}
 
 	void growth()
@@ -71,16 +75,15 @@ public:
 		{
 			for (int i = 0; i < MAX_X; i++)
 			{
-				MapObject* tempobject = map[i][j]->getObject();
-				if (tempobject->getObjectType() == harvest )
+				Harvest* tempobject = map[i][j]->getHarvest();
+				if (tempobject != NULL)
 				{
+					
 					if (map[i][i]->getIsWet())
 					{
 						tempobject->growing();
 					}
-					
 				}
-				
 			}
 		}
 		
