@@ -16,8 +16,6 @@ public:
 
 	void test();
 
-
-
 	void setName(string name);
 	string getName();
 	void act();
