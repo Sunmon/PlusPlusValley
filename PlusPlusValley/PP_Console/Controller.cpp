@@ -4,7 +4,6 @@ Controller* Controller::instance = nullptr;
 Controller::Controller()
 {
 }
-
 Controller::~Controller()
 {
 }
