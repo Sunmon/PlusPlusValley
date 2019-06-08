@@ -6,6 +6,7 @@ using namespace std;
 
 Player::Player()
 {
+	store = new Store();
 	InitInventory();
 	// cout << "플레이어 생성!" << endl;
 
@@ -104,8 +105,6 @@ void Player::Interact()
 
 	Tile* target = this->getTarget();
 
-	
-
 	if (target == NULL || target->getObject() == NULL)
 	{
 		cout << "아무것도 할 수 없다." << endl;
@@ -169,10 +168,14 @@ void Player::interact()
 
 	//타겟이 npc이면 gostore 실행
 	//손에 무기를 들고 있어도 실행 
-	if (target->getObject()->getObjectType() == npc) {
-		
-	}
+	if (target->getObject() != nullptr)
+	{
+		if (target->getObject()->getObjectType() == npc) {
 
+			goStore();
+			return;
+		}
+	}
 	
 	/*if (target->getNPC() !=NULL) {
 		target->getNPC()->goStore(this);
@@ -227,6 +230,32 @@ void Player::doAction(Item* tool, Tile* target)
 			inven->addItem(target->getObject()->getItemArray()[i]);
 		}*/
 		target->removeObj();
+	}
+}
+
+void Player::goStore(){
+
+
+	cout << "어서오세요 상점입니다~!" << endl;
+	int flag = 1;
+	while (flag)
+	{
+		int input;
+		cout << "\n\n1. 물건 구매  2. 물건 판매  3. 뒤로가기" << endl;
+		cin >> input;
+		cout << input << endl;
+		switch (input)
+		{
+		case 1:
+			store->buyItem();
+			break;
+		case 2:
+			store->sellItem();
+			break;
+		default:
+			flag = 0;
+			break;
+		}
 	}
 }
 

@@ -3,7 +3,7 @@
 #include "Harvest.h"
 #include <time.h>
 #include <fstream>
-#include "NPC.h"
+//#include "NPC.h"
 class  Map
 {
 private:
@@ -57,14 +57,25 @@ public:
 	{
 		MapObject* stoneObject = new MapObject(stone, "돌");
 		MapObject* treeObject = new MapObject(tree, "나무");
-		NPC* npc = new NPC("상인");
+		MapObject* npcObject = new MapObject(npc, "상인");
+		//NPC* npc = new NPC("상인");
 
+		//npc를 맵 오브젝트로 설정
 		srand((unsigned int)time(0));
+
+		map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(npcObject);
+
+		for (int i = 0; i < (rand() % 5 + 1); i++) {
+			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
+			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(treeObject);
+		}
+
+
 		/*
 		for (int i = 0; i < (rand()%5 +1); i++)
 		{
-			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
-			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(treeObject);
+			map[(rand() % max_x)][rand() % max_y]->setobject(stoneobject);
+			map[(rand() % max_x)][rand() % max_y]->setobject(treeobject);
 		}
 
 		

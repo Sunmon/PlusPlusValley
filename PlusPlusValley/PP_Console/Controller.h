@@ -18,7 +18,7 @@ private:
 	Player *player;
 	MoveThread *movethread;
 	UseTime *time;
-	NPC* npc;
+	//NPC* npc;
 public:
 	static Controller* getInstance();
 	void init();
