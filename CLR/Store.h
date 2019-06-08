@@ -7,10 +7,12 @@
 class Store
 {
 public:
+
 	Store();
 	~Store();
 	Inventory* storeInven;
-	void InitInventoty();
+	Inventory* playerInven;
+	void initInventory();
 	Item* makeItem(ItemType itemType, const string& itemName, int cost);
 	void showItemList();
 	void sellItem();

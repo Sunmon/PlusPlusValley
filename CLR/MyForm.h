@@ -181,7 +181,8 @@ namespace CLRFInal {
 	private: System::Void TextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		c->setName(msclr::interop::marshal_as<std::string>(textBox1->Text));
+		//c->setName(msclr::interop::marshal_as<std::string>(textBox1->Text));
+		c->getPlayer()->setName(msclr::interop::marshal_as<std::string>(textBox1->Text));
 		
 		groupBox1->Show();
 		GroupBox1_Enter(sender, e);
@@ -197,7 +198,8 @@ private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) 
 private: System::Void TextBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void GroupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
-	groupBox1->Text = ("\n\n캐릭터 이름은 " + marshal_as<String^>(c->getPlayerName()) + "입니다");
+	//groupBox1->Text = ("\n\n캐릭터 이름은 " + marshal_as<String^>(c->getPlayerName()) + "입니다");
+	groupBox1->Text = ("\n\n캐릭터 이름은 " + marshal_as<String^>(c->getPlayer()->getName()) + "입니다");
 }
 private: System::Void Button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	delete this;

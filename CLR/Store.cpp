@@ -2,11 +2,22 @@
 #include <string>
 
 using namespace std;
+/** store관련 클래스
+* 사용 방법: <GUI용>
+*	아이템 아이콘과 Item*를 링크시켜 사용하세요
+*	sellItem(Item*) 아이템을 팔고 싶을 때 사용. item은 팔고 싶은 아이템
+*	buyItem(Item*)	아이템을 사고 싶을 때 사용.
+*	
+*
+*
+*
+*
+*/
+
 
 Store::Store()
 {
-	InitInventoty();
-
+	initInventory();
 }
 
 
@@ -14,10 +25,11 @@ Store::~Store()
 {
 }
 
-void Store::InitInventoty()
+
+//상점의 아이템 목록, 가격 초기화
+void Store::initInventory()
 {
 	storeInven = new Inventory();
-	//TODO: 인벤토리 아이템 채우기
 
 	storeInven->addItem(makeItem(ItemType::SEED, "딸기씨앗", 50));
 	storeInven->addItem(makeItem(ItemType::SEED, "수박씨앗", 80));
@@ -42,6 +54,8 @@ void Store::InitInventoty()
 
 }
 
+
+//상점의 아이템 추가
 Item* Store::makeItem(ItemType itemType, const string& itemName, int cost) {
 
 	Item* item = new Item(itemType, itemName);
@@ -56,10 +70,12 @@ void Store::showItemList() {
 	storeInven->printItems();
 }
 
+
+
 void Store::sellItem()
 {
-	Inventory* playerInven = new Inventory();
-	//Inventory* playerInven = this->getInven();
+	//Inventory* playerInven = new Inventory();
+	
 
 	playerInven->printItems();
 
@@ -110,7 +126,7 @@ void Store::sellItem()
 
 void Store::buyItem()
 {
-	Inventory* playerInven = new Inventory();
+	//Inventory* playerInven = new Inventory();
 	//Inventory* playerInven = this->getInven();
 
 	int num;
@@ -148,9 +164,6 @@ void Store::buyItem()
 }
 void Store::buySeed() {
 
-	Inventory* playerInven = new Inventory();
-	//Inventory* playerInven = player->getInven();
-
 	int itemNum;
 	string itemName;
 
@@ -171,7 +184,6 @@ void Store::buySeed() {
 	cout << "현재 가진 돈 : ";
 	cout << playerInven->getMoney();
 	cout << endl << endl;;
-
 
 
 	cout << "\n아이템 가격:" << tempItem->getCost() * itemNum << endl << endl;
@@ -220,7 +232,6 @@ void Store::buySeed() {
 
 void Store::buyCrop()
 {
-	Inventory* playerInven = new Inventory();
 	//Inventory* playerInven = player->getInven();
 
 	int itemNum;
@@ -280,7 +291,6 @@ void Store::buyCrop()
 
 void Store::buyStone()
 {
-	Inventory* playerInven = new Inventory();
 	//Inventory* playerInven = this->getInven();
 
 	int itemNum;
@@ -339,7 +349,6 @@ void Store::buyStone()
 
 void Store::buyWood()
 {
-	Inventory* playerInven = new Inventory();
 	//Inventory* playerInven = this->getInven();
 
 	int itemNum;
@@ -398,7 +407,6 @@ void Store::buyWood()
 
 void Store::buyTool()
 {
-	Inventory* playerInven = new Inventory();
 	//Inventory* playerInven = player->getInven();
 
 	int itemNum;

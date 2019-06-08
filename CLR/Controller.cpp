@@ -3,6 +3,7 @@ Controller* Controller::instance = nullptr;
 
 Controller::Controller()
 {
+	init();
 }
 
 Controller::~Controller()
