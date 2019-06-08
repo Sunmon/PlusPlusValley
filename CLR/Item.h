@@ -13,7 +13,7 @@
 */
 
 /*아이템 타입. NONE(NULL대신), 씨앗, 수확작물, 돌, 나무, 도구*/
-enum ItemType { NONE, SEED, CROP, STONE, WOOD, TOOL };
+enum ItemType { NONE, SEED, CROP, STONE, WOOD, TOOL};
 
 class Item
 {

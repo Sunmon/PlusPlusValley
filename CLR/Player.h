@@ -34,4 +34,6 @@ public:
 	Item* getOnHand();
 	void doAction(Item* tool, Tile* target);
 	void goStore();
+	void sprinkle(Item* tool, Tile* target);
+	void fertilize(Item* tool, Tile* target);
 };
