@@ -80,7 +80,7 @@ void InitialPage::menu()
 			continue;
 		}
 
-		if (iMenu = MM_EXIT)
+		if (iMenu == MM_EXIT)
 			break;
 
 		switch (iMenu)

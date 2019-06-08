@@ -6,8 +6,9 @@ using namespace std;
 
 Player::Player()
 {
-	store = new Store();
 	InitInventory();
+	store = new Store();
+	store->playerInven = this->getInven();
 	// cout << "플레이어 생성!" << endl;
 
 }
