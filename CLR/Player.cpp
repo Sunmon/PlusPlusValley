@@ -61,7 +61,7 @@ void Player::InitInventory()
 	Tool* ax = new Tool(TOOLTYPE::AX, "ax");
 	Tool* sickle = new Tool(TOOLTYPE::SICKLE, "sickle");
 	Tool* hammer = new Tool(TOOLTYPE::HAMMER, "hammer");
-
+	Tool* sprinkle = new Tool(TOOLTYPE::SPRINKLE, "sprinkle");
 
 	//Item* ax = new Item(ItemType::TOOL, "ax");
 	//Item* crop = new Item(ItemType::TOOL, "crop");
@@ -203,8 +203,9 @@ void Player::doAction(Item* tool, Tile* target)
 {
 
 	if (target->getObject() == nullptr) return;
-	std::string str[4] = { "나무를 베었다", "돌을 부쉈다", "작물을 수확했다", "씨를 뿌렸다" };
+	std::string str[4] = { "나무를 베었다", "돌을 부쉈다", "작물을 수확했다", "물을 뿌렸다" };
 
+	if (static_cast<Tool*>(tool)->toolType == SPRINKLE) { sprinkle(tool, target); return; }
 	cout << "toolType: " << static_cast<Tool*>(tool)->toolType << " objectType: " << target->getObject()->getObjectType() << endl;
 	if (static_cast<Tool*>(tool)->toolType != target->getObject()->getObjectType()) return;
 
@@ -257,6 +258,17 @@ void Player::goStore() {
 			break;
 		}
 	}
+}
+
+void Player::sprinkle(Item* tool, Tile* target)
+{
+	//if (target->getIsWet() == false) return;
+
+	//if(tool->getItemType() == Tool::get)
+		cout << "물을 뿌렸습니다. " << endl;
+
+		//땅에 물주기
+		target->setIsWet(true);
 }
 
 void Player::reduce_MO_HP(MapObject* mo)

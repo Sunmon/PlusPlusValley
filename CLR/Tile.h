@@ -90,9 +90,9 @@ public:
 	{
 		return this->downTile;
 	}
-	bool getisWet() {
+	/*bool getisWet() {
 		return this->isWet;
-	}
+	}*/
 
 	bool getIsvalue()
 	{
