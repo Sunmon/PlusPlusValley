@@ -2,17 +2,6 @@
 #include <string>
 
 using namespace std;
-/** store관련 클래스
-* 사용 방법: <GUI용>
-*	아이템 아이콘과 Item*를 링크시켜 사용하세요
-*	sellItem(Item*) 아이템을 팔고 싶을 때 사용. item은 팔고 싶은 아이템
-*	buyItem(Item*)	아이템을 사고 싶을 때 사용.
-*	
-*
-*
-*
-*
-*/
 
 
 Store::Store()
@@ -461,4 +450,44 @@ void Store::buyTool()
 	playerInven->setMoney(temp);
 
 	cout << endl << endl;
+}
+
+void Store::sellItem(Item* item, int num)
+{
+	//아이템이 플레이어의 인벤토리에 없는 경우
+	playerInven->itemIter = playerInven->findIter(item);
+	if (playerInven->itemIter == playerInven->items.end())
+	{
+		cout << "Items not exist in player's inventory" << endl;
+		return;
+	}
+
+	//플레이어의 아이템 개수 감소 & 돈 증가
+	playerInven->removeItem(item, num);
+	int money = playerInven->getMoney() + item->getCost() * num;
+	playerInven->setMoney(money);
+}
+
+
+void Store::buyItem(Item* item, int num)
+{
+	//아이템이 상점에 없는 경우
+	storeInven->itemIter = storeInven->findIter(item);
+	if (storeInven->itemIter == storeInven->items.end())
+	{
+		cout << "Items not exist in store" << endl;
+		return;
+	}
+
+	//플레이어의 돈 확인
+	if (item->getCost() * num > playerInven->getMoney())
+	{
+		cout << "Money is not enough" << endl;
+		return;
+	}
+
+	//플레이어의 돈 감소 & 아이템 추가
+	playerInven->addItem(item, num);
+	int money = playerInven->getMoney() - item->getCost() * num;
+	playerInven->setMoney(money);
 }
