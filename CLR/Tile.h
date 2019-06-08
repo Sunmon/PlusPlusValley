@@ -102,10 +102,11 @@ public:
 	{
 		return this->canmove;
 	}
-	bool setIsWet(bool isWet) {
+	void setIsWet(bool isWet) {
 		this->isWet = isWet;
+
 	}
-	bool setFertilizer(bool fert) {
+	void setFertilizer(bool fert) {
 		this->fertilizer = fert;
 	}
 	bool getIsWet() {

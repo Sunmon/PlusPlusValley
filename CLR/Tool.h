@@ -3,7 +3,7 @@
 #include <string>
 
 //tool Á¾·ù
-enum TOOLTYPE { AX, HAMMER, SICKLE, HAND, SPRINKLE};
+enum TOOLTYPE { AX, HAMMER, SICKLE, HAND, SPRINKLE, FERTILIZE};
 
 class Tool :
 	public Item
