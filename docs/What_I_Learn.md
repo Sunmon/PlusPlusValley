@@ -41,3 +41,17 @@ Error:
 해결: **static변수를 class바깥에서 정의해주어서 해결!**
 
 Controller.cpp 맨 위에 `Controller* Controller::instance = nullptr;`를 추가해주어서 
+
+
+
+
+## 서로서로 `#include`하는 문제
+
+Player와 NPC가 직접적으로 / 돌아돌아 서로 include했다
+
+컴파일이 안 된다. 왜? 서로 필요하니까... player부르려면 npc 불러야하고 npc부르려면 또 player불러야하고..
+
+구조를 고쳐야 했는데 그럴 시간이 없었따
+
+그래서 그냥 NPC에 있는 메소드를 분해해서 Player에 넣었다...
+
