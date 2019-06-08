@@ -70,7 +70,9 @@ public:
 	void move(int tomove)
 	{
 		Tile* totile = NULL;
-		const int LEFT = 75, RIGHT = 77, UP = 72, DOWN = 80;
+		//const int LEFT = 75, RIGHT = 77, UP = 72, DOWN = 80;   //console
+		const int LEFT = 37, RIGHT = 39, UP = 40, DOWN = 38;	//gui
+
 		switch (tomove)
 		{
 		case LEFT:totile = nowtile->getleft(); statue = faceleft;break;

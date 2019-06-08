@@ -6,6 +6,7 @@
 #include <msclr\marshal_cppstd.h>
 #include <vcclr.h>
 #include <stdlib.h>
+#include <WinUser.h>
 
 namespace CLRFInal {
 
@@ -23,6 +24,8 @@ namespace CLRFInal {
 	public ref class MyForm1 : public System::Windows::Forms::Form
 	{
 	public:
+
+
 		static Controller* c;
 		MyForm1(Controller *c)
 		{
@@ -179,7 +182,7 @@ namespace CLRFInal {
 
 private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	//c->setPlayerPlace((int)(e->KeyCode));
-	c->getPlayer()->move((int)(e->KeyValue));
+	c->getPlayer()->move((int)(e->KeyCode));
 	panel7->Location = System::Drawing::Point(c->getPlayer()->getX(), c->getPlayer()->gety());
 }
 		 

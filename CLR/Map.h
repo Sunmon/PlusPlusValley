@@ -66,9 +66,10 @@ public:
 		map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(npcObject);
 
 		for (int i = 0; i < (rand() % 5 + 1); i++) {
-			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
-			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(treeObject);
+			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(&(*stoneObject));
+			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(&(*treeObject));
 		}
+
 
 
 		/*
