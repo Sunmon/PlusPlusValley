@@ -1,10 +1,12 @@
 #include "Player.h"
 #include <assert.h>
+#include "Harvest.h"
 using namespace std;
 
 
 Player::Player()
 {
+	store = new Store();
 	InitInventory();
 	// cout << "플레이어 생성!" << endl;
 
@@ -138,7 +140,7 @@ void Player::Interact()
 		{
 			if (target->getIsvalue() == false)
 			{
-				MapObject* seed = new MapObject(harvest);
+				Harvest* seed = new Harvest(harvest, "씨앗");
 				target->setObject(seed);
 			}
 			else
@@ -151,6 +153,7 @@ void Player::Interact()
 			cout << "아무일도 일어나지 않았다." << endl;
 		}
 	}
+
 }
 
 
@@ -163,6 +166,25 @@ void Player::interact()
 	Tile* target = this->getTarget();
 	if (onHand == nullptr || target == nullptr) return;
 
+	//타겟이 npc이면 gostore 실행
+	//손에 무기를 들고 있어도 실행 
+	if (target->getObject() != nullptr)
+	{
+		if (target->getObject()->getObjectType() == npc) {
+
+			goStore();
+			return;
+		}
+	}
+	
+	/*if (target->getNPC() !=NULL) {
+		target->getNPC()->goStore(this);
+	}*/
+
+	//if (target->getObject()->getObjectType() == npc) {
+	//	target->getNPC.goStore(this);
+	//}
+
 	//MapObject* & mo = target->getObject();
 
 	//툴이 도구라면 오브젝트 피 줄이기 & 파괴
@@ -171,6 +193,7 @@ void Player::interact()
 	{
 	case TOOL: doAction(onHand, target); break;
 	case SEED: seeding(onHand, target); break;
+
 	default: break;
 	}
 }
@@ -207,6 +230,32 @@ void Player::doAction(Item* tool, Tile* target)
 			inven->addItem(target->getObject()->getItemArray()[i]);
 		}*/
 		target->removeObj();
+	}
+}
+
+void Player::goStore(){
+
+
+	cout << "어서오세요 상점입니다~!" << endl;
+	int flag = 1;
+	while (flag)
+	{
+		int input;
+		cout << "\n\n1. 물건 구매  2. 물건 판매  3. 뒤로가기" << endl;
+		cin >> input;
+		cout << input << endl;
+		switch (input)
+		{
+		case 1:
+			store->buyItem();
+			break;
+		case 2:
+			store->sellItem();
+			break;
+		default:
+			flag = 0;
+			break;
+		}
 	}
 }
 

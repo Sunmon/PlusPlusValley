@@ -56,10 +56,10 @@ void Store::showItemList() {
 	storeInven->printItems();
 }
 
-void Store::sellItem(Player* player)
+void Store::sellItem()
 {
-	//Inventory* playerInven = new Inventory();
-	Inventory* playerInven = player->getInven();
+	Inventory* playerInven = new Inventory();
+	//Inventory* playerInven = this->getInven();
 
 	playerInven->printItems();
 
@@ -75,7 +75,7 @@ void Store::sellItem(Player* player)
 		system("cls");
 		cout << "인벤토리에 상품이 없습니다!" << endl << endl;
 
-		sellItem(player);
+		sellItem();
 		return;
 	}
 
@@ -86,7 +86,7 @@ void Store::sellItem(Player* player)
 	if (playerInven->findIter(selltemp)->second < num) {
 		system("cls");
 		cout << "인벤토리에 상품이 부족합니다!" << endl << endl;
-		sellItem(player);
+		sellItem();
 		return;
 	}
 
@@ -108,10 +108,10 @@ void Store::sellItem(Player* player)
 	cout << playerInven->getMoney();
 }
 
-void Store::buyItem(Player* player)
+void Store::buyItem()
 {
-	//Inventory* playerInven = new Inventory();
-	Inventory* playerInven = player->getInven();
+	Inventory* playerInven = new Inventory();
+	//Inventory* playerInven = this->getInven();
 
 	int num;
 
@@ -122,19 +122,19 @@ void Store::buyItem(Player* player)
 
 	switch (num) {
 	case 1:
-		buySeed(player);
+		buySeed();
 		break;
 	case 2:
-		buyCrop(player);
+		buyCrop();
 		break;
 	case 3:
-		buyStone(player);
+		buyStone();
 		break;
 	case 4:
-		buyWood(player);
+		buyWood();
 		break;
 	case 5:
-		buyTool(player);
+		buyTool();
 		break;
 	default:
 		cout << "잘못입력하셨습니다!" << endl;
@@ -146,9 +146,10 @@ void Store::buyItem(Player* player)
 
 
 }
-void Store::buySeed(Player* player) {
+void Store::buySeed() {
 
-	Inventory* playerInven = player->getInven();
+	Inventory* playerInven = new Inventory();
+	//Inventory* playerInven = player->getInven();
 
 	int itemNum;
 	string itemName;
@@ -160,7 +161,7 @@ void Store::buySeed(Player* player) {
 
 	if (tempItem == NULL) {
 		cout << "아이템 이름을 잘못 입력하셨습니다" << endl << endl;
-		buySeed(player);
+		buySeed();
 		return;
 	}
 
@@ -177,7 +178,7 @@ void Store::buySeed(Player* player) {
 
 	if (playerInven->getMoney() < tempItem->getCost() * itemNum) {
 		cout << "돈이 부족합니다!!" << endl;
-		buyItem(player);
+		buyItem();
 		return;
 	}
 
@@ -217,9 +218,10 @@ void Store::buySeed(Player* player) {
 	cout << endl << endl;
 }
 
-void Store::buyCrop(Player* player)
+void Store::buyCrop()
 {
-	Inventory* playerInven = player->getInven();
+	Inventory* playerInven = new Inventory();
+	//Inventory* playerInven = player->getInven();
 
 	int itemNum;
 	string itemName;
@@ -231,7 +233,7 @@ void Store::buyCrop(Player* player)
 
 	if (tempItem == NULL) {
 		cout << "아이템 이름을 잘못 입력하셨습니다" << endl << endl;
-		buyCrop(player);
+		buyCrop();
 		return;
 	}
 
@@ -248,7 +250,7 @@ void Store::buyCrop(Player* player)
 
 	if (playerInven->getMoney() < tempItem->getCost() * itemNum) {
 		cout << "돈이 부족합니다!!" << endl;
-		buyItem(player);
+		buyItem();
 		return;
 	}
 
@@ -276,9 +278,10 @@ void Store::buyCrop(Player* player)
 	cout << endl << endl;
 }
 
-void Store::buyStone(Player* player)
+void Store::buyStone()
 {
-	Inventory* playerInven = player->getInven();
+	Inventory* playerInven = new Inventory();
+	//Inventory* playerInven = this->getInven();
 
 	int itemNum;
 	string itemName;
@@ -290,7 +293,7 @@ void Store::buyStone(Player* player)
 
 	if (tempItem == NULL) {
 		cout << "아이템 이름을 잘못 입력하셨습니다" << endl << endl;
-		buyStone(player);
+		buyStone();
 		return;
 	}
 
@@ -307,7 +310,7 @@ void Store::buyStone(Player* player)
 
 	if (playerInven->getMoney() < tempItem->getCost() * itemNum) {
 		cout << "돈이 부족합니다!!" << endl;
-		buyItem(player);
+		buyItem();
 		return;
 	}
 
@@ -334,9 +337,10 @@ void Store::buyStone(Player* player)
 	cout << endl << endl;
 }
 
-void Store::buyWood(Player* player)
+void Store::buyWood()
 {
-	Inventory* playerInven = player->getInven();
+	Inventory* playerInven = new Inventory();
+	//Inventory* playerInven = this->getInven();
 
 	int itemNum;
 	string itemName;
@@ -348,7 +352,7 @@ void Store::buyWood(Player* player)
 
 	if (tempItem == NULL) {
 		cout << "아이템 이름을 잘못 입력하셨습니다" << endl << endl;
-		buyWood(player);
+		buyWood();
 		return;
 	}
 
@@ -365,7 +369,7 @@ void Store::buyWood(Player* player)
 
 	if (playerInven->getMoney() < tempItem->getCost() * itemNum) {
 		cout << "돈이 부족합니다!!" << endl;
-		buyItem(player);
+		buyItem();
 		return;
 	}
 
@@ -392,9 +396,10 @@ void Store::buyWood(Player* player)
 	cout << endl << endl;
 }
 
-void Store::buyTool(Player* player)
+void Store::buyTool()
 {
-	Inventory* playerInven = player->getInven();
+	Inventory* playerInven = new Inventory();
+	//Inventory* playerInven = player->getInven();
 
 	int itemNum;
 	string itemName;
@@ -406,7 +411,7 @@ void Store::buyTool(Player* player)
 
 	if (tempItem == NULL) {
 		cout << "아이템 이름을 잘못 입력하셨습니다" << endl << endl;
-		buyTool(player);
+		buyTool();
 		return;
 	}
 
@@ -423,7 +428,7 @@ void Store::buyTool(Player* player)
 
 	if (playerInven->getMoney() < tempItem->getCost() * itemNum) {
 		cout << "돈이 부족합니다!!" << endl;
-		buyItem(player);
+		buyItem();
 		return;
 	}
 

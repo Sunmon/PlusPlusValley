@@ -23,6 +23,10 @@ int main()
 	//test_store();
 	//test_saveharvest();
 }
+void test_goStore() {
+	Player* player = new Player();
+	player->goStore();
+}
 
 void test_inventory()
 {
@@ -55,21 +59,22 @@ void test_inventory()
 
 }
 
-void test_store()
-{
-	Player* player = new Player();
-
-	NPC* npc = new NPC();
-
-	npc->store->showItemList();
-
-	npc->goStore(player);
-
-}
+//void test_store()
+//{
+//	Player* player = new Player();
+//
+//	NPC* npc = new NPC();
+//
+//	npc->store->showItemList();
+//
+//	npc->goStore(player);
+//
+//}
 
 void test_saveharvest()
 {
 	Map* map = new Map();
 	map->loadmap();
+	map->growth();
 	map->savemap();
 }

@@ -11,7 +11,7 @@ enum status
 
 class Character
 {
-private:
+protected:
 	Tile* nowtile;
 	Tile* target;
 	int hp;

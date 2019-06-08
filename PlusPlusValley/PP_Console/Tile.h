@@ -2,6 +2,8 @@
 #include <map>
 #include <vector>
 #include "MapObject.h"
+#include "Harvest.h"
+
 
 using namespace std;
 
@@ -19,6 +21,8 @@ private:
 	Tile* upTile;
 	Tile* downTile;
 	MapObject* mapobject;
+	Harvest* harv;
+
 public:
 	Tile(){}
 	Tile(int x, int y)
@@ -38,6 +42,7 @@ public:
 		rightTile = NULL;
 		upTile = NULL;
 		downTile = NULL;
+		harv = NULL;
 	}
 
 	void setXY(int x, int y)
@@ -126,14 +131,27 @@ public:
 		{
 			canmove = false;
 		}
+
 			
 		isvalue = true;
 	
 	}
 
+	void setObject(Harvest* har)
+	{
+		if (this->isvalue) return;
+
+		this->mapobject = har;
+		this->harv = har;
+		isvalue = true;
+	}
 	MapObject* getObject()
 	{
 		return mapobject;
+	}
+	Harvest* getHarvest()
+	{
+		return harv;
 	}
 
 	//tile에 있는 object 없앰
@@ -144,6 +162,20 @@ public:
 		this->mapobject = NULL;
 		this->isvalue = false;
 	}
+	//NPC를 타일에 놓는다
+	/*void setNPC() {
+		if (this->isvalue) return;
+		this->mapobject = object;
+		if (object->getObjectType() != harvest)
+		{
+			canmove = false;
+		}
+
+		isvalue = true;
+	}
+	NPC* getNPC() {
+		return this->npc;
+	}*/
 };
 
 
