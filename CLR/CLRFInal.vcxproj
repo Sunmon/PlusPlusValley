@@ -134,7 +134,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Act.h" />
     <ClInclude Include="character.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Harvest.h" />
@@ -162,7 +161,6 @@
     <EmbeddedResource Include="MyForm1.resx" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Act.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="InitialPage.cpp" />
     <ClCompile Include="Inventory.cpp" />

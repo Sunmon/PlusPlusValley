@@ -178,8 +178,9 @@ namespace CLRFInal {
 	
 
 private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	c->setPlayerPlace((int)(e->KeyCode));
-	panel7->Location = System::Drawing::Point(c->getPlayerX(), c->getPlayerY());
+	//c->setPlayerPlace((int)(e->KeyCode));
+	c->getPlayer()->move((int)(e->KeyValue));
+	panel7->Location = System::Drawing::Point(c->getPlayer()->getX(), c->getPlayer()->gety());
 }
 		 
 
