@@ -35,3 +35,4 @@ void UseTime::nexttime()
 		int newtime = this->gmtime;
 		settime(newtime + 10);
 }
+

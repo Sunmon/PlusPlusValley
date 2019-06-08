@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <process.h>
 #include "Player.h"
+#include "NPC.h"
 #include <conio.h>
 
 
@@ -38,6 +39,7 @@ private:
 			//player->Interact();
 			player->interact();
 		}
+
 	}
 	static unsigned int __stdcall move(void* arg)
 	{

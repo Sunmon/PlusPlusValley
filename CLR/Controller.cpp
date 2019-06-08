@@ -3,7 +3,6 @@ Controller* Controller::instance = nullptr;
 
 Controller::Controller()
 {
-	init();
 }
 
 Controller::~Controller()
@@ -31,7 +30,8 @@ void Controller::init()
 	//new InitialPage()->makePlayer(player);
 	movethread = new MoveThread(player);
 	time = new UseTime(9 * 60);
-
+	//npc = new NPC();
+	//npc->setTile(map->map[3][4]);
 }
 
 void Controller::test_move()
@@ -43,33 +43,18 @@ void Controller::test_move()
 		time->nexttime();
 		cout << setw(2) << setfill('0') << time->gethour() << ':' << setw(2) << setfill('0') << time->getminute() << endl;
 	}
-
-
 }
 
-void Controller::setName(string name)
+void Controller::Nextday()
 {
-	player->setName(name);
-
+	
+	map->savemap();
+	
 }
 
-string Controller::getPlayerName()
+Player* Controller::getPlayer()
 {
-	return player->getName();
-}
-
-int Controller::getPlayerX() {
-	return player->getX();
-}
-
-int Controller::getPlayerY()
-{
-	return player->gety();
-}
-
-void Controller::setPlayerPlace(int a)
-{
-	player->move(a);
+	return player;
 }
 
 

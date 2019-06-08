@@ -34,6 +34,7 @@ public:
 		if (growth >= growingPoint) {
 			level++;
 		}
+		cout << "check" << endl;
 		return level;
 	}
 };

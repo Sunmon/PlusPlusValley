@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string> 
+#include <vector>
 #include "Item.h"
 
 using namespace std;
@@ -8,20 +9,24 @@ using namespace std;
 enum ObjectType
 {
 	//tree = 1, stone, harvest,
-	tree, stone, harvest
+	tree, stone, harvest, npc
 };
 class MapObject {
 protected:
 	ObjectType objectType;
 	int place[2];
 	int health;
-	Item *itemArray[3];
+	vector<Item*> itemArray;
+	//Item* itemArray[3];
 	// Item수를 정할건지 아니면 동적으로 늘어나게 할건지 얘기가 안되어서 일단 3개로 대충 잡아놨습니다!
 
 public:
 
 	MapObject(){
-
+		for (auto& i : itemArray)
+		{
+			i = nullptr;
+		}
 	}
 	MapObject(ObjectType ot, const string& name): MapObject(ot) {
 		setEarnItem(ot, name);
@@ -35,7 +40,7 @@ public:
 
 	//Object 부셨을 때 획득하는 item 생성
 	void setEarnItem(ObjectType ot, const string& name) {
-		switch (ot)
+		/*switch (ot)
 		{
 		case tree:
 			setItemArray(ItemType::WOOD, "나무조각", 0);
@@ -50,11 +55,46 @@ public:
 		default:
 			break;
 		}
+*/
+		switch (ot)
+		{
+		case tree:
+			//setItemArray(ItemType::WOOD, "나무조각", 0);
+			setItemArray(ItemType::WOOD, "나무조각");
+			break;
+		case stone:
+			//setItemArray(ItemType::STONE, "돌조각", 0);
+			setItemArray(ItemType::STONE, "돌조각");
+			break;
+		case harvest:
+			setItemArray(ItemType::CROP, name);
+			setItemArray(ItemType::SEED, name + "씨앗");
+			break;
+
+			//setItemArray(ItemType::CROP, name, 0);
+			//setItemArray(ItemType::SEED, name + "씨앗", 1);
+		case npc: break;
+		default:
+			break;
+		}
 	}
+
+	void setItemArray(ItemType it, const string& name)
+	{
+		itemArray.push_back(new Item(it, name));
+	}
+
 	void setItemArray(ItemType it, const string& name, int index)
 	{
 		itemArray[index] = new Item(it,name);
+		
 	}
+
+	vector<Item*> getItemArray()
+	{
+		return itemArray;
+	}
+
 
 
 	void setPlace(int p[]) {
@@ -100,6 +140,9 @@ public:
 			return itemArray[n];
 		}
 	}
-
+	virtual int growing() {
+		cout << "check" << endl;
+		return 0;
+	}
 
 };

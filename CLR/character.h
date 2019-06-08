@@ -11,7 +11,7 @@ enum status
 
 class Character
 {
-private:
+protected:
 	Tile* nowtile;
 	Tile* target;
 	int hp;
@@ -70,7 +70,7 @@ public:
 	void move(int tomove)
 	{
 		Tile* totile = NULL;
-		const int LEFT = 37, RIGHT = 39, UP = 40, DOWN = 38;
+		const int LEFT = 75, RIGHT = 77, UP = 72, DOWN = 80;
 		switch (tomove)
 		{
 		case LEFT:totile = nowtile->getleft(); statue = faceleft;break;

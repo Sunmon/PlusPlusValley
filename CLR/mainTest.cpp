@@ -6,26 +6,30 @@
 #include "Controller.h"
 #include "Character.h"
 #include "NPC.h"
-
 using namespace std;
 
-Controller controller;
+Controller* controller = Controller::getInstance();
+Player* player;
+Map* map;
+
 void test_inventory();
 void test_store();
-
-
+void test_saveharvest();
 
 int main()
 {
-	//controller.test_move();
-
-	controller.test_move();
+	controller->init();
+	controller->test_move();
 	//test_store();
+	//test_saveharvest();
+}
+void test_goStore() {
+	Player* player = new Player();
+	player->goStore();
 }
 
 void test_inventory()
 {
-	//FIXME: map을 쓰면 자동으로 정렬됨. 순서가 필요하다면 vector를 써야 함.
 	//test for inventory
 	Inventory* inven = new Inventory();
 
@@ -55,14 +59,22 @@ void test_inventory()
 
 }
 
-void test_store()
+//void test_store()
+//{
+//	Player* player = new Player();
+//
+//	NPC* npc = new NPC();
+//
+//	npc->store->showItemList();
+//
+//	npc->goStore(player);
+//
+//}
+
+void test_saveharvest()
 {
-	Player* player = new Player();
-
-	NPC* npc = new NPC();
-
-	npc->store->showItemList();
-
-	npc->goStore(player);
-
+	Map* map = new Map();
+	map->loadmap();
+	map->growth();
+	map->savemap();
 }

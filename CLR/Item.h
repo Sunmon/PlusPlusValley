@@ -13,7 +13,7 @@
 */
 
 /*아이템 타입. NONE(NULL대신), 씨앗, 수확작물, 돌, 나무, 도구*/
-enum ItemType {NONE, SEED, CROP, STONE, WOOD, TOOL};	
+enum ItemType { NONE, SEED, CROP, STONE, WOOD, TOOL };
 
 class Item
 {
@@ -31,7 +31,7 @@ public:
 	int getMAX_NUM();
 	int getCost();
 	std::string& getName();
-	
+
 
 private:
 	int MAX_NUM = 10;	/*아이템별 가질 수 있는 최대 수*/
