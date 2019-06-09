@@ -58,6 +58,7 @@ public:
 		MapObject* stoneObject = new MapObject(stone, "돌");
 		MapObject* treeObject = new MapObject(tree, "나무");
 		MapObject* npcObject = new MapObject(npc, "상인");
+		Harvest* harvestObject = new Harvest(harvest , "딸기");
 		//NPC* npc = new NPC("상인");
 
 		//npc를 맵 오브젝트로 설정
@@ -68,9 +69,10 @@ public:
 		for (int i = 0; i < (rand() % 5 + 1); i++) {
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(stoneObject);
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(treeObject);
+			
 		}
 
-
+		map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(harvestObject);
 		/*
 		for (int i = 0; i < (rand()%5 +1); i++)
 		{
@@ -90,10 +92,12 @@ public:
 		{
 			for (int i = 0; i < MAX_X; i++)
 			{
+				map[i][j]->setIsWet(true);
 				Harvest* tempobject = map[i][j]->getHarvest();
 				if (tempobject != NULL)
 				
 				{
+					
 					if (map[i][i]->getIsWet())
 					{
 						tempobject->growing();
@@ -126,6 +130,7 @@ public:
 				else
 				{
 					string str;
+					string name = tempobject->getName();
 					switch (tempobject->getObjectType())
 					{
 					case tree:
@@ -134,13 +139,16 @@ public:
 					case stone:
 						str = "stone";
 						break;
+					case npc:
+						str = "npc";
+						break;
 					case harvest:
-						Harvest* tempobject = map[i][j]->getHarvest();
 						str = "harvest";
+						Harvest* tempobject = map[i][j]->getHarvest();
 						level = tempobject->getLevel();
 						break;
 					}
-					ofs << i << " " << j << " " << str << " " << tempobject->getHealth() << " " << level << endl;
+					ofs << i << " " << j << " " << str << " " << name << " " << tempobject->getHealth() << " " << level << endl;
 				}
 			}
 		}
@@ -159,9 +167,11 @@ public:
 
 		int x, y;
 		string type;
+		string name;
 		int hp;
 		int level;
-		while (ifs >> x >> y >> type >> hp >> level)
+
+		while (ifs >> x >> y >> type >> name >> hp >> level)
 		{
 			if(type != "NULL")
 			{
@@ -176,11 +186,16 @@ public:
 				{
 					object->setObjectType(stone);
 				}
+				if (type == "npc")
+				{
+					object->setObjectType(npc);
+				}
 				if (type == "harvest")
 				{
 					object->setObjectType(harvest);
-					Harvest* harv = new Harvest();
+					Harvest* harv = new Harvest(harvest, name);
 					harv->setLevel(level);
+					cout << harv->getLevel() << endl;
 				}
 				
 				map[x][y]->setObject(object);
