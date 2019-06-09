@@ -18,6 +18,7 @@ private:
 	Player *player;
 	MoveThread *movethread;
 	UseTime *time;
+	MapObject* m = new MapObject[10]{ MapObject(tree),MapObject(tree),MapObject(tree), };
 	//NPC* npc;
 public:
 	static Controller* getInstance();
@@ -25,4 +26,6 @@ public:
 	void test_move();	//이동 테스트
 	void Nextday();
 	Player* getPlayer();
+	MapObject getMapObject(int);
+	void setMapObject(MapObject, int);
 };

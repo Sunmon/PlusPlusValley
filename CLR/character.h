@@ -66,6 +66,10 @@ public:
 		}
 		return target;
 	}
+
+	int getStatue() {
+		return statue;
+	}
 	
 	void move(int tomove)
 	{
