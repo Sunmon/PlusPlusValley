@@ -113,6 +113,7 @@ public:
 			cout << "파일을 열 수 없습니다." << endl;
 			exit(0);
 		}
+		int level = 0;
 		for (int j = 0; j < MAX_Y; j++)
 		{
 			for (int i = 0; i < MAX_X; i++)
@@ -120,7 +121,7 @@ public:
 				MapObject* tempobject = map[i][j]->getObject();
 				if (tempobject == NULL)
 				{
-					ofs << i << " " << j << " " << "NULL" << " " << 0 << endl;
+					ofs << i << " " << j << " " << "NULL" << " " << 0 << " " << 0 << endl;
 				}
 				else
 				{
@@ -134,10 +135,12 @@ public:
 						str = "stone";
 						break;
 					case harvest:
+						Harvest* tempobject = map[i][j]->getHarvest();
 						str = "harvest";
+						level = tempobject->getLevel();
 						break;
 					}
-					ofs << i << " " << j << " " << str << " " << tempobject->getHealth() << endl;
+					ofs << i << " " << j << " " << str << " " << tempobject->getHealth() << " " << level << endl;
 				}
 			}
 		}
@@ -157,7 +160,8 @@ public:
 		int x, y;
 		string type;
 		int hp;
-		while (ifs >> x >> y >> type >> hp)
+		int level;
+		while (ifs >> x >> y >> type >> hp >> level)
 		{
 			if(type != "NULL")
 			{
@@ -175,6 +179,8 @@ public:
 				if (type == "harvest")
 				{
 					object->setObjectType(harvest);
+					Harvest* harv = new Harvest();
+					harv->setLevel(level);
 				}
 				
 				map[x][y]->setObject(object);

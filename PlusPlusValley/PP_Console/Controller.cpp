@@ -46,8 +46,9 @@ void Controller::test_move()
 
 void Controller::Nextday()
 {
-	
+	map->growth();
 	map->savemap();
+	map->loadmap();
 	
 }
 
