@@ -59,6 +59,12 @@ namespace CLRFInal {
 	private: System::Windows::Forms::Panel^ panel9;
 	private: System::Windows::Forms::Button^ button1;
 
+	private: System::Windows::Forms::ImageList^ imageList1;
+	private: System::Windows::Forms::Panel^ panel11;
+	private: System::Windows::Forms::Panel^ panel13;
+	private: System::Windows::Forms::Panel^ panel12;
+
+
 
 
 
@@ -83,8 +89,10 @@ namespace CLRFInal {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm1::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->panel11 = (gcnew System::Windows::Forms::Panel());
 			this->panel9 = (gcnew System::Windows::Forms::Panel());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->panel10 = (gcnew System::Windows::Forms::Panel());
@@ -95,6 +103,9 @@ namespace CLRFInal {
 			this->panel5 = (gcnew System::Windows::Forms::Panel());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->imageList1 = (gcnew System::Windows::Forms::ImageList(this->components));
+			this->panel12 = (gcnew System::Windows::Forms::Panel());
+			this->panel13 = (gcnew System::Windows::Forms::Panel());
 			this->panel1->SuspendLayout();
 			this->panel9->SuspendLayout();
 			this->panel4->SuspendLayout();
@@ -103,6 +114,9 @@ namespace CLRFInal {
 			// panel1
 			// 
 			this->panel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel1.BackgroundImage")));
+			this->panel1->Controls->Add(this->panel13);
+			this->panel1->Controls->Add(this->panel12);
+			this->panel1->Controls->Add(this->panel11);
 			this->panel1->Controls->Add(this->panel9);
 			this->panel1->Controls->Add(this->panel10);
 			this->panel1->Controls->Add(this->panel8);
@@ -115,6 +129,16 @@ namespace CLRFInal {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(500, 300);
 			this->panel1->TabIndex = 0;
+			// 
+			// panel11
+			// 
+			this->panel11->BackColor = System::Drawing::Color::Transparent;
+			this->panel11->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel11.BackgroundImage")));
+			this->panel11->Location = System::Drawing::Point(62, 156);
+			this->panel11->Name = L"panel11";
+			this->panel11->Size = System::Drawing::Size(36, 45);
+			this->panel11->TabIndex = 3;
+			this->panel11->Visible = false;
 			// 
 			// panel9
 			// 
@@ -181,6 +205,7 @@ namespace CLRFInal {
 			this->panel6->Name = L"panel6";
 			this->panel6->Size = System::Drawing::Size(44, 82);
 			this->panel6->TabIndex = 3;
+			this->panel6->Click += gcnew System::EventHandler(this, &MyForm1::Panel6_Click);
 			// 
 			// panel4
 			// 
@@ -219,8 +244,37 @@ namespace CLRFInal {
 			this->panel2->Size = System::Drawing::Size(80, 127);
 			this->panel2->TabIndex = 1;
 			// 
+			// imageList1
+			// 
+			this->imageList1->ImageStream = (cli::safe_cast<System::Windows::Forms::ImageListStreamer^>(resources->GetObject(L"imageList1.ImageStream")));
+			this->imageList1->TransparentColor = System::Drawing::Color::Transparent;
+			this->imageList1->Images->SetKeyName(0, L"¾Õ1.png");
+			this->imageList1->Images->SetKeyName(1, L"¾Õ2.png");
+			// 
+			// panel12
+			// 
+			this->panel12->BackColor = System::Drawing::Color::Transparent;
+			this->panel12->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel12.BackgroundImage")));
+			this->panel12->Location = System::Drawing::Point(161, 252);
+			this->panel12->Name = L"panel12";
+			this->panel12->Size = System::Drawing::Size(36, 45);
+			this->panel12->TabIndex = 4;
+			this->panel12->Visible = false;
+			// 
+			// panel13
+			// 
+			this->panel13->BackColor = System::Drawing::Color::Transparent;
+			this->panel13->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel13.BackgroundImage")));
+			this->panel13->Location = System::Drawing::Point(453, 149);
+			this->panel13->Name = L"panel13";
+			this->panel13->Size = System::Drawing::Size(36, 45);
+			this->panel13->TabIndex = 4;
+			this->panel13->Visible = false;
+			// 
 			// MyForm1
 			// 
+			this->KeyPreview = true;
+			this->KeyDown += gcnew KeyEventHandler(this, &MyForm1::KeyDDown);
 			this->AutoScaleDimensions = System::Drawing::SizeF(7, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
@@ -240,15 +294,51 @@ namespace CLRFInal {
 
 private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	//c->setPlayerPlace((int)(e->KeyCode));
-	c->getPlayer()->move((int)(e->KeyCode));
-	panel7->Location = System::Drawing::Point(c->getPlayer()->getX(), c->getPlayer()->gety());
-}
-		 
+	Player *p = c->getPlayer();
+	int k = (int)(e->KeyCode);
+	p->move((int)(e->KeyCode));
+	panel7->Location = System::Drawing::Point(p->getX(),p->gety());
+	int x = p->getX();
+	int y = p->gety();
 
+	if(k == 32){
+		for (int i = 0; i < 3; i++) {
+			MapObject m = c->getMapObject(i);
+			int mx = m.getPlace()[0];
+			int my = m.getPlace()[1];
+			int sx = m.getSize()[0];
+			int sy = m.getSize()[1];
 		
 
+			if (x <= mx + sx && x >= mx - sx && y >= my - sy && y <= my + sy) {
+				int h = m.getHealth();
+				if (h > 60) {
+					h = h - 10;
+					m.setHealth(h);
+				}
+				else {
+					if (i == 0) {
+						panel6->Visible = false;
+						panel11->Visible = true;
+					}
+					else if (i == 1) {
+						panel3->Visible = false;
+						panel12->Visible = true;
+					}
+					else if (i == 2) {
+						panel4->Visible = false;
+						panel13->Visible = true;
+					}
+				}
+				c->setMapObject(m, i);
+				break;
+			}
+			
+		}
+	}
 
-
+}
+		 
 private: System::Void Panel10_Click(System::Object^ sender, System::EventArgs^ e) {
 	panel8->Visible = true;
 	panel9->Visible = true;
@@ -259,5 +349,11 @@ private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e
 	panel9->Visible = false;
 	button1->Visible = false;
 }
+
+
+private: System::Void Panel6_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+}
+
 };
 }
