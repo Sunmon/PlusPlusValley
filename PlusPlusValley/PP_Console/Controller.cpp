@@ -17,6 +17,7 @@ Controller* Controller::getInstance()
 void Controller::init()
 {
 	map = new Map();
+	map->loadmap();
 	startTile = map->gettile(15, 10);
 	//TODO: initPage 이용하도록
 	//player->setTile(startTile);
