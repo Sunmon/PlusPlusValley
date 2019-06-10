@@ -21,4 +21,8 @@ Tool::Tool(TOOLTYPE tt, const std::string& name):Tool(name)
 	this->toolType = tt;
 }
 
+TOOLTYPE Tool::gettooltype()
+{
+	return toolType;
+}
 

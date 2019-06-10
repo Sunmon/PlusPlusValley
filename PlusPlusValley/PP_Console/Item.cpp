@@ -1,6 +1,6 @@
 #include "Item.h"
 
-Item::Item(): Item(ItemType::NONE, "")
+Item::Item(): Item(ItemType::NONE, "NULL")
 {
 	this->MAX_NUM = 10;
 	//this->itemType = ItemType::NONE;	//√ ±‚»≠
