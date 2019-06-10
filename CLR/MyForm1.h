@@ -327,11 +327,10 @@ private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::K
 			MapObject m = c->getMapObject(i);
 			int mx = m.getPlace()[0];
 			int my = m.getPlace()[1];
-			int sx = m.getSize()[0];
-			int sy = m.getSize()[1];
+			
 		
 
-			if (x <= mx + sx && x >= mx - sx && y >= my - sy && y <= my + sy) {
+			if (x <= mx + 22 && x >= mx - 22 && y >= my - 41 && y <= my + 41) {
 				int h = m.getHealth();
 				if (h > 60) {
 					h = h - 10;

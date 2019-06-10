@@ -34,15 +34,10 @@ void Controller::init()
 	time = new UseTime(9 * 60);
 	//npc = new NPC();
 	//npc->setTile(map->map[3][4]);
-	m[0].setPlace(12, 139);
-	m[1].setPlace(101,218);
-	m[2].setPlace(453,200);
-	m[0].setSize(22, 41);
-	m[1].setSize(22, 41);
-	m[2].setSize(22, 41);
-	m[0].setBool(true);
-	m[1].setBool(true);
-	m[2].setBool(true);
+	(map->map[12][139])->setObject(new MapObject(tree),12,139);
+	(map->map[101][218])->setObject(new MapObject(tree),101,218);
+	(map->map[453][200])->setObject(new MapObject(tree),453,200);
+	m = new MapObject[10]{ *(map->map[12][139]->getObject()), *(map->map[101][218]->getObject()), *(map->map[453][200]->getObject()), };
 }
 
 void Controller::test_move()

@@ -18,7 +18,7 @@ private:
 	Player *player;
 	MoveThread *movethread;
 	UseTime *time;
-	MapObject* m = new MapObject[10]{ MapObject(tree),MapObject(tree),MapObject(tree), };
+	MapObject* m;
 	//NPC* npc;
 public:
 	static Controller* getInstance();
