@@ -51,50 +51,85 @@ public:
 	std::vector<pair<Item*, int>>::iterator findIter(Item* item);
 	std::vector<pair<Item*, int>>::iterator itemIter;
 
+
 	void saveinven()
 	{
 		ofstream ofs;
-		ofs.open("./map.txt");
+		ofs.open("./inven.txt");
+		if (!ofs)
+		{
+			cout << "파일을 열 수 없습니다." << endl;
+			exit(0);
+		}
+
+
+		for (auto& item : items)
+		{
+			if (item.first->getItemType() == TOOL)
+			{
+
+				ofs << item.first->getItemType() << " " << item.first->getName() << " "
+					<< ((Tool*)item.first)->gettooltype() << " " << item.second << endl;
+			}
+			else
+			{
+				ofs << item.first->getItemType() << " " << item.first->getName() << " "
+					<< 0 << " " << item.second << endl;
+			}
+		}
+
+		ofs.close();
+		ofs.open("./money.txt");
 		if (!ofs)
 		{
 			cout << "파일을 열 수 없습니다." << endl;
 			exit(0);
 		}
 		ofs << money << endl;
-		for (auto& item : items)
-		{
-
-			ofs << item.first->getItemType() << " " << item.first->getName() << " " << item.second << endl;
-
-		}
-			
 		ofs.close();
 	}
-
-
-
-
 	void loadinven()
 	{
 		ifstream ifs;
-		ifs.open("./map.txt");
+		ifs.open("./inven.txt");
 		if (!ifs)
 		{
 			cout << "파일을 열 수 없습니다." << endl;
 			exit(0);
 		}
 
-		int x, y;
-		string type;
-		int hp;
-		while (ifs >> x >> y >> type >> hp)
+		int type;
+		string name;
+		int tool;
+		int num;
+
+
+
+		while (ifs >> type >> name >> tool >> num)
 		{
-			if (type != "NULL")
+			if (tool != 0)
 			{
-				
+				Tool* inventool = new Tool((TOOLTYPE)tool, name);
+				addItem(inventool, num);
+
+			}
+			else
+			{
+				Item* invenitem = new Item((ItemType)type, name);
+				addItem(invenitem, num);
 			}
 		}
 
+		ifs.close();
+
+		ifs.open("./money.txt");
+		if (!ifs)
+		{
+			cout << "파일을 열 수 없습니다." << endl;
+			exit(0);
+		}
+
+		ifs >> money;
 		ifs.close();
 	}
 

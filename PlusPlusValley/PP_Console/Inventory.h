@@ -61,13 +61,13 @@ public:
 			cout << "파일을 열 수 없습니다." << endl;
 			exit(0);
 		}
-		
-		
+
+
 		for (auto& item : items)
 		{
 			if (item.first->getItemType() == TOOL)
 			{
-				
+
 				ofs << item.first->getItemType() << " " << item.first->getName() << " "
 					<< ((Tool*)item.first)->gettooltype() << " " << item.second << endl;
 			}
@@ -103,15 +103,15 @@ public:
 		int tool;
 		int num;
 
-		
-		
+
+
 		while (ifs >> type >> name >> tool >> num)
 		{
 			if (tool != 0)
 			{
 				Tool* inventool = new Tool((TOOLTYPE)tool, name);
-				addItem(inventool,num);
-				
+				addItem(inventool, num);
+
 			}
 			else
 			{

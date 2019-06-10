@@ -202,10 +202,10 @@ void Player::doAction(Item* tool, Tile* target)
 	if (target->getObject() == nullptr) return;
 	std::string str[5] = { "나무를 베었다", "돌을 부쉈다", "작물을 수확했다", "물을 뿌렸다", "비료를 뿌렸다" };
 
-	if (static_cast<Tool*>(tool)->toolType == SPRINKLE) { sprinkle(tool, target); return; }
-	if (static_cast<Tool*>(tool)->toolType == FERTILIZE) { fertilize(tool, target); return; }
-	cout << "toolType: " << static_cast<Tool*>(tool)->toolType << " objectType: " << target->getObject()->getObjectType() << endl;
-	if (static_cast<Tool*>(tool)->toolType != target->getObject()->getObjectType()) return;
+	if (static_cast<Tool*>(tool)->gettooltype() == SPRINKLE) { sprinkle(tool, target); return; }
+	if (static_cast<Tool*>(tool)->gettooltype() == FERTILIZE) { fertilize(tool, target); return; }
+	cout << "toolType: " << static_cast<Tool*>(tool)->gettooltype() << " objectType: " << target->getObject()->getObjectType() << endl;
+	if (static_cast<Tool*>(tool)->gettooltype() != target->getObject()->getObjectType()) return;
 
 	reduce_MO_HP(target->getObject());
 

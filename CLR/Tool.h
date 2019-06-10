@@ -8,11 +8,13 @@ enum TOOLTYPE { AX, HAMMER, SICKLE, HAND, SPRINKLE, FERTILIZE};
 class Tool :
 	public Item
 {
-public:
+protected:
 	TOOLTYPE toolType;
+public:
 	Tool();
 	~Tool();
 	Tool(const std::string& name);
 	Tool(TOOLTYPE tt, const std::string& name);
+	TOOLTYPE gettooltype();
 };
 
