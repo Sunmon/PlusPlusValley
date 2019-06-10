@@ -6,7 +6,7 @@ using namespace std;
 
 enum status
 {
-	faceleft = 1, faceright, faceup, facedown,
+	faceleft, faceright, faceup, facedown,
 };
 
 class Character
@@ -23,6 +23,11 @@ public:
 	Character() {
 	}
 	
+
+	Tile* getNowTile()
+	{
+		return this->nowtile;
+	}
 
 	int getX()
 	{

@@ -104,8 +104,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <EntryPointSymbol>
-      </EntryPointSymbol>
+      <EntryPointSymbol>GUI_MAIN</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -199,6 +198,41 @@
     <ClCompile Include="Store.cpp" />
     <ClCompile Include="Tool.cpp" />
     <ClCompile Include="UseTime.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="down_1.bmp" />
+    <Image Include="images\down1.png" />
+    <Image Include="images\down2.png" />
+    <Image Include="images\down3.png" />
+    <Image Include="images\down4.png" />
+    <Image Include="images\Leah_down1.png" />
+    <Image Include="images\Leah_down2.png" />
+    <Image Include="images\Leah_down3.png" />
+    <Image Include="images\Leah_down4.png" />
+    <Image Include="images\Leah_left1.png" />
+    <Image Include="images\Leah_left2.png" />
+    <Image Include="images\Leah_left3.png" />
+    <Image Include="images\Leah_left4.png" />
+    <Image Include="images\Leah_right1.png" />
+    <Image Include="images\Leah_right2.png" />
+    <Image Include="images\Leah_right3.png" />
+    <Image Include="images\Leah_right4.png" />
+    <Image Include="images\Leah_up1.png" />
+    <Image Include="images\Leah_up2.png" />
+    <Image Include="images\Leah_up3.png" />
+    <Image Include="images\Leah_up4.png" />
+    <Image Include="images\left1.png" />
+    <Image Include="images\left2.png" />
+    <Image Include="images\left3.png" />
+    <Image Include="images\left4.png" />
+    <Image Include="images\right1.png" />
+    <Image Include="images\right2.png" />
+    <Image Include="images\right3.png" />
+    <Image Include="images\right4.png" />
+    <Image Include="images\up1.png" />
+    <Image Include="images\up2.png" />
+    <Image Include="images\up3.png" />
+    <Image Include="images\up4.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

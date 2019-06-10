@@ -134,4 +134,105 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="down_1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_down1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_down2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_down3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_down4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_left1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_left2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_left3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_left4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_right1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_right2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_right3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_right4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_up1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_up2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_up3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_up4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\down1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\down2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\down3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\down4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\left1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\left2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\left3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\left4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\right1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\right2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\right3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\right4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\up1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\up2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\up3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\up4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
