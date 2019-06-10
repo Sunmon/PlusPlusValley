@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.h"
 #include "MyForm1.h"
+#include "MyForm2.h"
 #include "Tile.h"
 #include "Controller.h"
 #include <string>
@@ -73,11 +74,11 @@ namespace CLRFInal {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -89,27 +90,42 @@ namespace CLRFInal {
 			this->panel1->Controls->Add(this->textBox1);
 			this->panel1->Controls->Add(this->button1);
 			this->panel1->Controls->Add(this->label1);
-			this->panel1->Location = System::Drawing::Point(0, 0);
+			this->panel1->Location = System::Drawing::Point(-4, -4);
+			this->panel1->Margin = System::Windows::Forms::Padding(4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(500, 300);
+			this->panel1->Size = System::Drawing::Size(714, 450);
 			this->panel1->TabIndex = 0;
 			// 
 			// groupBox1
 			// 
 			this->groupBox1->Controls->Add(this->button3);
 			this->groupBox1->Controls->Add(this->button2);
-			this->groupBox1->Location = System::Drawing::Point(157, 117);
+			this->groupBox1->Location = System::Drawing::Point(224, 176);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(200, 100);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4);
+			this->groupBox1->Size = System::Drawing::Size(286, 150);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Visible = false;
 			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(149, 96);
+			this->button3->Margin = System::Windows::Forms::Padding(4);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(107, 34);
+			this->button3->TabIndex = 2;
+			this->button3->Text = L"아니요";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::Button3_Click);
+			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(11, 64);
+			this->button2->Location = System::Drawing::Point(16, 96);
+			this->button2->Margin = System::Windows::Forms::Padding(4);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->Size = System::Drawing::Size(107, 34);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"확인";
 			this->button2->UseVisualStyleBackColor = true;
@@ -118,9 +134,10 @@ namespace CLRFInal {
 			// textBox1
 			// 
 			this->textBox1->AccessibleRole = System::Windows::Forms::AccessibleRole::Text;
-			this->textBox1->Location = System::Drawing::Point(168, 154);
+			this->textBox1->Location = System::Drawing::Point(240, 231);
+			this->textBox1->Margin = System::Windows::Forms::Padding(4);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(189, 21);
+			this->textBox1->Size = System::Drawing::Size(268, 28);
 			this->textBox1->TabIndex = 2;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::TextBox1_TextChanged);
 			// 
@@ -128,9 +145,10 @@ namespace CLRFInal {
 			// 
 			this->button1->BackColor = System::Drawing::Color::Transparent;
 			this->button1->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->button1->Location = System::Drawing::Point(381, 154);
+			this->button1->Location = System::Drawing::Point(544, 231);
+			this->button1->Margin = System::Windows::Forms::Padding(4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(107, 34);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Start";
 			this->button1->UseVisualStyleBackColor = false;
@@ -143,29 +161,22 @@ namespace CLRFInal {
 			this->label1->Font = (gcnew System::Drawing::Font(L"굴림체", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(129)));
 			this->label1->ForeColor = System::Drawing::Color::Snow;
-			this->label1->Location = System::Drawing::Point(32, 154);
+			this->label1->Location = System::Drawing::Point(46, 231);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(130, 19);
+			this->label1->Size = System::Drawing::Size(189, 29);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Player Name";
 			this->label1->Click += gcnew System::EventHandler(this, &MyForm::Label1_Click);
 			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(104, 64);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
-			this->button3->TabIndex = 2;
-			this->button3->Text = L"아니요";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &MyForm::Button3_Click);
-			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(7, 12);
+			this->AutoScaleDimensions = System::Drawing::SizeF(10, 18);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(729, 512);
+			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->ClientSize = System::Drawing::Size(723, 459);
 			this->Controls->Add(this->panel1);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);

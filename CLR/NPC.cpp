@@ -1,6 +1,7 @@
-//#include "NPC.h"
+//#include"NPC.h"
+//#include "Store.h"
+//#include "Player.h"
 //using namespace std;
-//
 //
 //NPC::NPC()
 //{
@@ -57,4 +58,4 @@
 //
 //
 //}
-//
+
