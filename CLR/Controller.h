@@ -18,10 +18,7 @@ private:
 	Player *player;
 	MoveThread *movethread;
 	UseTime *time;
-
-
-	//FIXME: MapObject* m 은 왜있음?
-	MapObject* m = new MapObject[10]{ MapObject(tree),MapObject(tree),MapObject(tree), };
+	MapObject* m;
 	//NPC* npc;
 
 public:

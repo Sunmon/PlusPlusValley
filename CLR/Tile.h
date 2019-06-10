@@ -137,6 +137,21 @@ public:
 		isvalue = true;
 	
 	}
+	void setObject(MapObject* object, int x, int y)
+	{
+		if (this->isvalue) return;
+
+		this->mapobject = object;
+		if (object->getObjectType() != harvest)
+		{
+			canmove = false;
+		}
+
+		object->setPlace(x, y);
+
+		isvalue = true;
+
+	}
 
 	void setObject(Harvest* har)
 	{

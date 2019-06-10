@@ -39,6 +39,8 @@ public:
 	{
 		this->setmap();
 	}
+
+
 	Tile* gettile(int x, int y)
 	{
 		if (x >= 0 && x < MAX_X && y >= 0 && y < MAX_Y)
