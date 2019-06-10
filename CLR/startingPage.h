@@ -86,7 +86,7 @@ namespace CLRFInal {
 			this->backgroundPanel->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->backgroundPanel->Location = System::Drawing::Point(0, 0);
 			this->backgroundPanel->Name = L"backgroundPanel";
-			this->backgroundPanel->Size = System::Drawing::Size(869, 380);
+			this->backgroundPanel->Size = System::Drawing::Size(607, 372);
 			this->backgroundPanel->TabIndex = 0;
 			// 
 			// groubBox
@@ -95,9 +95,9 @@ namespace CLRFInal {
 			this->groubBox->Controls->Add(this->btn_NO);
 			this->groubBox->Controls->Add(this->btn_OK);
 			this->groubBox->Enabled = false;
-			this->groubBox->Location = System::Drawing::Point(217, 82);
+			this->groubBox->Location = System::Drawing::Point(65, 48);
 			this->groubBox->Name = L"groubBox";
-			this->groubBox->Size = System::Drawing::Size(418, 237);
+			this->groubBox->Size = System::Drawing::Size(488, 280);
 			this->groubBox->TabIndex = 2;
 			this->groubBox->TabStop = false;
 			this->groubBox->Visible = false;
@@ -114,7 +114,7 @@ namespace CLRFInal {
 			// 
 			// btn_NO
 			// 
-			this->btn_NO->Location = System::Drawing::Point(264, 184);
+			this->btn_NO->Location = System::Drawing::Point(310, 218);
 			this->btn_NO->Name = L"btn_NO";
 			this->btn_NO->Size = System::Drawing::Size(75, 23);
 			this->btn_NO->TabIndex = 1;
@@ -124,7 +124,7 @@ namespace CLRFInal {
 			// 
 			// btn_OK
 			// 
-			this->btn_OK->Location = System::Drawing::Point(72, 185);
+			this->btn_OK->Location = System::Drawing::Point(108, 218);
 			this->btn_OK->Name = L"btn_OK";
 			this->btn_OK->Size = System::Drawing::Size(75, 23);
 			this->btn_OK->TabIndex = 0;
@@ -134,7 +134,7 @@ namespace CLRFInal {
 			// 
 			// startButton
 			// 
-			this->startButton->Location = System::Drawing::Point(593, 173);
+			this->startButton->Location = System::Drawing::Point(451, 173);
 			this->startButton->Name = L"startButton";
 			this->startButton->Size = System::Drawing::Size(75, 23);
 			this->startButton->TabIndex = 1;
@@ -144,16 +144,16 @@ namespace CLRFInal {
 			// 
 			// nameTextBox
 			// 
-			this->nameTextBox->Location = System::Drawing::Point(178, 171);
+			this->nameTextBox->Location = System::Drawing::Point(120, 174);
 			this->nameTextBox->Name = L"nameTextBox";
-			this->nameTextBox->Size = System::Drawing::Size(396, 25);
+			this->nameTextBox->Size = System::Drawing::Size(303, 25);
 			this->nameTextBox->TabIndex = 0;
 			// 
 			// startingPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 15);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(869, 380);
+			this->ClientSize = System::Drawing::Size(607, 372);
 			this->Controls->Add(this->backgroundPanel);
 			this->Name = L"startingPage";
 			this->Text = L"startingPage";
