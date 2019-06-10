@@ -66,6 +66,9 @@
     <ClInclude Include="UseTime.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="startingPage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
@@ -107,6 +110,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="UseTime.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="startingPage.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

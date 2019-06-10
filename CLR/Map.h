@@ -7,7 +7,7 @@
 class  Map
 {
 private:
-	const static int MAX_Y = 20, MAX_X = 30;
+	const static int MAX_Y = 300, MAX_X = 500;
 
 	
 

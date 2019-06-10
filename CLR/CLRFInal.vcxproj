@@ -104,6 +104,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <EntryPointSymbol>Start</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -151,6 +152,9 @@
     </ClInclude>
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="startingPage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Store.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tool.h" />
@@ -159,6 +163,9 @@
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx" />
     <EmbeddedResource Include="MyForm1.resx" />
+    <EmbeddedResource Include="startingPage.resx">
+      <DependentUpon>startingPage.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Controller.cpp" />
@@ -169,6 +176,7 @@
     <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="startingPage.cpp" />
     <ClCompile Include="Store.cpp" />
     <ClCompile Include="Tool.cpp" />
     <ClCompile Include="UseTime.cpp" />

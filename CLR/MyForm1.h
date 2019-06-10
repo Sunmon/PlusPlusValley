@@ -222,6 +222,11 @@ namespace CLRFInal {
 			this->panel4->ResumeLayout(false);
 			this->ResumeLayout(false);
 
+			//FIXME: 안움직임
+			this->KeyPreview = true;
+			this->KeyDown += gcnew KeyEventHandler(this, &MyForm1::KeyDDown);
+
+
 		}
 #pragma endregion
 	
