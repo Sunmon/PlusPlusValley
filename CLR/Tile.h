@@ -68,6 +68,11 @@ public:
 	{
 		this->downTile = toTile;
 	}
+
+	void setCanMove(bool b) {
+		canmove = b;
+	}
+
 	int getx()
 	{
 		return this->x;

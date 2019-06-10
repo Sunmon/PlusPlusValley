@@ -415,7 +415,7 @@ private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::K
 
 			if (h <= 60) {
 				this->matrix[x, y]->Image = nullptr;
-				controller->map->gettile(x, y)->init();
+				controller->map->gettile(x, y)->setCanMove(true);
 			}
 		}
 	}
