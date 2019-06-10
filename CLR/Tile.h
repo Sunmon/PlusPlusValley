@@ -178,6 +178,19 @@ public:
 		isvalue = true;
 	}
 
+	//TODO: 오늘 배운 깊은 복사
+	void setObjectByRef(MapObject& object)
+	{
+		if (this->isvalue) return;
+
+		this->mapobject = &object;
+		if (object.getObjectType() != harvest)
+		{
+			canmove = false;
+		}
+		isvalue = true;
+	}
+
 	void setObject(Harvest* har, int x, int y)
 	{
 		if (this->isvalue) return;
@@ -203,10 +216,11 @@ public:
 	//tile에 있는 object 없앰
 	void removeObj()
 	{
-		delete(mapobject);
 		this->canmove = true;
-		this->mapobject = NULL;
 		this->isvalue = false;
+		delete(mapobject);
+		this->mapobject = nullptr;
+
 	}
 	//NPC를 타일에 놓는다
 	/*void setNPC() {

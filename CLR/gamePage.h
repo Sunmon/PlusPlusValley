@@ -192,21 +192,15 @@ namespace CLRFInal {
 		//map object 설정
 		MapObject* objPtr = controller->map->gettile(x, y)->getObject();
 		//if (objPtr == nullptr || objPtr->getObjectType() == NULL) return;
-		if (controller->map->gettile(x, y)->getObject() == nullptr)
+		if (controller->map->gettile(x, y)->getObject() == nullptr || controller->map->gettile(x, y)->getObject() == NULL)
 		{
 			this->matrix[x, y]->Image = nullptr;
 			matrix[x, y]->Refresh();
 			return;
-
-			//Application::Exit();
 		}
-		//assert(controller->map->gettile(x, y)->getObject() == nullptr && "Objectptr이 nullptr");
 
-		//if (objPtr == nullptr) return;
-		//assert(objPtr == nullptr && "Objectptr이 nullptr");
-
-		//assert(!objPtr->getObjectType() == NULL && "ObjectType이 tree");
-		matrix[x, y]->Image = imgList_MO->Images[(int)objPtr->getObjectType()];
+		matrix[x, y]->Image = imgList_MO->Images[controller->map->gettile(x, y)->getObject()->getObjectType()];
+		
 
 	}
 

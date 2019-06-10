@@ -67,8 +67,8 @@ public:
 
 		map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(npcObject);
 
-		//setObjToMap(stoneObject);
-		setObjToMap(treeObject);
+		setObjToMap(*stoneObject);
+		setObjToMap(*treeObject);
 
 		//맵 가운데에 농사 가능한 곳 두기
 		for (int i = MAX_X / 2 - MAX_X / 4; i < MAX_X / 2 + MAX_X / 4; i++)
@@ -79,39 +79,19 @@ public:
 			}
 		}
 
-		//for (int i = 0; i < (rand() % 5 + 1); i++) {
-		//	int s_x = (rand() % MAX_X);
-		//	int s_y = (rand() % MAX_Y);
-
-		//	map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(&(*stoneObject));
-		//	map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(&(*treeObject));
-		//}
-
-
-
-		/*
-		for (int i = 0; i < (rand()%5 +1); i++)
-		{
-			map[(rand() % max_x)][rand() % max_y]->setobject(stoneobject);
-			map[(rand() % max_x)][rand() % max_y]->setobject(treeobject);
-		}
-
-		
-		Harvest* harv = new Harvest(harvest, "딸기");
-		map[5][5]->setObject(harv);
-		*/
 	}
 
-	void setObjToMap(MapObject* mo)
+
+	//TODO: 깊은 복사 해결!
+	void setObjToMap(MapObject& mo)
 	{
 		srand((unsigned int)time(NULL));
 		for (int i = 0; i < (rand() % 5 + 5); i++) {
 			int x = (rand() % MAX_X);
 			int y = (rand() % MAX_Y);
 
-			map[x][y]->setObject(&(*mo));
-
-			//map[x][y]->setCanSeed(true);
+			MapObject* m = new MapObject((ObjectType)mo.getObjectType(), mo.name);
+			map[x][y]->setObject(m);
 		}
 	}
 
