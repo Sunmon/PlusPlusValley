@@ -156,6 +156,9 @@
     <ClInclude Include="MyForm1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="MyForm2.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="startingPage.h">
@@ -172,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx" />
     <EmbeddedResource Include="MyForm1.resx" />
+    <EmbeddedResource Include="MyForm2.resx">
+      <DependentUpon>MyForm2.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="startingPage.resx">
       <DependentUpon>startingPage.h</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +191,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyForm1.cpp" />
+    <ClCompile Include="MyForm2.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="startingPage.cpp" />
