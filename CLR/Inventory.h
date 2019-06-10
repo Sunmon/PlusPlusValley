@@ -8,6 +8,7 @@
 #include <vector>
 
 using namespace std;
+//using namespace System::Windows::Forms;
 
 /**
 * 인벤토리를 관리하는 클래스
@@ -32,6 +33,7 @@ public:
 
 
 	void addItem(Item* item, int num = 1);
+	//void addItem1(Panel p); //GUI용
 	void removeItem(Item* item, int num = 1);
 	void clearItem(Item* item);
 	void printItems();

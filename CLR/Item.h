@@ -23,6 +23,7 @@ public:
 	~Item();
 
 	void setName(const std::string& name);
+	//void setItem(Panel p);
 	void setMAX_NUM(int num);
 	void setCost(int cost);
 	void setItemType(ItemType itemType);

@@ -65,6 +65,7 @@ namespace CLRFInal {
 	private: System::Windows::Forms::Panel^ panel13;
 	private: System::Windows::Forms::Panel^ panel12;
 	private: System::Windows::Forms::Panel^ panel14;
+	private: System::Windows::Forms::Panel^ panel15;
 
 
 
@@ -110,8 +111,10 @@ namespace CLRFInal {
 			this->panel11 = (gcnew System::Windows::Forms::Panel());
 			this->panel12 = (gcnew System::Windows::Forms::Panel());
 			this->panel13 = (gcnew System::Windows::Forms::Panel());
+			this->panel15 = (gcnew System::Windows::Forms::Panel());
 			this->panel1->SuspendLayout();
 			this->panel9->SuspendLayout();
+			this->panel8->SuspendLayout();
 			this->panel4->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -131,18 +134,19 @@ namespace CLRFInal {
 			this->panel1->Controls->Add(this->panel12);
 			this->panel1->Controls->Add(this->panel13);
 			this->panel1->Location = System::Drawing::Point(0, 0);
+			this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(831, 493);
+			this->panel1->Size = System::Drawing::Size(1039, 592);
 			this->panel1->TabIndex = 0;
 			// 
 			// panel14
 			// 
 			this->panel14->BackColor = System::Drawing::Color::Transparent;
 			this->panel14->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel14.BackgroundImage")));
-			this->panel14->Location = System::Drawing::Point(413, 67);
-			this->panel14->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->panel14->Location = System::Drawing::Point(516, 80);
+			this->panel14->Margin = System::Windows::Forms::Padding(2);
 			this->panel14->Name = L"panel14";
-			this->panel14->Size = System::Drawing::Size(30, 64);
+			this->panel14->Size = System::Drawing::Size(38, 77);
 			this->panel14->TabIndex = 7;
 			this->panel14->DoubleClick += gcnew System::EventHandler(this, &MyForm1::Panel14_DoubleClick);
 			// 
@@ -151,9 +155,10 @@ namespace CLRFInal {
 			this->panel9->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->panel9->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel9.BackgroundImage")));
 			this->panel9->Controls->Add(this->button1);
-			this->panel9->Location = System::Drawing::Point(222, 97);
+			this->panel9->Location = System::Drawing::Point(278, 116);
+			this->panel9->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel9->Name = L"panel9";
-			this->panel9->Size = System::Drawing::Size(151, 20);
+			this->panel9->Size = System::Drawing::Size(189, 24);
 			this->panel9->TabIndex = 5;
 			this->panel9->Visible = false;
 			// 
@@ -164,9 +169,10 @@ namespace CLRFInal {
 				static_cast<System::Byte>(129)));
 			this->button1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(131, 0);
+			this->button1->Location = System::Drawing::Point(164, 0);
+			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(19, 20);
+			this->button1->Size = System::Drawing::Size(24, 24);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"X";
 			this->button1->UseVisualStyleBackColor = false;
@@ -177,10 +183,11 @@ namespace CLRFInal {
 			// 
 			this->panel8->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->panel8->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel8.BackgroundImage")));
-			this->panel8->Location = System::Drawing::Point(222, 113);
-			this->panel8->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->panel8->Controls->Add(this->panel15);
+			this->panel8->Location = System::Drawing::Point(278, 136);
+			this->panel8->Margin = System::Windows::Forms::Padding(2);
 			this->panel8->Name = L"panel8";
-			this->panel8->Size = System::Drawing::Size(151, 162);
+			this->panel8->Size = System::Drawing::Size(189, 194);
 			this->panel8->TabIndex = 4;
 			this->panel8->Visible = false;
 			// 
@@ -188,9 +195,10 @@ namespace CLRFInal {
 			// 
 			this->panel6->BackColor = System::Drawing::Color::Transparent;
 			this->panel6->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel6.BackgroundImage")));
-			this->panel6->Location = System::Drawing::Point(14, 173);
+			this->panel6->Location = System::Drawing::Point(18, 208);
+			this->panel6->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel6->Name = L"panel6";
-			this->panel6->Size = System::Drawing::Size(50, 102);
+			this->panel6->Size = System::Drawing::Size(62, 122);
 			this->panel6->TabIndex = 3;
 			// 
 			// panel4
@@ -198,45 +206,50 @@ namespace CLRFInal {
 			this->panel4->BackColor = System::Drawing::Color::Transparent;
 			this->panel4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel4.BackgroundImage")));
 			this->panel4->Controls->Add(this->panel5);
-			this->panel4->Location = System::Drawing::Point(518, 250);
+			this->panel4->Location = System::Drawing::Point(648, 300);
+			this->panel4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(50, 102);
+			this->panel4->Size = System::Drawing::Size(62, 122);
 			this->panel4->TabIndex = 2;
 			// 
 			// panel5
 			// 
 			this->panel5->BackColor = System::Drawing::Color::Transparent;
 			this->panel5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel5.BackgroundImage")));
-			this->panel5->Location = System::Drawing::Point(51, 33);
+			this->panel5->Location = System::Drawing::Point(64, 40);
+			this->panel5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel5->Name = L"panel5";
-			this->panel5->Size = System::Drawing::Size(58, 102);
+			this->panel5->Size = System::Drawing::Size(72, 122);
 			this->panel5->TabIndex = 2;
 			// 
 			// panel3
 			// 
 			this->panel3->BackColor = System::Drawing::Color::Transparent;
 			this->panel3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel3.BackgroundImage")));
-			this->panel3->Location = System::Drawing::Point(115, 272);
+			this->panel3->Location = System::Drawing::Point(144, 326);
+			this->panel3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(50, 102);
+			this->panel3->Size = System::Drawing::Size(62, 122);
 			this->panel3->TabIndex = 1;
 			// 
 			// panel7
 			// 
 			this->panel7->BackColor = System::Drawing::Color::Transparent;
 			this->panel7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel7.BackgroundImage")));
-			this->panel7->Location = System::Drawing::Point(17, 12);
+			this->panel7->Location = System::Drawing::Point(21, 14);
+			this->panel7->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel7->Name = L"panel7";
-			this->panel7->Size = System::Drawing::Size(29, 62);
+			this->panel7->Size = System::Drawing::Size(36, 74);
 			this->panel7->TabIndex = 0;
 			// 
 			// panel10
 			// 
 			this->panel10->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->panel10->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel10.BackgroundImage")));
-			this->panel10->Location = System::Drawing::Point(552, 3);
+			this->panel10->Location = System::Drawing::Point(690, 4);
+			this->panel10->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel10->Name = L"panel10";
-			this->panel10->Size = System::Drawing::Size(19, 25);
+			this->panel10->Size = System::Drawing::Size(24, 30);
 			this->panel10->TabIndex = 6;
 			this->panel10->Click += gcnew System::EventHandler(this, &MyForm1::Panel10_Click);
 			// 
@@ -244,18 +257,20 @@ namespace CLRFInal {
 			// 
 			this->panel2->BackColor = System::Drawing::Color::Transparent;
 			this->panel2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel2.BackgroundImage")));
-			this->panel2->Location = System::Drawing::Point(393, 173);
+			this->panel2->Location = System::Drawing::Point(491, 208);
+			this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(91, 158);
+			this->panel2->Size = System::Drawing::Size(114, 190);
 			this->panel2->TabIndex = 1;
 			// 
 			// panel11
 			// 
 			this->panel11->BackColor = System::Drawing::Color::Transparent;
 			this->panel11->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel11.BackgroundImage")));
-			this->panel11->Location = System::Drawing::Point(70, 219);
+			this->panel11->Location = System::Drawing::Point(88, 263);
+			this->panel11->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel11->Name = L"panel11";
-			this->panel11->Size = System::Drawing::Size(41, 57);
+			this->panel11->Size = System::Drawing::Size(51, 68);
 			this->panel11->TabIndex = 3;
 			this->panel11->Visible = false;
 			// 
@@ -263,9 +278,10 @@ namespace CLRFInal {
 			// 
 			this->panel12->BackColor = System::Drawing::Color::Transparent;
 			this->panel12->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel12.BackgroundImage")));
-			this->panel12->Location = System::Drawing::Point(172, 315);
+			this->panel12->Location = System::Drawing::Point(215, 378);
+			this->panel12->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel12->Name = L"panel12";
-			this->panel12->Size = System::Drawing::Size(41, 57);
+			this->panel12->Size = System::Drawing::Size(51, 68);
 			this->panel12->TabIndex = 4;
 			this->panel12->Visible = false;
 			// 
@@ -273,29 +289,39 @@ namespace CLRFInal {
 			// 
 			this->panel13->BackColor = System::Drawing::Color::Transparent;
 			this->panel13->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel13.BackgroundImage")));
-			this->panel13->Location = System::Drawing::Point(524, 194);
+			this->panel13->Location = System::Drawing::Point(655, 233);
+			this->panel13->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel13->Name = L"panel13";
-			this->panel13->Size = System::Drawing::Size(41, 57);
+			this->panel13->Size = System::Drawing::Size(51, 68);
 			this->panel13->TabIndex = 4;
 			this->panel13->Visible = false;
 			// 
+			// panel15
+			// 
+			this->panel15->BackColor = System::Drawing::Color::Transparent;
+			this->panel15->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel15.BackgroundImage")));
+			this->panel15->Location = System::Drawing::Point(12, 11);
+			this->panel15->Name = L"panel15";
+			this->panel15->Size = System::Drawing::Size(23, 24);
+			this->panel15->TabIndex = 0;
+			this->panel15->Visible = false;
+			// 
 			// MyForm1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 15);
+			this->AutoScaleDimensions = System::Drawing::SizeF(10, 18);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-			this->ClientSize = System::Drawing::Size(843, 477);
+			this->ClientSize = System::Drawing::Size(1054, 572);
 			this->Controls->Add(this->panel1);
 			this->KeyPreview = true;
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"MyForm1";
 			this->Text = L"MyForm1";
 			this->panel1->ResumeLayout(false);
 			this->panel9->ResumeLayout(false);
+			this->panel8->ResumeLayout(false);
 			this->panel4->ResumeLayout(false);
 			this->ResumeLayout(false);
-
-			this->KeyPreview = true;
-			this->KeyDown += gcnew KeyEventHandler(this, &MyForm1::KeyDDown);
 
 		}
 #pragma endregion

@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.h"
 #include "Tile.h"
+#include "MyForm1.h"
 #include "Controller.h"
 #include <string>
 #include <msclr\marshal_cppstd.h>
@@ -53,6 +54,14 @@ namespace CLRFInal {
 	private: System::Windows::Forms::Panel^ panel3;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Panel^ panel4;
+	private: System::Windows::Forms::Panel^ panel5;
+	private: System::Windows::Forms::Panel^ panel6;
+	private: System::Windows::Forms::Panel^ panel7;
+	private: System::Windows::Forms::Panel^ panel8;
+	private: System::Windows::Forms::Panel^ panel10;
+	private: System::Windows::Forms::Panel^ panel9;
+	private: System::Windows::Forms::Panel^ panel11;
+	private: System::Windows::Forms::Panel^ panel12;
 	protected:
 
 	protected:
@@ -73,10 +82,20 @@ namespace CLRFInal {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm2::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panel4 = (gcnew System::Windows::Forms::Panel());
+			this->panel11 = (gcnew System::Windows::Forms::Panel());
+			this->panel10 = (gcnew System::Windows::Forms::Panel());
+			this->panel8 = (gcnew System::Windows::Forms::Panel());
+			this->panel7 = (gcnew System::Windows::Forms::Panel());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->panel12 = (gcnew System::Windows::Forms::Panel());
+			this->panel9 = (gcnew System::Windows::Forms::Panel());
+			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			this->panel5 = (gcnew System::Windows::Forms::Panel());
 			this->panel1->SuspendLayout();
+			this->panel4->SuspendLayout();
+			this->panel2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// panel1
@@ -96,10 +115,50 @@ namespace CLRFInal {
 			this->panel4->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->panel4->BackColor = System::Drawing::Color::Transparent;
 			this->panel4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel4.BackgroundImage")));
+			this->panel4->Controls->Add(this->panel11);
+			this->panel4->Controls->Add(this->panel10);
+			this->panel4->Controls->Add(this->panel8);
+			this->panel4->Controls->Add(this->panel7);
 			this->panel4->Location = System::Drawing::Point(227, 205);
 			this->panel4->Name = L"panel4";
 			this->panel4->Size = System::Drawing::Size(224, 70);
 			this->panel4->TabIndex = 2;
+			// 
+			// panel11
+			// 
+			this->panel11->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel11.BackgroundImage")));
+			this->panel11->Location = System::Drawing::Point(51, 3);
+			this->panel11->Name = L"panel11";
+			this->panel11->Size = System::Drawing::Size(24, 24);
+			this->panel11->TabIndex = 2;
+			this->panel11->Visible = false;
+			// 
+			// panel10
+			// 
+			this->panel10->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel10.BackgroundImage")));
+			this->panel10->Location = System::Drawing::Point(75, 3);
+			this->panel10->Name = L"panel10";
+			this->panel10->Size = System::Drawing::Size(24, 24);
+			this->panel10->TabIndex = 2;
+			this->panel10->Visible = false;
+			// 
+			// panel8
+			// 
+			this->panel8->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel8.BackgroundImage")));
+			this->panel8->Location = System::Drawing::Point(27, 3);
+			this->panel8->Name = L"panel8";
+			this->panel8->Size = System::Drawing::Size(24, 24);
+			this->panel8->TabIndex = 1;
+			this->panel8->Visible = false;
+			// 
+			// panel7
+			// 
+			this->panel7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel7.BackgroundImage")));
+			this->panel7->Location = System::Drawing::Point(3, 3);
+			this->panel7->Name = L"panel7";
+			this->panel7->Size = System::Drawing::Size(20, 24);
+			this->panel7->TabIndex = 0;
+			this->panel7->Visible = false;
 			// 
 			// button1
 			// 
@@ -130,10 +189,50 @@ namespace CLRFInal {
 			// 
 			this->panel2->BackColor = System::Drawing::Color::Transparent;
 			this->panel2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel2.BackgroundImage")));
+			this->panel2->Controls->Add(this->panel12);
+			this->panel2->Controls->Add(this->panel9);
+			this->panel2->Controls->Add(this->panel6);
+			this->panel2->Controls->Add(this->panel5);
 			this->panel2->Location = System::Drawing::Point(108, 57);
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(343, 153);
 			this->panel2->TabIndex = 0;
+			// 
+			// panel12
+			// 
+			this->panel12->BackColor = System::Drawing::Color::Transparent;
+			this->panel12->Location = System::Drawing::Point(3, 78);
+			this->panel12->Name = L"panel12";
+			this->panel12->Size = System::Drawing::Size(230, 25);
+			this->panel12->TabIndex = 2;
+			this->panel12->DoubleClick += gcnew System::EventHandler(this, &MyForm2::Panel12_DoubleClick);
+			// 
+			// panel9
+			// 
+			this->panel9->BackColor = System::Drawing::Color::Transparent;
+			this->panel9->Location = System::Drawing::Point(3, 119);
+			this->panel9->Name = L"panel9";
+			this->panel9->Size = System::Drawing::Size(230, 23);
+			this->panel9->TabIndex = 1;
+			this->panel9->DoubleClick += gcnew System::EventHandler(this, &MyForm2::Panel9_DoubleClick);
+			// 
+			// panel6
+			// 
+			this->panel6->BackColor = System::Drawing::Color::Transparent;
+			this->panel6->Location = System::Drawing::Point(3, 48);
+			this->panel6->Name = L"panel6";
+			this->panel6->Size = System::Drawing::Size(230, 24);
+			this->panel6->TabIndex = 0;
+			this->panel6->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm2::Panel6_MouseDoubleClick);
+			// 
+			// panel5
+			// 
+			this->panel5->BackColor = System::Drawing::Color::Transparent;
+			this->panel5->Location = System::Drawing::Point(3, 3);
+			this->panel5->Name = L"panel5";
+			this->panel5->Size = System::Drawing::Size(230, 29);
+			this->panel5->TabIndex = 0;
+			this->panel5->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm2::Panel5_MouseDoubleClick);
 			// 
 			// MyForm2
 			// 
@@ -147,6 +246,8 @@ namespace CLRFInal {
 			this->Text = L"MyForm2";
 			this->Load += gcnew System::EventHandler(this, &MyForm2::MyForm2_Load);
 			this->panel1->ResumeLayout(false);
+			this->panel4->ResumeLayout(false);
+			this->panel2->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -158,6 +259,23 @@ namespace CLRFInal {
 
 private: System::Void Button1_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 	delete this;
+}
+private: System::Void Panel5_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+	/*Item* i = c->getItem();
+	i->setItem(panel5);
+	Inventory* p = c->getInventory();
+	p->addItem(panel5);*/
+	panel7->Visible = true;
+}
+private: System::Void Panel6_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+	panel8->Visible = true;
+}
+
+private: System::Void Panel9_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+	panel10->Visible = true;
+}
+private: System::Void Panel12_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+	panel11->Visible = true;
 }
 };
 }
