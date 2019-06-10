@@ -83,3 +83,17 @@ GUI랑 Model이랑 따로 프로젝트를 만들어서 링크할라했더니
 model쪽에서 테스트를 할 수가 없다...
 
 GUI로 돌아가니까....
+
+
+## GUI 이미지 백그라운드
+
+매번 Src = "./images/img1.png"이런 식으로 불러왔더니 속도가 느렸다. 그럴만도했지.. 왜냐? 디스크에 접근하는 거니까!
+
+그래서 이미지 배열에 저장해놓고, 캐시된 그 배열을 이용하기로 했다.
+
+방법은 이거! 
+
+[Window form 백그라운드 이미지 reference](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.control.backgroundimage?view=netframework-4.8)
+
+[Windowform Image list reference](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.imagelist?view=netframework-4.8)
+
