@@ -91,4 +91,9 @@ GUI로 돌아가니까....
 
 그래서 이미지 배열에 저장해놓고, 캐시된 그 배열을 이용하기로 했다.
 
-방법은 이거! https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.control.backgroundimage?view=netframework-4.8
+방법은 이거! 
+
+[Window form 백그라운드 이미지 reference](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.control.backgroundimage?view=netframework-4.8)
+
+[Windowform Image list reference](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.imagelist?view=netframework-4.8)
+
