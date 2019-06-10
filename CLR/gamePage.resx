@@ -154,4 +154,55 @@
         RU5ErkJggg==
 </value>
   </data>
+  <data name="bgWorker_animate.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>17, 17</value>
+  </data>
+  <data name="Leah_down1" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAdCAYAAAB1yDbaAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAXNJREFUOE/NkyFPA0EQhVfgTzYgSEAVwe9AgUBUYgFRQTCkEockDb5Jg+IHYFH8
+        ExLQWJKh37Dv2LudSwkYXjLZ6Zt5b3a2bfp/mG4kKyPT60Hz2zSZzb/Oh/0fGtBEs8QyIGTAWZlJGBnI
+        hFpp5BBJyEBcaaCoxJByfT0/8iDHTDcpzbP0W0zhOI09ZHCYdv2zjCohgStNy5ulXaR7+1hceZDDUQvF
+        ug6T3l/M7jYfzZ7nHuRwWqMjBiKvt/d8moQKOGrVZAGSIjvSqJ3J4TQgt/fQbLWvTbOmklNro8KKRKQX
+        9wmFAIPR7chOny4DgyzWZJpolgBxc9J41OIVaGAqBrOzmYtkQk3feW7vQtfm1BQFonb/PiB1be3cf23y
+        0EDOiIjxztgmBxMPcvbsvH4JOdOEgJ0lVk5tcG9IpqiZXDeAIw+FAg38CTgzFXIhaNDUTIVcBYpMGJq8
+        djo78drlbhEX4tdiivxA9LfM9CD/B6T0CWcH75TEfJC1AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="Leah_down2" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABEAAAAeCAYAAADKO/UvAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAWxJREFUSEvlk61OA0EUhUfgVzYgSEAtgudAgUBUYltEBcGQShySNPgmDYoHwKJ4
+        kyZUY0ku+13mLNPNzrBIwklOdrg/3707W8I/0mwnWOoYHi6aNrNgtvh6Ph3/EkQxTYIIhAXimYUK0AcS
+        jFwK3JKSWCDFUpCchZDUlLfLMzdnoNosHRJbvyUIBeehdgt0Gg79bwGzAMwUild3K7sKj/axvHFzJkau
+        CNGaTH5fmz3sPpu9Ltycien1eiFIydv9I58ugEyMXHYTiSRF3AENuhPOxDQolmdU7bVfhyZtwZlc66ya
+        JM36Qj4xaQQ0uh/Z5OW6AIoQbUIxTWoEUl1U7jykEYVsAWg+nXuzYOT0m4nl/dLr8NRUmeb2fkrS6+hO
+        ul+H82AQrg9qG5+M3Zzx1tcqqrk0GrkTnIJo/hnQiGI1awOBBgGQptEcQy04jWVFM5eKuxD+iwdDdLHp
+        6toujWVVgnRjRVEox9CfUAifgfDJWS3VCioAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="Leah_down3" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAdCAYAAAB1yDbaAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAXNJREFUOE/NkyFPA0EQhVfgTzYgSEAVwe9AgUBUYgFRQTCkEockDb5Jg+IHYFH8
+        ExLQWJKh37Dv2LudSwkYXjLZ6Zt5b3a2bfp/mG4kKyPT60Hz2zSZzb/Oh/0fGtBEs8QyIGTAWZlJGBnI
+        hFpp5BBJyEBcaaCoxJByfT0/8iDHTDcpzbP0W0zhOI09ZHCYdv2zjCohgStNy5ulXaR7+1hceZDDUQvF
+        ug6T3l/M7jYfzZ7nHuRwWqMjBiKvt/d8moQKOGrVZAGSIjvSqJ3J4TQgt/fQbLWvTbOmklNro8KKRKQX
+        9wmFAIPR7chOny4DgyzWZJpolgBxc9J41OIVaGAqBrOzmYtkQk3feW7vQtfm1BQFonb/PiB1be3cf23y
+        0EDOiIjxztgmBxMPcvbsvH4JOdOEgJ0lVk5tcG9IpqiZXDeAIw+FAg38CTgzFXIhaNDUTIVcBYpMGJq8
+        djo78drlbhEX4tdiivxA9LfM9CD/B6T0CWcH75TEfJC1AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="Leah_down4" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAbCAYAAACjkdXHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAWBJREFUOE/dkyFPQ0EQhE/gn2xAkIB6CH4HCgSiEguICoIhlTgkafBNGhQ/AIvi
+        n5CAxpIs/Zabx/X2oGgmmbxld2b27oD0zzDZSFYyt9cD8dskmc2+vg/7fwxAhFhmBUAF8A1hMrYCFMKs
+        DHKoCRWgXhkgBjNNpb6eHzmpCdNJyvBs/TYzOE69UwGHadd/VlAwQlIRLW4WdpHu7WN+5aSmx6xp1nHY
+        9P5idrf5aPY8c1LT0zVWzEDN6+093yajSI9Z2CzQZMgdEerO1PS0IMsrdFvDayPWVmpmAwOWTUx6cd9Q
+        GAgY3Y7s9OmyEZDN2owIsQyYu5POGc1LIGArAdOzqZsUwky/8yxfhY7NV1tETMP9a2iIUXeuX/vHzTIr
+        oN/pbXwwdlLr0bI8giEsjdwdUjcfqgTmcqOCCPAT/AYEtZBap4K5HYGQ/6DazCPqTze3I1obqHlEuNZc
+        i9rmlD4BlNvFTK2ozbEAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

@@ -24,6 +24,11 @@ public:
 	}
 	
 
+	Tile* getNowTile()
+	{
+		return this->nowtile;
+	}
+
 	int getX()
 	{
 		return nowtile->getx();

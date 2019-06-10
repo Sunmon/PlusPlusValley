@@ -199,6 +199,13 @@
     <ClCompile Include="Tool.cpp" />
     <ClCompile Include="UseTime.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="down_1.bmp" />
+    <Image Include="images\Leah_down1.png" />
+    <Image Include="images\Leah_down2.png" />
+    <Image Include="images\Leah_down3.png" />
+    <Image Include="images\Leah_down4.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
