@@ -305,6 +305,8 @@ private: System::Void movePlayer(System::Object^ sender, System::Windows::Forms:
 
 	if(!bgWorker_animate->IsBusy) bgWorker_animate->RunWorkerAsync(e->KeyValue);
 
+
+
 }
 	
 //캐릭터가 움직이는 애니메이션 설정
@@ -372,9 +374,22 @@ private: System::Void BgWorker_animate_RunWorkerCompleted(System::Object^ sender
 private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	Player* p = controller->getPlayer();
 	int k = (int)(e->KeyCode);
-
+	int s = p->getStatue();
 	int x = p->getX();
 	int y = p->gety();
+
+	if (s == 1) {
+		x = x - 1;
+	}
+	else if (s == 2) {
+		x = x + 1;
+	}
+	else if (s == 3) {
+		y = y + 1;
+	}
+	else if (s == 4) {
+		y = y - 1;
+	}
 
 
 	picBox_player->Location = System::Drawing::Point(x * TILE_SIZE, y * TILE_SIZE);
@@ -392,20 +407,18 @@ private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::K
 			this->matrix[x, y]->BackgroundImage = imgList_ground->Images[state];
 			controller->map->gettile(x, y)->setIsWet(true);
 		}
-		else if (nullptr != controller->map->gettile(x + 1, y)->getObject()) {
-			MapObject* objPtr = controller->map->gettile(x + 1, y)->getObject();
+		else if (nullptr != controller->map->gettile(x, y)->getObject()) {
+			MapObject* objPtr = controller->map->gettile(x, y)->getObject();
 			int h = objPtr->getHealth();
 			h = h - 10;
 			objPtr->setHealth(h);
 
 			if (h <= 60) {
-				this->matrix[x + 1, y]->Image = nullptr;
-				controller->map->gettile(x + 1, y)->init();
+				this->matrix[x, y]->Image = nullptr;
+				controller->map->gettile(x, y)->init();
 			}
 		}
 	}
-
-
 
 }
 
