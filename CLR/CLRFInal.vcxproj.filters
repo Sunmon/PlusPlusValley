@@ -150,5 +150,41 @@
     <Image Include="images\Leah_down4.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="images\Leah_left1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_left2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_left3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_left4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_right1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_right2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_right3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_right4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_up1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_up2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_up3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\Leah_up4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

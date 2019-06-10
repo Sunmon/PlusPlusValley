@@ -40,7 +40,8 @@ namespace CLRFInal {
 		int TILE_SIZE;
 		ImageList^ imgList_ground;
 		ImageList^ imgList_MO;
-		ImageList^ imgList_player;
+		//ImageList^ imgList_player;
+		System::String^ state_str;
 
 		int before_x, before_y;
 		//List<Bitmap> imgList_player;
@@ -59,11 +60,10 @@ namespace CLRFInal {
 		gamePage(void)
 		{
 			InitializeComponent();
-			//rs = (gcnew System::ComponentModel::ComponentResourceManager(gamePage::typeid));
 			TILE_SIZE = pnl_background->Width / MAX_X;
 			setImgList_MO();
 			setImgList_ground();
-			setImgList_player();
+			//setImgList_player();
 			
 			setMatrix();
 			//
@@ -264,109 +264,45 @@ namespace CLRFInal {
 		 imgList_ground->Images->Add(Image::FromFile("./images/wetDirt.png"));
 		 imgList_ground->Images->Add(Image::FromFile("./images/grass.png"));
 	 }
-
+/*
 	 void setImgList_player()
 	 {
 		 imgList_player = gcnew ImageList();
 		 imgList_player->ColorDepth = ColorDepth::Depth32Bit;
 
-		 //imgList[0]-[3] : down
-		 //System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(gamePage::typeid));
-
-		//this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBox_player.Image")));
-		/* this->imgList_player->Images->Add(cli::safe_cast<System::Drawing::Image^>(rs->GetObject(L"Leah_down1")));
-		 this->imgList_player->Images->Add(cli::safe_cast<System::Drawing::Image^>(rs->GetObject(L"Leah_down2")));
-		 this->imgList_player->Images->Add(cli::safe_cast<System::Drawing::Image^>(rs->GetObject(L"Leah_down3")));
-		 this->imgList_player->Images->Add(cli::safe_cast<System::Drawing::Image^>(rs->GetObject(L"Leah_down4")));*/
-
-		 //this->picBox_dirt->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBox_dirt.Image")));
 
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_down1.png"));
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_down2.png"));
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_down3.png"));
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_down4.png"));
 
-		 //imgList[4]-[7] : up
+		 imgList[4]-[7] : up
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_up1.png"));
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_up2.png"));
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_up3.png"));
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_up4.png"));
 
-		 //imgList[8]-[11] : right
+		 imgList[8]-[11] : right
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_right1.png"));
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_right2.png"));
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_right3.png"));
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_right4.png"));
 
-		 //imgList[12]-[15] : left
+		 imgList[12]-[15] : left
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_left1.png"));
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_left2.png"));
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_left3.png"));
 		 this->imgList_player->Images->Add(Image::FromFile("./images/Leah_left4.png"));
-	 }
+	 }*/
 
 
 	
 private: System::Void movePlayer(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	this->label1->Text = (e->KeyValue).ToString();
 
-	//movingAnimation(sender, e);
-	//movingAnimation();
 	bgWorker_animate->WorkerReportsProgress = true;
 
 	if(!bgWorker_animate->IsBusy) bgWorker_animate->RunWorkerAsync(e->KeyValue);
-
-
-	//playerÀÇ ÁÂÇ¥ º¯°æ
-	/*this->player->move(e->KeyValue);
-	int _x = player->getX() * TILE_SIZE;
-	int _y = player->gety() * TILE_SIZE - picBox_player->Height + TILE_SIZE;
-	this->picBox_player->Location = System::Drawing::Point(_x, _y);
-	this->picBox_player->Show();*/
-	
-/*
-	int k = (int)(e->KeyCode);
-	p->move((int)(e->KeyCode));
-	panel7->Location = System::Drawing::Point(p->getX(), p->gety());
-	int x = p->getX();
-	int y = p->gety();
-
-	if (k == 32) {
-		for (int i = 0; i < 3; i++) {
-			MapObject m = c->getMapObject(i);
-			int mx = m.getPlace()[0];
-			int my = m.getPlace()[1];
-
-
-
-			if (x <= mx + 22 && x >= mx - 22 && y >= my - 41 && y <= my + 41) {
-				int h = m.getHealth();
-				if (h > 60) {
-					h = h - 10;
-					m.setHealth(h);
-				}
-				else {
-					if (i == 0) {
-						panel6->Visible = false;
-						panel11->Visible = true;
-					}
-					else if (i == 1) {
-						panel3->Visible = false;
-						panel12->Visible = true;
-					}
-					else if (i == 2) {
-						panel4->Visible = false;
-						panel13->Visible = true;
-					}
-				}
-				c->setMapObject(m, i);
-				break;
-			}
-
-		}
-	}
-*/
-
 
 }
 	
@@ -384,23 +320,6 @@ private: System::Void movePlayer(System::Object^ sender, System::Windows::Forms:
 			 }
 
 			 this->moveState = 0;
-			 //picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Leah_down2")));
-			 //picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Leah_down2")));
-
-			 //this->picBox_player->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-
-			 //this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Leah_down2.Image")));
-
-			 //picBox_player->
-				//picBox_player->ColorDepth = ColorDepth::Depth32Bit;
-			 //this->picBox_player->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			 /*
-			 while (moveState < 4)
-			 {
-				picBox_player->Image = imgList_player->Images[moveState++];
-				Sleep(10);
-			 }
-			 moveState = 0;*/
 		 }
 
 private: System::Void do_nothing(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e) {
@@ -409,80 +328,42 @@ private: System::Void do_nothing(System::Object^ sender, System::Windows::Forms:
 
 
 private: System::Void bgWorker_animate_DoWork(System::Object^ sender, System::ComponentModel::DoWorkEventArgs^ e) {
-	//list<Object>^ arguments;
-	//= new list<Object>();
-	//arguments.push_back(player->getX());
-	//arguments.push_back(player->gety());
 
 	before_x = player->getX();
 	before_y = player->gety();
 
-	//int	_x = player->getX() * TILE_SIZE;
-	//int _y = player->gety() * TILE_SIZE - picBox_player->Height + TILE_SIZE;
-
 	player->move((int)(e->Argument));
-	//arguments.push_back(player->getX());
-	//arguments.push_back(player->gety());
-	//Tile* before = player->getNowTile();
-	//Tile* after = player->getNowTile();
 
+	const int LEFT = 37, RIGHT = 39, UP = 40, DOWN = 38;	//gui
 
+	switch ((int)e->Argument)
+	{
+	case LEFT: state_str = "Leah_left"; break;
+	case RIGHT: state_str = "Leah_right"; break;
+	case UP: state_str = "Leah_down"; break;
+	case DOWN: state_str = "Leah_up"; break;
+	default: break;
+	}
 	while (moveState++ < 5)
 	{
-		//Thread.Sleep(500);
-		Sleep(300);
-		//this->label1->Text = ("Leah_down" + moveState);
-		//string s1 = system_to_string("Leah_down") + system_to_string(moveState.ToString());
-		//System::String^ src = string_to_system(s1);
-		//this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(L"Leah_down" + moveState.ToString())));
-		//this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(src)));
-
-
-		this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject("Leah_down"+moveState)));
-		/*_x += TILE_SIZE / 4;
-		_y += TILE_SIZE / 4;
-		this->picBox_player->Location = System::Drawing::Point(_x, _y);*/
-		
-		
-		//this->picBox_player->Show();
-		//this->picBox_player->Location
-		//var image = LoadAnImage(myState);
+		Sleep(100);
+		this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(state_str+moveState)));
 		bgWorker_animate->ReportProgress(moveState);
 	}
 	moveState = 1;
-	//int toMove = (int)e->Argument;
-	//player->move(toMove);
-	//e->Result = e->Argument;
-
-	//this->bgWorker_animate->CancelAsync();
-
 }
 private: System::Void BgWorker_animate_ProgressChanged(System::Object^ sender, System::ComponentModel::ProgressChangedEventArgs^ e) {
-	//pictureBox1.Image = (Image)e.UserState;
-	//picBox_player->Image = imgList_player->Images[moveState++];
-	//if (moveState >= 4) moveState = 0;
-
-	//e->ProgressPercentage
-
-	//this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject("Leah_down" + moveState)));
-	//_x += TILE_SIZE / 4;
-	//_y += TILE_SIZE / 4;
-	//this->picBox_player->Location = System::Drawing::Point(_x, _y);
+	
 	int _x = before_x * TILE_SIZE +  (player->getX() - before_x) * e->ProgressPercentage * TILE_SIZE / 4;
 	int _y = before_y * TILE_SIZE - picBox_player->Height + TILE_SIZE + (player->gety() - before_y) * e->ProgressPercentage * TILE_SIZE / 4;
 	this->picBox_player->Location = System::Drawing::Point(_x, _y);
-
-
-
 }
 private: System::Void BgWorker_animate_RunWorkerCompleted(System::Object^ sender, System::ComponentModel::RunWorkerCompletedEventArgs^ e) {
-	this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject("Leah_down" + moveState)));
+	this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(state_str + moveState)));
 	int _x = player->getX() * TILE_SIZE;
 	int _y = player->gety() * TILE_SIZE - picBox_player->Height + TILE_SIZE;
 	this->picBox_player->Location = System::Drawing::Point(_x, _y);
 
-	//int toMove = (int)e->Result;
-	//this->player->move(toMove);
 
 }
 };

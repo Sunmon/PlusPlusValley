@@ -205,6 +205,18 @@
     <Image Include="images\Leah_down2.png" />
     <Image Include="images\Leah_down3.png" />
     <Image Include="images\Leah_down4.png" />
+    <Image Include="images\Leah_left1.png" />
+    <Image Include="images\Leah_left2.png" />
+    <Image Include="images\Leah_left3.png" />
+    <Image Include="images\Leah_left4.png" />
+    <Image Include="images\Leah_right1.png" />
+    <Image Include="images\Leah_right2.png" />
+    <Image Include="images\Leah_right3.png" />
+    <Image Include="images\Leah_right4.png" />
+    <Image Include="images\Leah_up1.png" />
+    <Image Include="images\Leah_up2.png" />
+    <Image Include="images\Leah_up3.png" />
+    <Image Include="images\Leah_up4.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
