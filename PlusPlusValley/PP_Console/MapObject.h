@@ -16,6 +16,7 @@ protected:
 	ObjectType objectType;
 	int place[2];
 	int health;
+	string name;
 	vector<Item*> itemArray;
 	//Item* itemArray[3];
 	// Item수를 정할건지 아니면 동적으로 늘어나게 할건지 얘기가 안되어서 일단 3개로 대충 잡아놨습니다!
@@ -29,6 +30,7 @@ public:
 		}
 	}
 	MapObject(ObjectType ot, const string& name): MapObject(ot) {
+		this->name = name;
 		setEarnItem(ot, name);
 	}
 
@@ -126,7 +128,15 @@ public:
 		return this->health;
 	}
 
-
+	void setName(string n)
+	{
+		name = n;
+	}
+	
+	string getName()
+	{
+		return this->name;
+	}
 	void addItem(int n, ItemType itemType) {
 		itemArray[n]->setItemType(itemType);
 	}

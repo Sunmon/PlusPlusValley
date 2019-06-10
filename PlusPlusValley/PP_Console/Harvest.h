@@ -29,12 +29,21 @@ public:
 	//	}
 	//}
 
+	void setLevel(int l)
+	{
+		level = l;
+	}
+	int getLevel()
+	{
+		return level;
+	}
+
 
 	int growing() {
-		if (growth >= growingPoint) {
+		if (growth <= growingPoint) {
 			level++;
 		}
-		cout << "check" << endl;
+		cout << level << endl;
 		return level;
 	}
 };

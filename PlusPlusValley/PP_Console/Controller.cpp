@@ -17,6 +17,7 @@ Controller* Controller::getInstance()
 void Controller::init()
 {
 	map = new Map();
+	map->loadmap();
 	startTile = map->gettile(15, 10);
 	//TODO: initPage 이용하도록
 	//player->setTile(startTile);
@@ -33,23 +34,32 @@ void Controller::init()
 	//npc->setTile(map->map[3][4]);
 }
 
+void Controller::Nextday()
+{
+	map->growth();
+	map->savemap();
+	map->loadmap();
+
+}
+
 void Controller::test_move()
 {
 	movethread->start();
 	while (1)
 	{
+	while (time->gettime() < 10*60)
+	{
 		Sleep(1000);
 		time->nexttime();
 		cout << setw(2) << setfill('0') << time->gethour() << ':' << setw(2) << setfill('0') << time->getminute() << endl;
 	}
+	Sleep(5000);
+	Nextday();
+	time->settime(9*60);
+	}
 }
 
-void Controller::Nextday()
-{
-	
-	map->savemap();
-	
-}
+
 
 Player* Controller::getPlayer()
 {

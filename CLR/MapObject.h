@@ -17,6 +17,8 @@ protected:
 	int place[2];
 	int health;
 	vector<Item*> itemArray;
+	int size[2];
+	bool b;
 	//Item* itemArray[3];
 	// Item수를 정할건지 아니면 동적으로 늘어나게 할건지 얘기가 안되어서 일단 3개로 대충 잡아놨습니다!
 
@@ -35,7 +37,7 @@ public:
 	MapObject(ObjectType object) : MapObject()
 	{
 		objectType = object;
-		health = 5;
+		health = 100;
 	}
 
 	//Object 부셨을 때 획득하는 item 생성
@@ -95,6 +97,15 @@ public:
 		return itemArray;
 	}
 
+	void setSize(int x, int y) {
+		size[0] = x;
+		size[1] = y;
+	}
+
+	int* getSize() {
+		return size;
+	}
+
 
 
 	void setPlace(int p[]) {
@@ -143,6 +154,14 @@ public:
 	virtual int growing() {
 		cout << "check" << endl;
 		return 0;
+	}
+
+	void setBool(bool bb) {
+		b = bb;
+	}
+
+	bool getBool() {
+		return b;
 	}
 
 };

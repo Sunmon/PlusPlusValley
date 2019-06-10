@@ -36,3 +36,8 @@ void UseTime::nexttime()
 		settime(newtime + 10);
 }
 
+int UseTime::gettime()
+{
+	return this->gmtime;
+}
+

@@ -4,6 +4,7 @@ Controller* Controller::instance = nullptr;
 Controller::Controller()
 {
 	init();
+	
 }
 
 Controller::~Controller()
@@ -33,6 +34,15 @@ void Controller::init()
 	time = new UseTime(9 * 60);
 	//npc = new NPC();
 	//npc->setTile(map->map[3][4]);
+	m[0].setPlace(12, 139);
+	m[1].setPlace(101,218);
+	m[2].setPlace(453,200);
+	m[0].setSize(22, 41);
+	m[1].setSize(22, 41);
+	m[2].setSize(22, 41);
+	m[0].setBool(true);
+	m[1].setBool(true);
+	m[2].setBool(true);
 }
 
 void Controller::test_move()
@@ -56,6 +66,16 @@ void Controller::Nextday()
 Player* Controller::getPlayer()
 {
 	return player;
+}
+
+MapObject Controller::getMapObject(int i)
+{
+	return m[i];
+}
+
+void Controller::setMapObject(MapObject mm, int i)
+{
+	m[i] = mm;
 }
 
 
