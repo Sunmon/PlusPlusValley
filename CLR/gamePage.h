@@ -41,7 +41,6 @@ namespace CLRFInal {
 		ImageList^ imgList_ground;
 		ImageList^ imgList_MO;
 		//ImageList^ imgList_player;
-		System::String^ state_str;
 
 		int before_x, before_y;
 		//List<Bitmap> imgList_player;
@@ -306,22 +305,6 @@ private: System::Void movePlayer(System::Object^ sender, System::Windows::Forms:
 
 }
 	
-//캐릭터가 움직이는 애니메이션 설정
-		 //void movingAnimation(Object^ sender, EventArgs^ e)
-		 void movingAnimation()
-		 {
-			 //picBox_player->Image = imgList_player->Images[1];
-
-			 //TODO: 이미지 변화
-			 while (++moveState < 4)
-			 {
-				this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(L"Leah_down"+moveState)));
-				//Sleep(100);
-			 }
-
-			 this->moveState = 0;
-		 }
-
 private: System::Void do_nothing(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e) {
 	//this->picBox_player->Visible = false;
 }
@@ -333,21 +316,11 @@ private: System::Void bgWorker_animate_DoWork(System::Object^ sender, System::Co
 	before_y = player->gety();
 
 	player->move((int)(e->Argument));
-
-	const int LEFT = 37, RIGHT = 39, UP = 40, DOWN = 38;	//gui
-
-	switch ((int)e->Argument)
-	{
-	case LEFT: state_str = "Leah_left"; break;
-	case RIGHT: state_str = "Leah_right"; break;
-	case UP: state_str = "Leah_down"; break;
-	case DOWN: state_str = "Leah_up"; break;
-	default: break;
-	}
+	
 	while (moveState++ < 5)
 	{
 		Sleep(100);
-		this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(state_str+moveState)));
+		this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(getStateStr()+moveState)));
 		bgWorker_animate->ReportProgress(moveState);
 	}
 	moveState = 1;
@@ -359,13 +332,19 @@ private: System::Void BgWorker_animate_ProgressChanged(System::Object^ sender, S
 	this->picBox_player->Location = System::Drawing::Point(_x, _y);
 }
 private: System::Void BgWorker_animate_RunWorkerCompleted(System::Object^ sender, System::ComponentModel::RunWorkerCompletedEventArgs^ e) {
-	this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(state_str + moveState)));
+	this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(getStateStr() + moveState)));
 	int _x = player->getX() * TILE_SIZE;
 	int _y = player->gety() * TILE_SIZE - picBox_player->Height + TILE_SIZE;
 	this->picBox_player->Location = System::Drawing::Point(_x, _y);
 
 
 }
+
+	System::String^ getStateStr()
+	{
+		std::string str[4] = { "Leah_left","Leah_right", "Leah_down", "Leah_up"};
+		return string_to_system(str[player->getStatue()]);
+	 }
 };
 
 
