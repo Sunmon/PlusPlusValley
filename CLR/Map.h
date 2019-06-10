@@ -7,7 +7,6 @@
 class  Map
 {
 private:
-	const static int MAX_Y = 300, MAX_X = 500;
 
 	//tile간의 연결을 설정한다. 
 	void setmap()
@@ -33,6 +32,9 @@ private:
 	}
 
 public:
+	//const static int MAX_Y = 300, MAX_X = 500;
+	const static int MAX_Y = 30, MAX_X = 50;
+
 	Tile* map[MAX_X][MAX_Y];
 
 	Map()
@@ -65,7 +67,22 @@ public:
 
 		map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(npcObject);
 
+		//setObjToMap(stoneObject);
+		//setObjToMap(treeObject);
+
+		//맵 가운데에 농사 가능한 곳 두기
+		for (int i = MAX_X / 2 - MAX_X / 4; i < MAX_X / 2 + MAX_X / 4; i++)
+		{
+			for (int j = MAX_Y / 2 - MAX_Y / 4; j < MAX_Y / 2 + MAX_Y / 4; j++)
+			{
+				map[i][j]->setCanSeed(true);
+			}
+		}
+
 		for (int i = 0; i < (rand() % 5 + 1); i++) {
+			int s_x = (rand() % MAX_X);
+			int s_y = (rand() % MAX_Y);
+
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(&(*stoneObject));
 			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(&(*treeObject));
 		}
@@ -83,6 +100,16 @@ public:
 		Harvest* harv = new Harvest(harvest, "딸기");
 		map[5][5]->setObject(harv);
 		*/
+	}
+
+	void setObjToMap(MapObject* mo)
+	{
+		for (int i = 0; i < (rand() % 5 + 1); i++) {
+			int x = (rand() % MAX_X);
+			int y = (rand() % MAX_Y);
+			map[x][y]->setObject(&(*mo));
+			//map[x][y]->setCanSeed(true);
+		}
 	}
 
 	void growth()

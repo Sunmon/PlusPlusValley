@@ -79,6 +79,7 @@ namespace CLRFInal {
 			// backgroundPanel
 			// 
 			this->backgroundPanel->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"backgroundPanel.BackgroundImage")));
+			this->backgroundPanel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->backgroundPanel->Controls->Add(this->groubBox);
 			this->backgroundPanel->Controls->Add(this->startButton);
 			this->backgroundPanel->Controls->Add(this->nameTextBox);

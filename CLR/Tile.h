@@ -14,6 +14,7 @@ private:
 	int y;
 	bool canmove;	//플레이어가 위로 올라갈 수 있으면 true
 	bool isvalue;	//설치된 상태면 true
+	bool canSeed;	//씨앗을 심을 수 있으면 true
 	bool isWet;
 	bool fertilizer;
 	Tile* leftTile;
@@ -37,6 +38,7 @@ public:
 		isvalue = false;
 		isWet = false;
 		fertilizer = false;
+		canSeed = false;
 		mapobject = NULL;
 		leftTile = NULL;
 		rightTile = NULL;
@@ -109,6 +111,17 @@ public:
 	void setFertilizer(bool fert) {
 		this->fertilizer = fert;
 	}
+
+	void setCanSeed(bool canSeed)
+	{
+		this->canSeed = canSeed;
+	}
+
+	bool getCanSeed()
+	{
+		return this->canSeed;
+	}
+
 	bool getIsWet() {
 
 		string str;
@@ -132,8 +145,6 @@ public:
 		{
 			canmove = false;
 		}
-
-			
 		isvalue = true;
 	
 	}
