@@ -71,9 +71,10 @@ void Player::InitInventory()
 
 	Item* strawSeed = new Item(ItemType::SEED, "strawSeed");
 	inven->addItem(strawSeed, 3);
+	this->onHand = ax;
 	//this->onHand = hammer;
 	//this->onHand = strawSeed;
-	this->onHand = sprinkle;
+	//this->onHand = sprinkle;
 }
 
 void Player::setInven(Inventory* inven)
@@ -218,17 +219,8 @@ void Player::doAction(Item* tool, Tile* target)
 
 			cout << it->getName() << endl;
 			inven->addItem(it);
-			//cout << target->getObject()->getItemArray()[i]->getName() << endl;
-			//inven->addItem(target->getObject()->getItemArray()[i]);
 
 		}
-		/*
-				for (int i = 0; i < 3; i++)
-				{
-					if (target->getObject()->getItemArray()[i] == NULL) continue;
-					cout << target->getObject()->getItemArray()[i]->getName() << endl;
-					inven->addItem(target->getObject()->getItemArray()[i]);
-				}*/
 		target->removeObj();
 	}
 }
@@ -281,7 +273,7 @@ void Player::reduce_MO_HP(MapObject* mo)
 	int hp = mo->getHealth();
 	if (hp > 0)
 	{
-		mo->setHealth(--hp);
+		mo->setHealth(hp-30);
 		cout << "object hp: " << mo->getHealth() << endl;
 	}
 }

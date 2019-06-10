@@ -8,8 +8,7 @@ using namespace std;
 
 enum ObjectType
 {
-	//tree = 1, stone, harvest,
-	tree, stone, harvest, npc
+	tree = 0, stone, harvest, npc
 };
 class MapObject {
 protected:
@@ -24,7 +23,8 @@ protected:
 
 public:
 
-	MapObject(){
+	MapObject() {
+		//objectType = ObjectType::nothing;
 		for (auto& i : itemArray)
 		{
 			i = nullptr;
@@ -36,28 +36,13 @@ public:
 
 	MapObject(ObjectType object) : MapObject()
 	{
-		objectType = object;
+		this->objectType = object;
 		health = 100;
 	}
 
 	//Object ºÎ¼ÌÀ» ¶§ È¹µæÇÏ´Â item »ý¼º
 	void setEarnItem(ObjectType ot, const string& name) {
-		/*switch (ot)
-		{
-		case tree:
-			setItemArray(ItemType::WOOD, "³ª¹«Á¶°¢", 0);
-			break;
-		case stone:
-			setItemArray(ItemType::STONE, "µ¹Á¶°¢", 0);
-			break;
-		case harvest:
-			setItemArray(ItemType::CROP, name, 0);
-			setItemArray(ItemType::SEED, name+"¾¾¾Ñ", 1);
-			break;
-		default:
-			break;
-		}
-*/
+		
 		switch (ot)
 		{
 		case tree:

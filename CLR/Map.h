@@ -63,12 +63,12 @@ public:
 		//NPC* npc = new NPC("상인");
 
 		//npc를 맵 오브젝트로 설정
-		srand((unsigned int)time(0));
+		srand((unsigned int)time(NULL));
 
 		map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(npcObject);
 
 		//setObjToMap(stoneObject);
-		//setObjToMap(treeObject);
+		setObjToMap(treeObject);
 
 		//맵 가운데에 농사 가능한 곳 두기
 		for (int i = MAX_X / 2 - MAX_X / 4; i < MAX_X / 2 + MAX_X / 4; i++)
@@ -79,13 +79,13 @@ public:
 			}
 		}
 
-		for (int i = 0; i < (rand() % 5 + 1); i++) {
-			int s_x = (rand() % MAX_X);
-			int s_y = (rand() % MAX_Y);
+		//for (int i = 0; i < (rand() % 5 + 1); i++) {
+		//	int s_x = (rand() % MAX_X);
+		//	int s_y = (rand() % MAX_Y);
 
-			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(&(*stoneObject));
-			map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(&(*treeObject));
-		}
+		//	map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(&(*stoneObject));
+		//	map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(&(*treeObject));
+		//}
 
 
 
@@ -104,10 +104,13 @@ public:
 
 	void setObjToMap(MapObject* mo)
 	{
-		for (int i = 0; i < (rand() % 5 + 1); i++) {
+		srand((unsigned int)time(NULL));
+		for (int i = 0; i < (rand() % 5 + 5); i++) {
 			int x = (rand() % MAX_X);
 			int y = (rand() % MAX_Y);
+
 			map[x][y]->setObject(&(*mo));
+
 			//map[x][y]->setCanSeed(true);
 		}
 	}

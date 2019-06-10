@@ -5,6 +5,7 @@
 #include <msclr\marshal_cppstd.h>
 #include <string>
 #include <msclr\marshal_cppstd.h>
+#include <cassert>
 
 namespace CLRFInal {
 
@@ -145,7 +146,7 @@ namespace CLRFInal {
 			this->Name = L"gamePage";
 			this->Text = L"gamePage";
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &gamePage::movePlayer);
-			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &gamePage::KeyDDown);
+			//this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &gamePage::KeyDDown);
 			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &gamePage::do_nothing);
 			this->pnl_background->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_player))->EndInit();
@@ -190,8 +191,23 @@ namespace CLRFInal {
 
 		//map object 설정
 		MapObject* objPtr = controller->map->gettile(x, y)->getObject();
-		if (objPtr == nullptr || objPtr->getObjectType() == NULL) return;
-		matrix[x, y]->Image = imgList_MO->Images[objPtr->getObjectType()];
+		//if (objPtr == nullptr || objPtr->getObjectType() == NULL) return;
+		if (controller->map->gettile(x, y)->getObject() == nullptr)
+		{
+			this->matrix[x, y]->Image = nullptr;
+			matrix[x, y]->Refresh();
+			return;
+
+			//Application::Exit();
+		}
+		//assert(controller->map->gettile(x, y)->getObject() == nullptr && "Objectptr이 nullptr");
+
+		//if (objPtr == nullptr) return;
+		//assert(objPtr == nullptr && "Objectptr이 nullptr");
+
+		//assert(!objPtr->getObjectType() == NULL && "ObjectType이 tree");
+		matrix[x, y]->Image = imgList_MO->Images[(int)objPtr->getObjectType()];
+
 	}
 
 
@@ -223,6 +239,7 @@ namespace CLRFInal {
 
 		 //TODO:임시로 추가해놓음. 씨앗&npc로 바꿀 것
 		 imgList_MO->Images->Add(Image::FromFile("./images/seed.png"));
+		 imgList_MO->Images->Add(Image::FromFile("./images/stone.png"));
 		 imgList_MO->Images->Add(Image::FromFile("./images/stone.png"));
 	}
 
@@ -270,8 +287,8 @@ namespace CLRFInal {
 	
 private: System::Void movePlayer(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	bgWorker_animate->WorkerReportsProgress = true;
-
-	if(!bgWorker_animate->IsBusy) bgWorker_animate->RunWorkerAsync(e->KeyValue);
+	if (e->KeyValue == 32) action();
+	else if(!bgWorker_animate->IsBusy) bgWorker_animate->RunWorkerAsync(e->KeyValue);
 
 }
 	
@@ -310,33 +327,43 @@ private: System::Void BgWorker_animate_RunWorkerCompleted(System::Object^ sender
 
 }
 
+		 void action()
+		 {
+			 player->interact();
+			 setMatrixImgs(player->getTarget()->getx(), player->getTarget()->gety());
+		 }
+
+		 System::String^ getStateStr()
+		 {
+			 std::string str[4] = { "left","right", "down", "up" };
+			 return string_to_system(str[player->getStatue()]);
+		 }
 	//스페이스바 누를 시, 씨 뿌리기, 물뿌리기, 오브젝트 없애기를 조사후 진행
-private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	Player* p = controller->getPlayer();
+//private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	//Player* p = controller->getPlayer();
 
-	int k = (int)(e->KeyCode);
-	int s = p->getStatue();
-	int x = p->getX();
-	int y = p->gety();
+	//int k = (int)(e->KeyCode);
+	//int s = p->getStatue();
+	//int x = p->getX();
+	//int y = p->gety();
 
-	if (s == 0) {
-		x = x - 1;
-	}
-	else if (s == 1) {
-		x = x + 1;
-	}
-	else if (s == 2) {
-		y = y + 1;
-	}
-	else if (s == 3) {
-		y = y - 1;
-	}
+	//if (s == 0) {
+	//	x = x - 1;
+	//}
+	//else if (s == 1) {
+	//	x = x + 1;
+	//}
+	//else if (s == 2) {
+	//	y = y + 1;
+	//}
+	//else if (s == 3) {
+	//	y = y - 1;
+	//}
 
 
-	if (k == 32) {
-		player->interact();
-		setMatrixImgs(player->getTarget()->getx(), player->getTarget()->gety());
-
+	//if (k == 32) {
+		
+		
 		/*if (true == controller->map->gettile(x, y)->getCanSeed()) {
 			controller->map->gettile(x, y)->setObject(new Harvest);
 			matrix[x, y]->Image = imgList_MO->Images[harvest];
@@ -350,32 +377,25 @@ private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::K
 			controller->map->gettile(x, y)->setIsWet(true);
 		}*/
 
-		 if (nullptr != controller->map->gettile(x, y)->getObject()) {
-			MapObject* objPtr = controller->map->gettile(x, y)->getObject();
-			int h = objPtr->getHealth();
-			h = h - 10;
-			objPtr->setHealth(h);
+		// if (nullptr != controller->map->gettile(x, y)->getObject()) {
+		//	MapObject* objPtr = controller->map->gettile(x, y)->getObject();
+		//	int h = objPtr->getHealth();
+		//	h = h - 10;
+		//	objPtr->setHealth(h);
 
-			if (h <= 60) {
-				this->matrix[x, y]->Image = nullptr;
-				controller->map->gettile(x, y)->setCanMove(true);
-			}
-		}
-	}
+		//	if (h <= 60) {
+		//		this->matrix[x, y]->Image = nullptr;
+		//		controller->map->gettile(x, y)->setCanMove(true);
+		//	}
+		//}
+	/*}*/
 
 
 	
+		 
 
-}
-		 System::String^ getStateStr()
-		 {
-			 std::string str[4] = { "left","right", "down", "up" };
-			 return string_to_system(str[player->getStatue()]);
-		 }
 
 };
-
-
-
-
 }
+
+
