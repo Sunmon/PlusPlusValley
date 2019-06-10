@@ -294,6 +294,9 @@ namespace CLRFInal {
 			this->panel4->ResumeLayout(false);
 			this->ResumeLayout(false);
 
+			this->KeyPreview = true;
+			this->KeyDown += gcnew KeyEventHandler(this, &MyForm1::KeyDDown);
+
 		}
 #pragma endregion
 	
