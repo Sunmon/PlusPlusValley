@@ -1,4 +1,5 @@
 #include "Item.h"
+//using namespace System::Windows::Forms;
 
 Item::Item() : Item(ItemType::NONE, "")
 {
@@ -20,6 +21,11 @@ void Item::setName(const std::string& name)
 {
 	this->name = name;
 }
+//GUI¿ë
+//void Item::setItem(Panel p)
+//{
+//
+//}
 
 void Item::setMAX_NUM(int num)
 {
@@ -54,6 +60,5 @@ int Item::getCost()
 
 std::string& Item::getName()
 {
-	//
 	return this->name;
 }

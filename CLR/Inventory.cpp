@@ -1,4 +1,6 @@
 #include "Inventory.h"
+//using namespace System::Windows::Forms;
+
 #define MAX(a,b)	((a>b)? a: b)
 
 
@@ -31,6 +33,10 @@ void Inventory::addItem(Item* item, int num)
 	if (itemIter == items.end()) items.push_back(std::make_pair(item, num));
 	else itemIter->second = MAX(itemIter->second + num, item->getMAX_NUM());
 }
+//GUI용
+//void Inventory::addItem1(Panel p)
+//{
+//}
 
 //item을 num만큼 제거한다. 개수가 정해지지 않았다면 1개 제거.
 void Inventory::removeItem(Item* item, int num)

@@ -62,6 +62,16 @@ void Controller::Nextday()
 	
 }
 
+Item* Controller::getItem()
+{
+	return item;
+}
+
+Inventory* Controller::getInventory()
+{
+	return inventory;
+}
+
 Player* Controller::getPlayer()
 {
 	return player;
