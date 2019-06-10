@@ -317,21 +317,19 @@ private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::K
 	int x = p->getX();
 	int y = p->gety();
 
-	if (s == 1) {
+	if (s == 0) {
 		x = x - 1;
 	}
-	else if (s == 2) {
+	else if (s == 1) {
 		x = x + 1;
 	}
-	else if (s == 3) {
+	else if (s == 2) {
 		y = y + 1;
 	}
-	else if (s == 4) {
+	else if (s == 3) {
 		y = y - 1;
 	}
 
-
-	picBox_player->Location = System::Drawing::Point(x * TILE_SIZE, y * TILE_SIZE);
 
 	if (k == 32) {
 		if (true == controller->map->gettile(x, y)->getCanSeed()) {
@@ -346,6 +344,7 @@ private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::K
 			this->matrix[x, y]->BackgroundImage = imgList_ground->Images[state];
 			controller->map->gettile(x, y)->setIsWet(true);
 		}
+
 		else if (nullptr != controller->map->gettile(x, y)->getObject()) {
 			MapObject* objPtr = controller->map->gettile(x, y)->getObject();
 			int h = objPtr->getHealth();
@@ -359,8 +358,15 @@ private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::K
 		}
 	}
 
-}
 
+	
+
+}
+		 System::String^ getStateStr()
+		 {
+			 std::string str[4] = { "left","right", "down", "up" };
+			 return string_to_system(str[player->getStatue()]);
+		 }
 
 };
 
