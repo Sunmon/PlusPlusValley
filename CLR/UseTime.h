@@ -12,5 +12,6 @@ public:
 	int gethour();
 	int getminute();
 	void nexttime();
+	int gettime();
 };
 

@@ -161,6 +161,20 @@ public:
 		this->harv = har;
 		isvalue = true;
 	}
+
+	void setObject(Harvest* har, int x, int y)
+	{
+		if (this->isvalue) return;
+
+		this->mapobject = har;
+		this->harv = har;
+
+		har->setPlace(x, y);
+
+		isvalue = true;
+
+
+	}
 	MapObject* getObject()
 	{
 		return mapobject;

@@ -54,7 +54,6 @@ string Player::getName()
 void Player::act()
 {
 	cout << "act" << endl;
-	where();
 }
 void Player::InitInventory()
 {

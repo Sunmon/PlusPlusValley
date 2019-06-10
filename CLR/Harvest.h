@@ -31,10 +31,10 @@ public:
 
 
 	int growing() {
-		if (growth >= growingPoint) {
-			level++;
+		if (growth <= growingPoint) {
+			growth = growth + 20;
 		}
-		cout << "check" << endl;
+		cout << growth << endl;
 		return level;
 	}
 };
