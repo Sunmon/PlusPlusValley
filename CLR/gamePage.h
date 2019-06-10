@@ -65,6 +65,8 @@ namespace CLRFInal {
 			//setImgList_player();
 			
 			setMatrix();
+			this->picBox_player->Location = System::Drawing::Point(player->getX()*TILE_SIZE, player->gety() * TILE_SIZE - picBox_player->Height + TILE_SIZE);
+
 			//
 			//TODO: 생성자 코드를 여기에 추가합니다.
 			//
@@ -82,9 +84,9 @@ namespace CLRFInal {
 			}
 		}
 	private: System::Windows::Forms::PictureBox^ picBox_player;
-	private: System::Windows::Forms::Label^ label1;
+
 	private: System::Windows::Forms::Panel^ pnl_background;
-	private: System::Windows::Forms::PictureBox^ picBox_dirt;
+
 	private:
 		/// <summary>
 		/// 필수 디자이너 변수입니다.
@@ -99,26 +101,17 @@ namespace CLRFInal {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(gamePage::typeid));
-			//
-			//내가 임의로 추가
-			rs = resources;
-			//
-			//
 			this->pnl_background = (gcnew System::Windows::Forms::Panel());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->picBox_player = (gcnew System::Windows::Forms::PictureBox());
-			this->picBox_dirt = (gcnew System::Windows::Forms::PictureBox());
 			this->bgWorker_animate = (gcnew System::ComponentModel::BackgroundWorker());
 			this->pnl_background->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_player))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_dirt))->BeginInit();
+			this->rs = resources;
 			this->SuspendLayout();
 			// 
 			// pnl_background
 			// 
-			this->pnl_background->Controls->Add(this->label1);
 			this->pnl_background->Controls->Add(this->picBox_player);
-			this->pnl_background->Controls->Add(this->picBox_dirt);
 			this->pnl_background->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnl_background->Location = System::Drawing::Point(0, 0);
 			this->pnl_background->Name = L"pnl_background";
@@ -126,17 +119,9 @@ namespace CLRFInal {
 			this->pnl_background->TabIndex = 0;
 			this->pnl_background->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &gamePage::Pnl_background_Paint);
 			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(395, 116);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(45, 15);
-			this->label1->TabIndex = 2;
-			this->label1->Text = L"label1";
-			// 
 			// picBox_player
 			// 
+			this->picBox_player->BackColor = System::Drawing::Color::Transparent;
 			this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBox_player.Image")));
 			this->picBox_player->Location = System::Drawing::Point(653, 219);
 			this->picBox_player->Name = L"picBox_player";
@@ -144,19 +129,6 @@ namespace CLRFInal {
 			this->picBox_player->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->picBox_player->TabIndex = 1;
 			this->picBox_player->TabStop = false;
-			// 
-			// picBox_dirt
-			// 
-			this->picBox_dirt->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBox_dirt.BackgroundImage")));
-			this->picBox_dirt->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->picBox_dirt->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBox_dirt.Image")));
-			this->picBox_dirt->Location = System::Drawing::Point(185, 113);
-			this->picBox_dirt->Name = L"picBox_dirt";
-			this->picBox_dirt->Size = System::Drawing::Size(31, 34);
-			this->picBox_dirt->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->picBox_dirt->TabIndex = 0;
-			this->picBox_dirt->TabStop = false;
-			this->picBox_dirt->Click += gcnew System::EventHandler(this, &gamePage::PictureBox1_Click);
 			// 
 			// bgWorker_animate
 			// 
@@ -175,9 +147,7 @@ namespace CLRFInal {
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &gamePage::movePlayer);
 			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &gamePage::do_nothing);
 			this->pnl_background->ResumeLayout(false);
-			this->pnl_background->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_player))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_dirt))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -297,8 +267,6 @@ namespace CLRFInal {
 
 	
 private: System::Void movePlayer(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	this->label1->Text = (e->KeyValue).ToString();
-
 	bgWorker_animate->WorkerReportsProgress = true;
 
 	if(!bgWorker_animate->IsBusy) bgWorker_animate->RunWorkerAsync(e->KeyValue);
@@ -342,7 +310,7 @@ private: System::Void BgWorker_animate_RunWorkerCompleted(System::Object^ sender
 
 	System::String^ getStateStr()
 	{
-		std::string str[4] = { "Leah_left","Leah_right", "Leah_down", "Leah_up"};
+		std::string str[4] = { "left","right", "down", "up"};
 		return string_to_system(str[player->getStatue()]);
 	 }
 };
