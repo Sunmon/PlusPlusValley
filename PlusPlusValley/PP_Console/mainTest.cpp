@@ -18,8 +18,10 @@ void test_saveharvest();
 
 int main()
 {
-	controller->init();
-	controller->test_move();
+	//controller->init();
+	//controller->test_move();
+	test_inventory();
+	
 	//test_store();
 	//test_saveharvest();
 }
@@ -33,7 +35,9 @@ void test_inventory()
 	//test for inventory
 	Inventory* inven = new Inventory();
 
+	inven->loadinven();
 	//add item to inventory
+	/*
 	Item* seed = new Item(ItemType::SEED, "Seed");
 	Item* wood = new Item(ItemType::WOOD, "Wood");
 	Item* stone = new Item(ItemType::STONE, "Stone");
@@ -42,8 +46,8 @@ void test_inventory()
 	inven->addItem(stone, 2);
 	inven->addItem(stone);
 	inven->addItem(new Item(ItemType::CROP, "Crop"));
-
-	Item* tool = new Tool("Hammer");
+	
+	Item* tool = new Tool(HAMMER , "Hammer");
 	inven->addItem(tool);
 	inven->printItems();
 
@@ -51,12 +55,11 @@ void test_inventory()
 	inven->addItem(stone, 3);
 	inven->removeItem(wood);
 	inven->clearItem(seed);
+	*/
 	inven->printItems();
 	cout << inven->items.size() << endl;
-
+	inven->saveinven();
 	delete(inven);
-
-
 }
 
 //void test_store()
