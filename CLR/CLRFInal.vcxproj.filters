@@ -66,6 +66,9 @@
     <ClInclude Include="UseTime.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="MyForm2.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="GUI_Main.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -73,9 +76,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="gamePage.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MyForm2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
