@@ -66,7 +66,13 @@
     <ClInclude Include="UseTime.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="GUI_Main.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="startingPage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="gamePage.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -113,6 +119,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="startingPage.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI_Main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="gamePage.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

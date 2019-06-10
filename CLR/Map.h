@@ -9,8 +9,6 @@ class  Map
 private:
 	const static int MAX_Y = 300, MAX_X = 500;
 
-	
-
 	//tile간의 연결을 설정한다. 
 	void setmap()
 	{

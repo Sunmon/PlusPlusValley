@@ -1,5 +1,8 @@
 #pragma once
 #include "Controller.h"
+#include <msclr\marshal_cppstd.h>
+#include <string>
+#include <msclr\marshal_cppstd.h>
 namespace CLRFInal {
 
 	using namespace System;
@@ -15,6 +18,7 @@ namespace CLRFInal {
 	public ref class startingPage : public System::Windows::Forms::Form
 	{
 	public:
+		bool isCharacterSet = false;	//이름 정하고 OK버튼 누르면 true;
 		static Controller* controller = Controller::getInstance();
 		startingPage(void)
 		{
@@ -38,6 +42,11 @@ namespace CLRFInal {
 	private: System::Windows::Forms::Panel^ backgroundPanel;
 	private: System::Windows::Forms::Button^ startButton;
 	private: System::Windows::Forms::TextBox^ nameTextBox;
+	private: System::Windows::Forms::GroupBox^ groubBox;
+	private: System::Windows::Forms::Button^ btn_NO;
+	private: System::Windows::Forms::Button^ btn_OK;
+	private: System::Windows::Forms::Label^ lab_message;
+
 	protected:
 
 	protected:
@@ -57,14 +66,20 @@ namespace CLRFInal {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(startingPage::typeid));
 			this->backgroundPanel = (gcnew System::Windows::Forms::Panel());
+			this->groubBox = (gcnew System::Windows::Forms::GroupBox());
+			this->lab_message = (gcnew System::Windows::Forms::Label());
+			this->btn_NO = (gcnew System::Windows::Forms::Button());
+			this->btn_OK = (gcnew System::Windows::Forms::Button());
 			this->startButton = (gcnew System::Windows::Forms::Button());
 			this->nameTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->backgroundPanel->SuspendLayout();
+			this->groubBox->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// backgroundPanel
 			// 
 			this->backgroundPanel->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"backgroundPanel.BackgroundImage")));
+			this->backgroundPanel->Controls->Add(this->groubBox);
 			this->backgroundPanel->Controls->Add(this->startButton);
 			this->backgroundPanel->Controls->Add(this->nameTextBox);
 			this->backgroundPanel->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -72,6 +87,49 @@ namespace CLRFInal {
 			this->backgroundPanel->Name = L"backgroundPanel";
 			this->backgroundPanel->Size = System::Drawing::Size(869, 380);
 			this->backgroundPanel->TabIndex = 0;
+			// 
+			// groubBox
+			// 
+			this->groubBox->Controls->Add(this->lab_message);
+			this->groubBox->Controls->Add(this->btn_NO);
+			this->groubBox->Controls->Add(this->btn_OK);
+			this->groubBox->Enabled = false;
+			this->groubBox->Location = System::Drawing::Point(217, 82);
+			this->groubBox->Name = L"groubBox";
+			this->groubBox->Size = System::Drawing::Size(418, 237);
+			this->groubBox->TabIndex = 2;
+			this->groubBox->TabStop = false;
+			this->groubBox->Visible = false;
+			this->groubBox->Enter += gcnew System::EventHandler(this, &startingPage::GroupBox1_Enter);
+			// 
+			// lab_message
+			// 
+			this->lab_message->AutoSize = true;
+			this->lab_message->Location = System::Drawing::Point(69, 99);
+			this->lab_message->Name = L"lab_message";
+			this->lab_message->Size = System::Drawing::Size(0, 15);
+			this->lab_message->TabIndex = 2;
+			this->lab_message->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// btn_NO
+			// 
+			this->btn_NO->Location = System::Drawing::Point(264, 184);
+			this->btn_NO->Name = L"btn_NO";
+			this->btn_NO->Size = System::Drawing::Size(75, 23);
+			this->btn_NO->TabIndex = 1;
+			this->btn_NO->Text = L"NO";
+			this->btn_NO->UseVisualStyleBackColor = true;
+			this->btn_NO->Click += gcnew System::EventHandler(this, &startingPage::disableGroupBox);
+			// 
+			// btn_OK
+			// 
+			this->btn_OK->Location = System::Drawing::Point(72, 185);
+			this->btn_OK->Name = L"btn_OK";
+			this->btn_OK->Size = System::Drawing::Size(75, 23);
+			this->btn_OK->TabIndex = 0;
+			this->btn_OK->Text = L"OK";
+			this->btn_OK->UseVisualStyleBackColor = true;
+			this->btn_OK->Click += gcnew System::EventHandler(this, &startingPage::initGame);
 			// 
 			// startButton
 			// 
@@ -100,14 +158,55 @@ namespace CLRFInal {
 			this->Text = L"startingPage";
 			this->backgroundPanel->ResumeLayout(false);
 			this->backgroundPanel->PerformLayout();
+			this->groubBox->ResumeLayout(false);
+			this->groubBox->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 
-		//TODO: gamestart 버튼 이벤트
+	//player이름 설정 & 알림창 띄우기
 	private: System::Void gamestart(System::Object^ sender, System::EventArgs^ e) {
 
+		std::string name = system_to_string(nameTextBox->Text);
+		lab_message ->Text = ("캐릭터 이름은 " + string_to_system(name) + "입니다");
+		controller->getPlayer()->setName(name);
+		groubBox->Enabled = true;
+		groubBox->Show();
 	}
-	};
+
+	private: System::Void GroupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
+	}
+
+	//OK누르면 게임 시작 & 새 화면 띄우기
+	private: System::Void initGame(System::Object^ sender, System::EventArgs^ e) {
+		this->isCharacterSet = true;
+		this->Close();
+	}
+
+
+
+		 //string to System::string
+		 private: std::string system_to_string(System::String^ sys_str)
+		 {
+			 return  msclr::interop::marshal_as<std::string>(sys_str);
+		 }
+
+		//System::string to std::string^
+		private: System::String^ string_to_system(std::string str)
+		{
+			return  msclr::interop::marshal_as<String^>(str);
+		}
+
+private: System::Void disableGroupBox(System::Object^ sender, System::EventArgs^ e) {
+	//NO버튼 누르면 알림창 지우기
+	this->isCharacterSet = false;
+	groubBox->Enabled = false;
+	groubBox->Visible = false;
+	nameTextBox->ResetText();
+	lab_message->ResetText();
+}
+};
+
+
 }

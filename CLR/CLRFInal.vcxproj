@@ -104,7 +104,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <EntryPointSymbol>Start</EntryPointSymbol>
+      <EntryPointSymbol>GUI_MAIN</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,6 +137,12 @@
   <ItemGroup>
     <ClInclude Include="character.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="gamePage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="GUI_Main.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Harvest.h" />
     <ClInclude Include="InitialPage.h" />
     <ClInclude Include="Inventory.h" />
@@ -161,6 +167,9 @@
     <ClInclude Include="UseTime.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="gamePage.resx">
+      <DependentUpon>gamePage.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx" />
     <EmbeddedResource Include="MyForm1.resx" />
     <EmbeddedResource Include="startingPage.resx">
@@ -169,6 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="gamePage.cpp" />
+    <ClCompile Include="GUI_Main.cpp" />
     <ClCompile Include="InitialPage.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
