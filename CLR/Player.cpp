@@ -71,8 +71,9 @@ void Player::InitInventory()
 
 	Item* strawSeed = new Item(ItemType::SEED, "strawSeed");
 	inven->addItem(strawSeed, 3);
-	this->onHand = hammer;
+	//this->onHand = hammer;
 	//this->onHand = strawSeed;
+	this->onHand = sprinkle;
 }
 
 void Player::setInven(Inventory* inven)
@@ -97,64 +98,64 @@ Inventory* Player::getInven()
 {
 	return this->inven;
 }
-
-void Player::Interact()
-{
-
-	Item* firstitem = inven->getfirstItem();
-
-	Tile* target = this->getTarget();
-
-	if (target == NULL || target->getObject() == NULL)
-	{
-		cout << "¾Æ¹«°Íµµ ÇÒ ¼ö ¾ø´Ù." << endl;
-	}
-	else
-	{
-		if (firstitem->getItemType() == TOOL)
-		{
-			if (firstitem->getName() == "ax")
-			{
-				if (target->getObject()->getObjectType() == tree)
-				{
-					cout << "³ª¹«¸¦ º£¾ú´Ù" << endl;
-				}
-				else
-				{
-					cout << "µµ³¢¸¦ ÈÖµÑ·¶´Ù" << endl;
-				}
-			}
-			else if (firstitem->getName() == "crop")
-			{
-				if (target->getObject()->getObjectType() == stone)
-				{
-					cout << "µ¹À» ºÎ¼Ì´Ù." << endl;
-				}
-				else
-				{
-					cout << "°î°»ÀÌ¸¦ ÈÖµÑ·¶´Ù" << endl;
-				}
-			}
-		}
-		else if (firstitem->getItemType() == SEED)
-		{
-			if (target->getIsvalue() == false)
-			{
-				Harvest* seed = new Harvest(harvest, "¾¾¾Ñ");
-				target->setObject(seed);
-			}
-			else
-			{
-				cout << "¾¾¸¦ »Ñ¸± ¼ö ¾ø½À´Ï´Ù." << endl;
-			}
-		}
-		else
-		{
-			cout << "¾Æ¹«ÀÏµµ ÀÏ¾î³ªÁö ¾Ê¾Ò´Ù." << endl;
-		}
-	}
-
-}
+//
+//void Player::Interact()
+//{
+//
+//	Item* firstitem = inven->getfirstItem();
+//
+//	Tile* target = this->getTarget();
+//
+//	if (target == NULL || target->getObject() == NULL)
+//	{
+//		cout << "¾Æ¹«°Íµµ ÇÒ ¼ö ¾ø´Ù." << endl;
+//	}
+//	else
+//	{
+//		if (firstitem->getItemType() == TOOL)
+//		{
+//			if (firstitem->getName() == "ax")
+//			{
+//				if (target->getObject()->getObjectType() == tree)
+//				{
+//					cout << "³ª¹«¸¦ º£¾ú´Ù" << endl;
+//				}
+//				else
+//				{
+//					cout << "µµ³¢¸¦ ÈÖµÑ·¶´Ù" << endl;
+//				}
+//			}
+//			else if (firstitem->getName() == "crop")
+//			{
+//				if (target->getObject()->getObjectType() == stone)
+//				{
+//					cout << "µ¹À» ºÎ¼Ì´Ù." << endl;
+//				}
+//				else
+//				{
+//					cout << "°î°»ÀÌ¸¦ ÈÖµÑ·¶´Ù" << endl;
+//				}
+//			}
+//		}
+//		else if (firstitem->getItemType() == SEED)
+//		{
+//			if (target->getIsvalue() == false)
+//			{
+//				Harvest* seed = new Harvest(harvest, "¾¾¾Ñ");
+//				target->setObject(seed);
+//			}
+//			else
+//			{
+//				cout << "¾¾¸¦ »Ñ¸± ¼ö ¾ø½À´Ï´Ù." << endl;
+//			}
+//		}
+//		else
+//		{
+//			cout << "¾Æ¹«ÀÏµµ ÀÏ¾î³ªÁö ¾Ê¾Ò´Ù." << endl;
+//		}
+//	}
+//
+//}
 
 //ÇÃ·¹ÀÌ¾î°¡ °¡Áö°í ÀÖ´Â µµ±¸¿Í ¹Ù¶óº¸°í ÀÖ´Â Å¸ÀÏ¿¡ µû¶ó »óÈ£ÀÛ¿ëÇÔ
 void Player::interact()
@@ -199,11 +200,11 @@ void Player::interact()
 void Player::doAction(Item* tool, Tile* target)
 {
 
+	if (static_cast<Tool*>(tool)->toolType == SPRINKLE) { water(tool, target); return; }
+	if (static_cast<Tool*>(tool)->toolType == FERTILIZE) { fertilize(tool, target); return; }
 	if (target->getObject() == nullptr) return;
 	std::string str[5] = { "³ª¹«¸¦ º£¾ú´Ù", "µ¹À» ºÎ½¥´Ù", "ÀÛ¹°À» ¼öÈ®Çß´Ù", "¹°À» »Ñ·È´Ù", "ºñ·á¸¦ »Ñ·È´Ù" };
 
-	if (static_cast<Tool*>(tool)->toolType == SPRINKLE) { sprinkle(tool, target); return; }
-	if (static_cast<Tool*>(tool)->toolType == FERTILIZE) { fertilize(tool, target); return; }
 	cout << "toolType: " << static_cast<Tool*>(tool)->toolType << " objectType: " << target->getObject()->getObjectType() << endl;
 	if (static_cast<Tool*>(tool)->toolType != target->getObject()->getObjectType()) return;
 
@@ -258,7 +259,7 @@ void Player::goStore() {
 	}
 }
 
-void Player::sprinkle(Item* tool, Tile* target)
+void Player::water(Item* tool, Tile* target)
 {
 	//if (target->getIsWet() == false) return;
 
@@ -289,8 +290,10 @@ void Player::reduce_MO_HP(MapObject* mo)
 //ÁÖ¸Ó´Ï¿¡¼­ ¾¾¾Ñ °³¼ö °¨¼Ò & Å¸ÀÏ¿¡ ¾¾ »Ñ¸®±â 
 void Player::seeding(Item* seed, Tile* target)
 {
-	//¾¾¾Ñ °³¼ö °¨¼Ò
+	//Å¸ÀÏ¿¡ ¾¾ »Ñ¸®±â
 	inven->removeItem(seed);
+
+	//¾¾¾Ñ °³¼ö °¨¼Ò
 	if (inven->findIter(seed) == inven->items.end())
 	{
 		cout << "¾¾¾ÑÀÌ ¾ø½À´Ï´Ù" << endl;  return;
@@ -298,7 +301,6 @@ void Player::seeding(Item* seed, Tile* target)
 	//if (inven->findItem(seed) == NULL) return;
 	cout << "¾¾¾ÑÀ» »Ñ·È½À´Ï´Ù. ³²Àº ¾¾¾Ñ: " << seed->getName() << " " << inven->findIter(seed)->second << endl;
 
-	//Å¸ÀÏ¿¡ ¾¾ »Ñ¸®±â
 	if (target->getObject() != nullptr) return;
 	string name = seed->getName();
 	size_t pos = name.find("¾¾¾Ñ");

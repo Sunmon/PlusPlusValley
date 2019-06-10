@@ -184,7 +184,8 @@ namespace CLRFInal {
 	private: void setMatrixImgs(int x, int y)
 	{
 		//background 땅/풀 설정
-		int state = (controller->map->gettile(x, y)->getCanSeed()) ? DRY : GRASS;
+		int state = (!controller->map->gettile(x, y)->getCanSeed()) ? GRASS: 
+			controller->map->gettile(x,y)->getIsWet()? WET:DRY;
 		this->matrix[x, y]->BackgroundImage = imgList_ground->Images[state];
 
 		//map object 설정
@@ -221,7 +222,7 @@ namespace CLRFInal {
 		 imgList_MO->Images->Add(Image::FromFile("./images/stone.png"));
 
 		 //TODO:임시로 추가해놓음. 씨앗&npc로 바꿀 것
-		 imgList_MO->Images->Add(Image::FromFile("./images/stone.png"));
+		 imgList_MO->Images->Add(Image::FromFile("./images/seed.png"));
 		 imgList_MO->Images->Add(Image::FromFile("./images/stone.png"));
 	}
 
@@ -309,9 +310,10 @@ private: System::Void BgWorker_animate_RunWorkerCompleted(System::Object^ sender
 
 }
 
-		 //스페이스바 누를 시, 씨 뿌리기, 물뿌리기, 오브젝트 없애기를 조사후 진행
+	//스페이스바 누를 시, 씨 뿌리기, 물뿌리기, 오브젝트 없애기를 조사후 진행
 private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	Player* p = controller->getPlayer();
+
 	int k = (int)(e->KeyCode);
 	int s = p->getStatue();
 	int x = p->getX();
@@ -332,7 +334,10 @@ private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::K
 
 
 	if (k == 32) {
-		if (true == controller->map->gettile(x, y)->getCanSeed()) {
+		player->interact();
+		setMatrixImgs(player->getTarget()->getx(), player->getTarget()->gety());
+
+		/*if (true == controller->map->gettile(x, y)->getCanSeed()) {
 			controller->map->gettile(x, y)->setObject(new Harvest);
 			matrix[x, y]->Image = imgList_MO->Images[harvest];
 			controller->map->gettile(x, y)->setCanSeed(false);
@@ -343,9 +348,9 @@ private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::K
 			int state = (controller->map->gettile(x, y)->getIsWet()) ? WET : GRASS;
 			this->matrix[x, y]->BackgroundImage = imgList_ground->Images[state];
 			controller->map->gettile(x, y)->setIsWet(true);
-		}
+		}*/
 
-		else if (nullptr != controller->map->gettile(x, y)->getObject()) {
+		 if (nullptr != controller->map->gettile(x, y)->getObject()) {
 			MapObject* objPtr = controller->map->gettile(x, y)->getObject();
 			int h = objPtr->getHealth();
 			h = h - 10;
