@@ -4,6 +4,7 @@
 #include <msclr\marshal_cppstd.h>
 #include <string>
 #include <msclr\marshal_cppstd.h>
+
 namespace CLRFInal {
 
 	using namespace System;
@@ -16,10 +17,13 @@ namespace CLRFInal {
 
 	/// <summary>
 	/// gamePage에 대한 요약입니다.
+	//	matrix[x,y] : map tile
 	//	MAX_X, MAX,Y : map의 tile 배열 수 
 	//	TILE_SIZE: 그림상 나타낼 한 타일의 사이즈(px)
 	//	setMatrixImgs(x,y):타일 하나하나의 이미지 설정. background는 풀/땅, img는 오브젝트.
 	//	void setMatrix(): 전체 맵 그리기
+	//	imageList_MO: 맵 오브젝트 이미지 저장하는 리스트
+	//	imageList_Player: 플레이어 이미지 저장하는 리스트
 	/// </summary>
 	public ref class gamePage : public System::Windows::Forms::Form
 	{
@@ -29,13 +33,23 @@ namespace CLRFInal {
 		const int MAX_X = controller->map->MAX_X;
 		const int MAX_Y = controller->map->MAX_Y;
 		int TILE_SIZE;
-
+		ImageList^ imgList_ground;
+		ImageList^ imgList_MO;
+		ImageList^ imgList_player;
+		const int DRY = 0, WET = 1, GRASS = 2;	//imagelist_ground에 쓰기 쉬우라고 이름 정해준것
+		
+	private: System::Windows::Forms::PictureBox^ picBox_player;
+	public:
 		cli::array<PictureBox^, 2> ^ matrix = gcnew cli::array<PictureBox^, 2>(MAX_X, MAX_Y);
 		
 		gamePage(void)
 		{
 			InitializeComponent();
 			TILE_SIZE = pnl_background->Width / MAX_X;
+			setImgList_MO();
+			setImgList_ground();
+			imgList_player = gcnew ImageList();
+			
 			setMatrix();
 			//
 			//TODO: 생성자 코드를 여기에 추가합니다.
@@ -55,10 +69,6 @@ namespace CLRFInal {
 		}
 	private: System::Windows::Forms::Panel^ pnl_background;
 	private: System::Windows::Forms::PictureBox^ picBox_dirt;
-
-	protected:
-
-
 	private:
 		/// <summary>
 		/// 필수 디자이너 변수입니다.
@@ -74,13 +84,16 @@ namespace CLRFInal {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(gamePage::typeid));
 			this->pnl_background = (gcnew System::Windows::Forms::Panel());
+			this->picBox_player = (gcnew System::Windows::Forms::PictureBox());
 			this->picBox_dirt = (gcnew System::Windows::Forms::PictureBox());
 			this->pnl_background->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_player))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_dirt))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pnl_background
 			// 
+			this->pnl_background->Controls->Add(this->picBox_player);
 			this->pnl_background->Controls->Add(this->picBox_dirt);
 			this->pnl_background->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnl_background->Location = System::Drawing::Point(0, 0);
@@ -89,7 +102,17 @@ namespace CLRFInal {
 			this->pnl_background->TabIndex = 0;
 			this->pnl_background->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &gamePage::Pnl_background_Paint);
 			// 
-			// picBox_dirt ;; 다른 picturebox에 어떤 식으로 메소드 사용해야 할 지 예시용으로 놔둠
+			// picBox_player
+			// 
+			this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBox_player.Image")));
+			this->picBox_player->Location = System::Drawing::Point(460, 264);
+			this->picBox_player->Name = L"picBox_player";
+			this->picBox_player->Size = System::Drawing::Size(33, 63);
+			this->picBox_player->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->picBox_player->TabIndex = 1;
+			this->picBox_player->TabStop = false;
+			// 
+			// picBox_dirt
 			// 
 			this->picBox_dirt->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBox_dirt.BackgroundImage")));
 			this->picBox_dirt->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
@@ -111,6 +134,7 @@ namespace CLRFInal {
 			this->Name = L"gamePage";
 			this->Text = L"gamePage";
 			this->pnl_background->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_player))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_dirt))->EndInit();
 			this->ResumeLayout(false);
 
@@ -146,17 +170,14 @@ namespace CLRFInal {
 	//타일 하나하나의 이미지 설정. background는 풀/땅, img는 오브젝트.
 	private: void setMatrixImgs(int x, int y)
 	{
-		string backgroundSrc = (controller->map->gettile(x, y)->getCanSeed()) ? "./images/wetDirt.png" : "./images/grass.png";
-		this->matrix[x, y]->BackgroundImage = Image::FromFile(string_to_system(backgroundSrc));
-		if (controller->map->gettile(x, y)->getObject() == nullptr) return;
+		//background 땅/풀 설정
+		int state = (controller->map->gettile(x, y)->getCanSeed()) ? DRY : GRASS;
+		this->matrix[x, y]->BackgroundImage = imgList_ground->Images[state];
 
-		//TODO: object npc, harvest 추가해야함
-		switch (controller->map->gettile(x, y)->getObject()->getObjectType())
-		{
-		case ObjectType::tree: matrix[x, y]->Load("./images/tree.png"); break;
-		case ObjectType::stone: matrix[x, y]->Load("./images/stone.png"); break;
-		default: break;
-		}
+		//map object 설정
+		MapObject* objPtr = controller->map->gettile(x, y)->getObject();
+		if (objPtr == nullptr || objPtr->getObjectType() == NULL) return;
+		matrix[x, y]->Image = imgList_MO->Images[objPtr->getObjectType()];
 	}
 
 
@@ -174,6 +195,32 @@ namespace CLRFInal {
 	{
 		return  msclr::interop::marshal_as<String^>(str);
 	}
+
+
+	 void setImgList_MO()
+	{
+		 imgList_MO = gcnew ImageList();
+		 imgList_MO->ColorDepth = ColorDepth::Depth32Bit;
+
+		 //imgList_MO->ImageSize::StretchImage;
+
+		 imgList_MO->Images->Add(Image::FromFile("./images/tree.png"));
+		 imgList_MO->Images->Add(Image::FromFile("./images/stone.png"));
+
+		 //TODO:임시로 추가해놓음. 씨앗&npc로 바꿀 것
+		 imgList_MO->Images->Add(Image::FromFile("./images/stone.png"));
+		 imgList_MO->Images->Add(Image::FromFile("./images/stone.png"));
+	}
+
+	 void setImgList_ground()
+	 {
+		 imgList_ground = gcnew ImageList();
+		 imgList_ground->ColorDepth = ColorDepth::Depth32Bit;
+
+		 imgList_ground->Images->Add(Image::FromFile("./images/dryDirt.png"));
+		 imgList_ground->Images->Add(Image::FromFile("./images/wetDirt.png"));
+		 imgList_ground->Images->Add(Image::FromFile("./images/grass.png"));
+	 }
 };
 
 
