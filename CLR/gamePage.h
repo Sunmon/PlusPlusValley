@@ -174,6 +174,7 @@ namespace CLRFInal {
 			this->Name = L"gamePage";
 			this->Text = L"gamePage";
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &gamePage::movePlayer);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &gamePage::KeyDDown);
 			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &gamePage::do_nothing);
 			this->pnl_background->ResumeLayout(false);
 			this->pnl_background->PerformLayout();
@@ -366,6 +367,49 @@ private: System::Void BgWorker_animate_RunWorkerCompleted(System::Object^ sender
 
 
 }
+
+		 //스페이스바 누를 시, 씨 뿌리기, 물뿌리기, 오브젝트 없애기를 조사후 진행
+private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	Player* p = controller->getPlayer();
+	int k = (int)(e->KeyCode);
+
+	int x = p->getX();
+	int y = p->gety();
+
+
+	picBox_player->Location = System::Drawing::Point(x * TILE_SIZE, y * TILE_SIZE);
+
+	if (k == 32) {
+		if (true == controller->map->gettile(x, y)->getCanSeed()) {
+			controller->map->gettile(x, y)->setObject(new Harvest);
+			matrix[x, y]->Image = imgList_MO->Images[harvest];
+			controller->map->gettile(x, y)->setCanSeed(false);
+			controller->map->gettile(x, y)->setIsWet(false);
+
+		}
+		else if (false == controller->map->gettile(x, y)->getIsWet()) {
+			int state = (controller->map->gettile(x, y)->getIsWet()) ? WET : GRASS;
+			this->matrix[x, y]->BackgroundImage = imgList_ground->Images[state];
+			controller->map->gettile(x, y)->setIsWet(true);
+		}
+		else if (nullptr != controller->map->gettile(x + 1, y)->getObject()) {
+			MapObject* objPtr = controller->map->gettile(x + 1, y)->getObject();
+			int h = objPtr->getHealth();
+			h = h - 10;
+			objPtr->setHealth(h);
+
+			if (h <= 60) {
+				this->matrix[x + 1, y]->Image = nullptr;
+				controller->map->gettile(x + 1, y)->init();
+			}
+		}
+	}
+
+
+
+}
+
+
 };
 
 
