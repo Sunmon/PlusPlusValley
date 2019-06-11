@@ -28,13 +28,6 @@ Player::Player(Tile* totile) : Player()
 	this->setTile(totile);
 }
 
-//Player* Player::getInstance()
-//{
-//	if (inst == nullptr) {
-//		inst == new Player();
-//	}
-//	return inst; 
-//}
 
 void Player::test()
 {
@@ -63,8 +56,6 @@ void Player::InitInventory()
 	Tool* hammer = new Tool(TOOLTYPE::HAMMER, "hammer");
 	Tool* sprinkle = new Tool(TOOLTYPE::SPRINKLE, "sprinkle");
 
-	//Item* ax = new Item(ItemType::TOOL, "ax");
-	//Item* crop = new Item(ItemType::TOOL, "crop");
 	inven->addItem(ax, 1);
 	inven->addItem(sickle);
 	inven->setMoney(5000);
@@ -176,16 +167,6 @@ void Player::interact()
 		}
 	}
 
-	/*if (target->getNPC() !=NULL) {
-		target->getNPC()->goStore(this);
-	}*/
-
-	//if (target->getObject()->getObjectType() == npc) {
-	//	target->getNPC.goStore(this);
-	//}
-
-	//MapObject* & mo = target->getObject();
-
 	//툴이 도구라면 오브젝트 피 줄이기 & 파괴
 	//툴이 씨앗이라면 씨 뿌리기 & 씨앗 개수 줄이기
 	switch (onHand->getItemType())
@@ -203,23 +184,23 @@ void Player::doAction(Item* tool, Tile* target)
 
 	if (static_cast<Tool*>(tool)->toolType == SPRINKLE) { water(tool, target); return; }
 	if (static_cast<Tool*>(tool)->toolType == FERTILIZE) { fertilize(tool, target); return; }
+
 	if (target->getObject() == nullptr) return;
 	std::string str[5] = { "나무를 베었다", "돌을 부쉈다", "작물을 수확했다", "물을 뿌렸다", "비료를 뿌렸다" };
 
-	cout << "toolType: " << static_cast<Tool*>(tool)->toolType << " objectType: " << target->getObject()->getObjectType() << endl;
 	if (static_cast<Tool*>(tool)->toolType != target->getObject()->getObjectType()) return;
+
+
+	cout << "toolType: " << static_cast<Tool*>(tool)->toolType << " objectType: " << target->getObject()->getObjectType() << endl;
 
 	reduce_MO_HP(target->getObject());
 
 	if (target->getObject()->getHealth() <= 0)
 	{
-		//TODO: 아이템들 옮기기
 		for (auto& it : target->getObject()->getItemArray())
 		{
-
 			cout << it->getName() << endl;
 			inven->addItem(it);
-
 		}
 		target->removeObj();
 	}
@@ -253,9 +234,6 @@ void Player::goStore() {
 
 void Player::water(Item* tool, Tile* target)
 {
-	//if (target->getIsWet() == false) return;
-
-	//if(tool->getItemType() == Tool::get)
 		cout << "물을 뿌렸습니다. " << endl;
 
 		//땅에 물주기

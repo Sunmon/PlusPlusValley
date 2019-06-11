@@ -23,11 +23,8 @@ Inventory::~Inventory()
 //item을 num만큼 추가. 개수가 정해지지 않았다면 1개 추가.
 void Inventory::addItem(Item* item, int num)
 {
-	/*itemIter = items.find(item);
-	if (itemIter == items.end()) items.insert(std::make_pair(item, num));
-	else itemIter->second = MAX(itemIter->second + num, item->getMAX_NUM());
-	*/
 
+	//TODO: 깊은복사로 바꾸기
 	itemIter = findIter(item);
 	//std::vector<pair<Item*, int> >::iterator it = find(items2.begin(), items2.end(), item);
 	if (itemIter == items.end()) items.push_back(std::make_pair(item, num));
@@ -41,7 +38,6 @@ void Inventory::addItem(Item* item, int num)
 //item을 num만큼 제거한다. 개수가 정해지지 않았다면 1개 제거.
 void Inventory::removeItem(Item* item, int num)
 {
-	//itemIter = items.find(item);
 	itemIter = findIter(item);
 	if (itemIter->second <= num) clearItem(item);
 	else itemIter->second -= num;

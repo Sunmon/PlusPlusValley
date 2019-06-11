@@ -23,6 +23,7 @@ using namespace std;
 * @author KIM SUN JUNG
 * @date 2019.05.26
 */
+
 class Inventory
 {
 private:
@@ -31,7 +32,6 @@ public:
 	Inventory();
 	~Inventory();
 
-	//std::map<Item*, int> items;
 	std::vector<pair<Item*, int> > items;
 
 

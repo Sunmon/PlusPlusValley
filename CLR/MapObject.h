@@ -18,18 +18,14 @@ protected:
 	vector<Item*> itemArray;
 	int size[2];
 	bool b;
-	//Item* itemArray[3];
-	// Item수를 정할건지 아니면 동적으로 늘어나게 할건지 얘기가 안되어서 일단 3개로 대충 잡아놨습니다!
 
 public:
 	string name;
+	
 	MapObject() {
-		//objectType = ObjectType::nothing;
-		for (auto& i : itemArray)
-		{
-			i = nullptr;
-		}
+		for (auto& i : itemArray) i = nullptr;
 	}
+
 	MapObject(ObjectType ot, const string& name): MapObject(ot) {
 		this->name = name;
 		setEarnItem(ot, name);
@@ -40,6 +36,8 @@ public:
 		this->objectType = object;
 		health = 100;
 	}
+
+
 
 	//Object 부셨을 때 획득하는 item 생성
 	void setEarnItem(ObjectType ot, const string& name) {

@@ -57,15 +57,15 @@ public:
 
 	void initialmap()
 	{
-		MapObject* stoneObject = new MapObject(stone, "돌");
-		MapObject* treeObject = new MapObject(tree, "나무");
-		MapObject* npcObject = new MapObject(npc, "상인");
-		//NPC* npc = new NPC("상인");
-
+		
 		//npc를 맵 오브젝트로 설정
 		srand((unsigned int)time(NULL));
-
+		MapObject* npcObject = new MapObject(npc, "상인");
 		map[(rand() % MAX_X)][rand() % MAX_Y]->setObject(npcObject);
+
+		//map object를 맵에 랜덤으로 설정
+		MapObject* stoneObject = new MapObject(stone, "돌");
+		MapObject* treeObject = new MapObject(tree, "나무");
 
 		setObjToMap(*stoneObject);
 		setObjToMap(*treeObject);
@@ -81,8 +81,7 @@ public:
 
 	}
 
-
-	//TODO: 깊은 복사 해결!
+	//오브젝트 깊은 복사
 	void setObjToMap(MapObject& mo)
 	{
 		srand((unsigned int)time(NULL));
@@ -94,6 +93,9 @@ public:
 			map[x][y]->setObject(m);
 		}
 	}
+
+
+
 
 	void growth()
 	{
