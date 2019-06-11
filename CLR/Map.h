@@ -105,13 +105,15 @@ public:
 			{
 				Harvest* tempobject = map[i][j]->getHarvest();
 				if (tempobject != NULL)
-				
 				{
-					if (map[i][i]->getIsWet())
+					if (map[i][j]->getIsWet())
 					{
 						tempobject->growing();
 					}
 				}
+
+				map[i][j]->setIsWet(true);
+
 			}
 		}
 		
