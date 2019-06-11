@@ -332,62 +332,6 @@ private: System::Void BgWorker_animate_RunWorkerCompleted(System::Object^ sender
 			 std::string str[4] = { "left","right", "down", "up" };
 			 return string_to_system(str[player->getStatue()]);
 		 }
-	//스페이스바 누를 시, 씨 뿌리기, 물뿌리기, 오브젝트 없애기를 조사후 진행
-//private: System::Void KeyDDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	//Player* p = controller->getPlayer();
-
-	//int k = (int)(e->KeyCode);
-	//int s = p->getStatue();
-	//int x = p->getX();
-	//int y = p->gety();
-
-	//if (s == 0) {
-	//	x = x - 1;
-	//}
-	//else if (s == 1) {
-	//	x = x + 1;
-	//}
-	//else if (s == 2) {
-	//	y = y + 1;
-	//}
-	//else if (s == 3) {
-	//	y = y - 1;
-	//}
-
-
-	//if (k == 32) {
-		
-		
-		/*if (true == controller->map->gettile(x, y)->getCanSeed()) {
-			controller->map->gettile(x, y)->setObject(new Harvest);
-			matrix[x, y]->Image = imgList_MO->Images[harvest];
-			controller->map->gettile(x, y)->setCanSeed(false);
-			controller->map->gettile(x, y)->setIsWet(false);
-
-		}
-		else if (false == controller->map->gettile(x, y)->getIsWet()) {
-			int state = (controller->map->gettile(x, y)->getIsWet()) ? WET : GRASS;
-			this->matrix[x, y]->BackgroundImage = imgList_ground->Images[state];
-			controller->map->gettile(x, y)->setIsWet(true);
-		}*/
-
-		// if (nullptr != controller->map->gettile(x, y)->getObject()) {
-		//	MapObject* objPtr = controller->map->gettile(x, y)->getObject();
-		//	int h = objPtr->getHealth();
-		//	h = h - 10;
-		//	objPtr->setHealth(h);
-
-		//	if (h <= 60) {
-		//		this->matrix[x, y]->Image = nullptr;
-		//		controller->map->gettile(x, y)->setCanMove(true);
-		//	}
-		//}
-	/*}*/
-
-
-	
-		 
-
 
 };
 }
