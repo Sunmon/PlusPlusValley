@@ -504,6 +504,7 @@ private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e
 	//panel9->Visible = false;
 	//button1->Visible = false;
 	pnl_itemOpen->Visible = false;
+	pnl_player->Select();
 	//FIXME: 안움직임
 	//this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &gamePage::do_nothing);
 	//this->pnl_background->ResumeLayout(true);
