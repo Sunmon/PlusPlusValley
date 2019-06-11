@@ -225,10 +225,14 @@
     <Image Include="images\left2.png" />
     <Image Include="images\left3.png" />
     <Image Include="images\left4.png" />
+    <Image Include="images\npc.png" />
     <Image Include="images\right1.png" />
     <Image Include="images\right2.png" />
     <Image Include="images\right3.png" />
     <Image Include="images\right4.png" />
+    <Image Include="images\seed.png" />
+    <Image Include="images\stone.png" />
+    <Image Include="images\tree.png" />
     <Image Include="images\up1.png" />
     <Image Include="images\up2.png" />
     <Image Include="images\up3.png" />

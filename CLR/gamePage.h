@@ -1,5 +1,7 @@
 #pragma once
 #include "Controller.h"
+#include "MyForm2.h"
+
 #include <list>
 #include <array>
 #include <msclr\marshal_cppstd.h>
@@ -50,6 +52,8 @@ namespace CLRFInal {
 		int moveState = 1;
 		Timer animTimer;	//걷는 애니메이션을 위한 타이머
 	private: System::ComponentModel::BackgroundWorker^ bgWorker_animate;
+	private: System::Windows::Forms::Panel^ pnl_player;
+	private: System::Windows::Forms::Panel^ pnl_npc;
 	public:
 
 	public:
@@ -67,6 +71,7 @@ namespace CLRFInal {
 			
 			setMatrix();
 			this->picBox_player->Location = System::Drawing::Point(player->getX()*TILE_SIZE, player->gety() * TILE_SIZE - picBox_player->Height + TILE_SIZE);
+			//this->pnl_player->Location = System::Drawing::Point(player->getX() * TILE_SIZE, player->gety() * TILE_SIZE - pnl_player->Height + TILE_SIZE);
 
 			//
 			//TODO: 생성자 코드를 여기에 추가합니다.
@@ -103,15 +108,18 @@ namespace CLRFInal {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(gamePage::typeid));
 			this->pnl_background = (gcnew System::Windows::Forms::Panel());
+			this->pnl_npc = (gcnew System::Windows::Forms::Panel());
+			this->pnl_player = (gcnew System::Windows::Forms::Panel());
 			this->picBox_player = (gcnew System::Windows::Forms::PictureBox());
 			this->bgWorker_animate = (gcnew System::ComponentModel::BackgroundWorker());
 			this->pnl_background->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_player))->BeginInit();
-			this->rs = resources;
 			this->SuspendLayout();
 			// 
 			// pnl_background
 			// 
+			this->pnl_background->Controls->Add(this->pnl_npc);
+			this->pnl_background->Controls->Add(this->pnl_player);
 			this->pnl_background->Controls->Add(this->picBox_player);
 			this->pnl_background->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnl_background->Location = System::Drawing::Point(0, 0);
@@ -119,6 +127,30 @@ namespace CLRFInal {
 			this->pnl_background->Size = System::Drawing::Size(1262, 753);
 			this->pnl_background->TabIndex = 0;
 			this->pnl_background->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &gamePage::Pnl_background_Paint);
+			// 
+			// pnl_npc
+			// 
+			this->pnl_npc->BackColor = System::Drawing::Color::Transparent;
+			this->pnl_npc->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pnl_npc.BackgroundImage")));
+			this->pnl_npc->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pnl_npc->Location = System::Drawing::Point(507, 219);
+			this->pnl_npc->Name = L"pnl_npc";
+			this->pnl_npc->Size = System::Drawing::Size(34, 64);
+			this->pnl_npc->TabIndex = 3;
+			this->pnl_npc->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &gamePage::Pnl_npc_Paint);
+			this->pnl_npc->DoubleClick += gcnew System::EventHandler(this, &gamePage::Pnl_npc_DoubleClick);
+			// 
+			// pnl_player
+			// 
+			this->pnl_player->BackColor = System::Drawing::Color::Transparent;
+			this->pnl_player->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pnl_player.BackgroundImage")));
+			this->pnl_player->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pnl_player->Enabled = false;
+			this->pnl_player->Location = System::Drawing::Point(578, 219);
+			this->pnl_player->Name = L"pnl_player";
+			this->pnl_player->Size = System::Drawing::Size(34, 63);
+			this->pnl_player->TabIndex = 2;
+			this->pnl_player->Visible = false;
 			// 
 			// picBox_player
 			// 
@@ -199,7 +231,12 @@ namespace CLRFInal {
 		}
 
 		matrix[x, y]->Image = imgList_MO->Images[controller->map->gettile(x, y)->getObject()->getObjectType()];
-		
+		if (controller->map->gettile(x, y)->getObject()->getObjectType() == ObjectType::npc) {
+
+			int _x = x * TILE_SIZE;
+			int _y = y * TILE_SIZE - pnl_npc->Height + TILE_SIZE;
+			this->pnl_npc->Location = System::Drawing::Point(_x, _y);
+		}
 
 	}
 
@@ -232,8 +269,7 @@ namespace CLRFInal {
 
 		 //TODO:임시로 추가해놓음. 씨앗&npc로 바꿀 것
 		 imgList_MO->Images->Add(Image::FromFile("./images/seed.png"));
-		 imgList_MO->Images->Add(Image::FromFile("./images/stone.png"));
-		 imgList_MO->Images->Add(Image::FromFile("./images/stone.png"));
+		 imgList_MO->Images->Add(Image::FromFile("./images/npc.png"));
 	}
 
 	 void setImgList_ground()
@@ -300,6 +336,8 @@ private: System::Void bgWorker_animate_DoWork(System::Object^ sender, System::Co
 	while (moveState++ < 5)
 	{
 		Sleep(100);
+		//this->pnl_player->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(getStateStr() + moveState)));
+
 		this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(getStateStr()+moveState)));
 		bgWorker_animate->ReportProgress(moveState);
 	}
@@ -308,14 +346,25 @@ private: System::Void bgWorker_animate_DoWork(System::Object^ sender, System::Co
 private: System::Void BgWorker_animate_ProgressChanged(System::Object^ sender, System::ComponentModel::ProgressChangedEventArgs^ e) {
 	
 	int _x = before_x * TILE_SIZE +  (player->getX() - before_x) * e->ProgressPercentage * TILE_SIZE / 4;
+	//int _y = before_y * TILE_SIZE - pnl_player->Height + TILE_SIZE + (player->gety() - before_y) * e->ProgressPercentage * TILE_SIZE / 4;
+
 	int _y = before_y * TILE_SIZE - picBox_player->Height + TILE_SIZE + (player->gety() - before_y) * e->ProgressPercentage * TILE_SIZE / 4;
 	this->picBox_player->Location = System::Drawing::Point(_x, _y);
+	this->picBox_player->BackColor = System::Drawing::Color::Transparent;
+	//this->pnl_player->Location = System::Drawing::Point(_x, _y);
+	//this->pnl_player->BackColor = System::Drawing::Color::Transparent;
+
 }
 private: System::Void BgWorker_animate_RunWorkerCompleted(System::Object^ sender, System::ComponentModel::RunWorkerCompletedEventArgs^ e) {
 	this->picBox_player->Image = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(getStateStr() + moveState)));
+	//this->pnl_player->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(getStateStr() + moveState)));
 	int _x = player->getX() * TILE_SIZE;
 	int _y = player->gety() * TILE_SIZE - picBox_player->Height + TILE_SIZE;
+	//int _y = player->gety() * TILE_SIZE - pnl_player->Height + TILE_SIZE;
 	this->picBox_player->Location = System::Drawing::Point(_x, _y);
+	this->picBox_player->BackColor = System::Drawing::Color::Transparent;
+	//this->pnl_player->Location = System::Drawing::Point(_x, _y);
+	//this->pnl_player->BackColor = System::Drawing::Color::Transparent;
 
 
 }
@@ -332,6 +381,21 @@ private: System::Void BgWorker_animate_RunWorkerCompleted(System::Object^ sender
 			 return string_to_system(str[player->getStatue()]);
 		 }
 
+private: System::Void Pnl_npc_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
+
+
+		 //npc 클릭하면 상점 열리기
+
+private: System::Void Pnl_npc_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+
+	//Application::EnableVisualStyles();
+	//Application::SetCompatibleTextRenderingDefault(false);
+
+	CLRFInal::MyForm2 storeForm;
+	storeForm.ShowDialog();
+	//Application::Run(% storeForm);
+}
 };
 }
 

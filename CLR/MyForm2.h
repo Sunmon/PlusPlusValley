@@ -28,10 +28,12 @@ namespace CLRFInal {
 	public:
 
 
-		static Controller* c;
-		MyForm2(Controller* c)
+		Controller* c = Controller::getInstance();
+		//static Controller* c;
+		//MyForm2(Controller* c)
+		MyForm2()
 		{
-			this->c = c;
+			//this->c = c;
 			InitializeComponent();
 			//
 			//TODO: 생성자 코드를 여기에 추가합니다.
