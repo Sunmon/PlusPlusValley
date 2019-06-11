@@ -54,6 +54,14 @@ namespace CLRFInal {
 	private: System::ComponentModel::BackgroundWorker^ bgWorker_animate;
 	private: System::Windows::Forms::Panel^ pnl_player;
 	private: System::Windows::Forms::Panel^ pnl_npc;
+	private: System::Windows::Forms::Panel^ pnl_item;
+	private: System::Windows::Forms::Panel^ panel9;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Panel^ panel8;
+	private: System::Windows::Forms::Panel^ icon_pos;
+
+	private: System::Windows::Forms::Panel^ pnl_itemOpen;
+
 	public:
 
 	public:
@@ -107,17 +115,29 @@ namespace CLRFInal {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(gamePage::typeid));
+			this->rs = resources;
 			this->pnl_background = (gcnew System::Windows::Forms::Panel());
+			this->pnl_itemOpen = (gcnew System::Windows::Forms::Panel());
+			this->panel9 = (gcnew System::Windows::Forms::Panel());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->panel8 = (gcnew System::Windows::Forms::Panel());
+			this->icon_pos = (gcnew System::Windows::Forms::Panel());
+			this->pnl_item = (gcnew System::Windows::Forms::Panel());
 			this->pnl_npc = (gcnew System::Windows::Forms::Panel());
 			this->pnl_player = (gcnew System::Windows::Forms::Panel());
 			this->picBox_player = (gcnew System::Windows::Forms::PictureBox());
 			this->bgWorker_animate = (gcnew System::ComponentModel::BackgroundWorker());
 			this->pnl_background->SuspendLayout();
+			this->pnl_itemOpen->SuspendLayout();
+			this->panel9->SuspendLayout();
+			this->panel8->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_player))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pnl_background
 			// 
+			this->pnl_background->Controls->Add(this->pnl_itemOpen);
+			this->pnl_background->Controls->Add(this->pnl_item);
 			this->pnl_background->Controls->Add(this->pnl_npc);
 			this->pnl_background->Controls->Add(this->pnl_player);
 			this->pnl_background->Controls->Add(this->picBox_player);
@@ -127,6 +147,80 @@ namespace CLRFInal {
 			this->pnl_background->Size = System::Drawing::Size(1262, 753);
 			this->pnl_background->TabIndex = 0;
 			this->pnl_background->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &gamePage::Pnl_background_Paint);
+			// 
+			// pnl_itemOpen
+			// 
+			this->pnl_itemOpen->Controls->Add(this->panel9);
+			this->pnl_itemOpen->Controls->Add(this->panel8);
+			this->pnl_itemOpen->Location = System::Drawing::Point(388, 85);
+			this->pnl_itemOpen->Name = L"pnl_itemOpen";
+			this->pnl_itemOpen->Size = System::Drawing::Size(190, 197);
+			this->pnl_itemOpen->TabIndex = 10;
+			this->pnl_itemOpen->Visible = false;
+			// 
+			// panel9
+			// 
+			this->panel9->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->panel9->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel9.BackgroundImage")));
+			this->panel9->Controls->Add(this->button1);
+			this->panel9->Location = System::Drawing::Point(3, 3);
+			this->panel9->Name = L"panel9";
+			this->panel9->Size = System::Drawing::Size(184, 28);
+			this->panel9->TabIndex = 9;
+			this->panel9->Visible = false;
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Transparent;
+			this->button1->Font = (gcnew System::Drawing::Font(L"돋움체", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(129)));
+			this->button1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button1->Location = System::Drawing::Point(168, -3);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(19, 20);
+			this->button1->TabIndex = 0;
+			this->button1->Text = L"X";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Visible = false;
+			this->button1->Click += gcnew System::EventHandler(this, &gamePage::Button1_Click);
+			// 
+			// panel8
+			// 
+			this->panel8->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->panel8->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel8.BackgroundImage")));
+			this->panel8->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->panel8->Controls->Add(this->icon_pos);
+			this->panel8->Location = System::Drawing::Point(0, 25);
+			this->panel8->Margin = System::Windows::Forms::Padding(2);
+			this->panel8->Name = L"panel8";
+			this->panel8->Size = System::Drawing::Size(190, 173);
+			this->panel8->TabIndex = 8;
+			this->panel8->Visible = false;
+			// 
+			// icon_pos
+			// 
+			this->icon_pos->BackColor = System::Drawing::Color::Transparent;
+			this->icon_pos->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"icon_pos.BackgroundImage")));
+			this->icon_pos->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->icon_pos->Location = System::Drawing::Point(15, 11);
+			this->icon_pos->Margin = System::Windows::Forms::Padding(2);
+			this->icon_pos->Name = L"icon_pos";
+			this->icon_pos->Size = System::Drawing::Size(26, 27);
+			this->icon_pos->TabIndex = 0;
+			this->icon_pos->Visible = false;
+			// 
+			// pnl_item
+			// 
+			this->pnl_item->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->pnl_item->BackColor = System::Drawing::Color::Transparent;
+			this->pnl_item->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pnl_item.BackgroundImage")));
+			this->pnl_item->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pnl_item->Location = System::Drawing::Point(1212, 3);
+			this->pnl_item->Name = L"pnl_item";
+			this->pnl_item->Size = System::Drawing::Size(38, 41);
+			this->pnl_item->TabIndex = 7;
+			this->pnl_item->DoubleClick += gcnew System::EventHandler(this, &gamePage::Pnl_item_DoubleClick);
 			// 
 			// pnl_npc
 			// 
@@ -180,6 +274,9 @@ namespace CLRFInal {
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &gamePage::movePlayer);
 			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &gamePage::do_nothing);
 			this->pnl_background->ResumeLayout(false);
+			this->pnl_itemOpen->ResumeLayout(false);
+			this->panel9->ResumeLayout(false);
+			this->panel8->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_player))->EndInit();
 			this->ResumeLayout(false);
 
@@ -385,8 +482,7 @@ private: System::Void Pnl_npc_Paint(System::Object^ sender, System::Windows::For
 }
 
 
-		 //npc 클릭하면 상점 열리기
-
+//npc 클릭하면 상점 열리기
 private: System::Void Pnl_npc_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
 
 	//Application::EnableVisualStyles();
@@ -394,7 +490,24 @@ private: System::Void Pnl_npc_DoubleClick(System::Object^ sender, System::EventA
 
 	CLRFInal::MyForm2 storeForm;
 	storeForm.ShowDialog();
-	//Application::Run(% storeForm);
+}
+		 //아이템 버튼 클릭시
+private: System::Void Pnl_item_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+	pnl_itemOpen->Show();
+	panel8->Show();
+	panel9->Show();
+	button1->Show();
+}
+private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	//panel8->Visible = false;
+	//panel9->Visible = false;
+	//button1->Visible = false;
+	pnl_itemOpen->Visible = false;
+	//FIXME: 안움직임
+	//this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &gamePage::do_nothing);
+	//this->pnl_background->ResumeLayout(true);
+
+	//this->pnl_background->ResumeLayout(false);
 }
 };
 }
