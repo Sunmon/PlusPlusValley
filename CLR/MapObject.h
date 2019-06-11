@@ -8,8 +8,7 @@ using namespace std;
 
 enum ObjectType
 {
-	//tree = 1, stone, harvest,
-	tree, stone, harvest, npc
+	tree = 0, stone, harvest, npc
 };
 class MapObject {
 protected:
@@ -19,45 +18,30 @@ protected:
 	vector<Item*> itemArray;
 	int size[2];
 	bool b;
-	//Item* itemArray[3];
-	// Item수를 정할건지 아니면 동적으로 늘어나게 할건지 얘기가 안되어서 일단 3개로 대충 잡아놨습니다!
 
 public:
-
-	MapObject(){
-		for (auto& i : itemArray)
-		{
-			i = nullptr;
-		}
+	string name;
+	
+	MapObject() {
+		for (auto& i : itemArray) i = nullptr;
 	}
+
 	MapObject(ObjectType ot, const string& name): MapObject(ot) {
+		this->name = name;
 		setEarnItem(ot, name);
 	}
 
 	MapObject(ObjectType object) : MapObject()
 	{
-		objectType = object;
+		this->objectType = object;
 		health = 100;
 	}
 
+
+
 	//Object 부셨을 때 획득하는 item 생성
 	void setEarnItem(ObjectType ot, const string& name) {
-		/*switch (ot)
-		{
-		case tree:
-			setItemArray(ItemType::WOOD, "나무조각", 0);
-			break;
-		case stone:
-			setItemArray(ItemType::STONE, "돌조각", 0);
-			break;
-		case harvest:
-			setItemArray(ItemType::CROP, name, 0);
-			setItemArray(ItemType::SEED, name+"씨앗", 1);
-			break;
-		default:
-			break;
-		}
-*/
+		
 		switch (ot)
 		{
 		case tree:

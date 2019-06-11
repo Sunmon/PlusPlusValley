@@ -23,6 +23,7 @@ void Store::initInventory()
 	storeInven->addItem(makeItem(ItemType::SEED, "µþ±â¾¾¾Ñ", 50));
 	storeInven->addItem(makeItem(ItemType::SEED, "¼ö¹Ú¾¾¾Ñ", 80));
 	storeInven->addItem(makeItem(ItemType::SEED, "¹èÃß¾¾¾Ñ", 150));
+	storeInven->addItem(makeItem(ItemType::SEED, "·£´ý¾¾¾Ñ", 2000));
 
 	storeInven->addItem(makeItem(ItemType::CROP, "µþ±â", 100));
 	storeInven->addItem(makeItem(ItemType::CROP, "¼ö¹Ú", 160));

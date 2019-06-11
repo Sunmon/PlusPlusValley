@@ -234,5 +234,29 @@
     <Image Include="images\up4.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="images\npc.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\seed.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\stone.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\tree.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\sickle.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\ax.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\sprinkle.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="images\hammer.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -36,4 +36,6 @@ public:
 	void goStore();
 	void water(Item* tool, Tile* target);
 	void fertilize(Item* tool, Tile* target);
+	Store* getStore();
+
 };

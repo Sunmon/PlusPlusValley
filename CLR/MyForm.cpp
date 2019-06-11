@@ -20,7 +20,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	
 	Application::Run(gcnew MyForm1(c));
 
-	Application::Run(gcnew MyForm2(c));
+	//Application::Run(gcnew MyForm2(c));
+	Application::Run(gcnew MyForm2());
 	
 	Application::Run(gcnew MyForm1(c));
 	

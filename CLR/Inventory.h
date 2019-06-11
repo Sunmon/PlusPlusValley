@@ -9,7 +9,6 @@
 #include <fstream>
 
 using namespace std;
-//using namespace System::Windows::Forms;
 
 /**
 * 인벤토리를 관리하는 클래스
@@ -23,6 +22,7 @@ using namespace std;
 * @author KIM SUN JUNG
 * @date 2019.05.26
 */
+
 class Inventory
 {
 private:
@@ -31,7 +31,6 @@ public:
 	Inventory();
 	~Inventory();
 
-	//std::map<Item*, int> items;
 	std::vector<pair<Item*, int> > items;
 
 

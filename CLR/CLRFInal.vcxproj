@@ -201,10 +201,12 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="down_1.bmp" />
+    <Image Include="images\ax.PNG" />
     <Image Include="images\down1.png" />
     <Image Include="images\down2.png" />
     <Image Include="images\down3.png" />
     <Image Include="images\down4.png" />
+    <Image Include="images\hammer.PNG" />
     <Image Include="images\Leah_down1.png" />
     <Image Include="images\Leah_down2.png" />
     <Image Include="images\Leah_down3.png" />
@@ -225,10 +227,16 @@
     <Image Include="images\left2.png" />
     <Image Include="images\left3.png" />
     <Image Include="images\left4.png" />
+    <Image Include="images\npc.png" />
     <Image Include="images\right1.png" />
     <Image Include="images\right2.png" />
     <Image Include="images\right3.png" />
     <Image Include="images\right4.png" />
+    <Image Include="images\seed.png" />
+    <Image Include="images\sickle.PNG" />
+    <Image Include="images\sprinkle.PNG" />
+    <Image Include="images\stone.png" />
+    <Image Include="images\tree.png" />
     <Image Include="images\up1.png" />
     <Image Include="images\up2.png" />
     <Image Include="images\up3.png" />

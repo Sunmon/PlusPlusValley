@@ -23,7 +23,6 @@ private:
 	MoveThread *movethread;
 	UseTime *time;
 	MapObject* m;
-	//NPC* npc;
 
 public:
 	Map *map;

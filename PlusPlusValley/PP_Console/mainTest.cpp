@@ -18,8 +18,8 @@ void test_saveharvest();
 
 int main()
 {
-	//controller->init();
-	//controller->test_move();
+	controller->init();
+	controller->test_move();
 	test_inventory();
 	
 	//test_store();

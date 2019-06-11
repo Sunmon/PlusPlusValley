@@ -13,12 +13,26 @@ int WINAPI WinMain2(HINSTANCE, HINSTANCE, LPSTR, int)
 	Application::EnableVisualStyles();
 
 	Application::SetCompatibleTextRenderingDefault(false);
-	Controller* c;
+	//Controller* c;
+	Application::Run(gcnew MyForm2());
 
-	Application::Run(gcnew MyForm2(c));
+	//Application::Run(gcnew MyForm2(c));
 
 	return 0;
 
 }
 
-
+//
+//void Game() {
+//
+//	Application::EnableVisualStyles();
+//
+//	Application::SetCompatibleTextRenderingDefault(false);
+//
+//	CLRFInal::MyForm2 form2;
+//
+//	Application::Run(% form2);
+//
+//}
+//
+//

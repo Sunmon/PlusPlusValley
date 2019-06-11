@@ -28,13 +28,6 @@ Player::Player(Tile* totile) : Player()
 	this->setTile(totile);
 }
 
-//Player* Player::getInstance()
-//{
-//	if (inst == nullptr) {
-//		inst == new Player();
-//	}
-//	return inst; 
-//}
 
 void Player::test()
 {
@@ -63,17 +56,16 @@ void Player::InitInventory()
 	Tool* hammer = new Tool(TOOLTYPE::HAMMER, "hammer");
 	Tool* sprinkle = new Tool(TOOLTYPE::SPRINKLE, "sprinkle");
 
-	//Item* ax = new Item(ItemType::TOOL, "ax");
-	//Item* crop = new Item(ItemType::TOOL, "crop");
 	inven->addItem(ax, 1);
 	inven->addItem(sickle);
 	inven->setMoney(5000);
 
 	Item* strawSeed = new Item(ItemType::SEED, "strawSeed");
 	inven->addItem(strawSeed, 3);
+	this->onHand = ax;
 	//this->onHand = hammer;
 	//this->onHand = strawSeed;
-	this->onHand = sprinkle;
+	//this->onHand = sprinkle;
 }
 
 void Player::setInven(Inventory* inven)
@@ -175,16 +167,6 @@ void Player::interact()
 		}
 	}
 
-	/*if (target->getNPC() !=NULL) {
-		target->getNPC()->goStore(this);
-	}*/
-
-	//if (target->getObject()->getObjectType() == npc) {
-	//	target->getNPC.goStore(this);
-	//}
-
-	//MapObject* & mo = target->getObject();
-
 	//ÅøÀÌ µµ±¸¶ó¸é ¿ÀºêÁ§Æ® ÇÇ ÁÙÀÌ±â & ÆÄ±«
 	//ÅøÀÌ ¾¾¾ÑÀÌ¶ó¸é ¾¾ »Ñ¸®±â & ¾¾¾Ñ °³¼ö ÁÙÀÌ±â
 	switch (onHand->getItemType())
@@ -200,6 +182,7 @@ void Player::interact()
 void Player::doAction(Item* tool, Tile* target)
 {
 
+
 	if (static_cast<Tool*>(tool)->gettooltype() == SPRINKLE) { water(tool, target); return; }
 	if (static_cast<Tool*>(tool)->gettooltype() == FERTILIZE) { fertilize(tool, target); return; }
 	if (target->getObject() == nullptr) return;
@@ -209,27 +192,19 @@ void Player::doAction(Item* tool, Tile* target)
 	if (static_cast<Tool*>(tool)->gettooltype() != target->getObject()->getObjectType()) return;
 
 
+
+
+	cout << "toolType: " << static_cast<Tool*>(tool)->gettooltype() << " objectType: " << target->getObject()->getObjectType() << endl;
+
 	reduce_MO_HP(target->getObject());
 
 	if (target->getObject()->getHealth() <= 0)
 	{
-		//TODO: ¾ÆÀÌÅÛµé ¿Å±â±â
 		for (auto& it : target->getObject()->getItemArray())
 		{
-
 			cout << it->getName() << endl;
 			inven->addItem(it);
-			//cout << target->getObject()->getItemArray()[i]->getName() << endl;
-			//inven->addItem(target->getObject()->getItemArray()[i]);
-
 		}
-		/*
-				for (int i = 0; i < 3; i++)
-				{
-					if (target->getObject()->getItemArray()[i] == NULL) continue;
-					cout << target->getObject()->getItemArray()[i]->getName() << endl;
-					inven->addItem(target->getObject()->getItemArray()[i]);
-				}*/
 		target->removeObj();
 	}
 }
@@ -262,9 +237,6 @@ void Player::goStore() {
 
 void Player::water(Item* tool, Tile* target)
 {
-	//if (target->getIsWet() == false) return;
-
-	//if(tool->getItemType() == Tool::get)
 		cout << "¹°À» »Ñ·È½À´Ï´Ù. " << endl;
 
 		//¶¥¿¡ ¹°ÁÖ±â
@@ -277,12 +249,17 @@ void Player::fertilize(Item* tool, Tile* target) {
 	target->setFertilizer(true);
 }
 
+Store* Player::getStore()
+{
+	return this->store;
+}
+
 void Player::reduce_MO_HP(MapObject* mo)
 {
 	int hp = mo->getHealth();
 	if (hp > 0)
 	{
-		mo->setHealth(--hp);
+		mo->setHealth(hp-30);
 		cout << "object hp: " << mo->getHealth() << endl;
 	}
 }
