@@ -40,6 +40,7 @@ void Controller::test_move()
 	movethread->start();
 	while (1)
 	{
+		
 		while (time->gettime() < 10 * 60)
 		{
 			Sleep(1000);
