@@ -246,6 +246,11 @@ void Player::fertilize(Item* tool, Tile* target) {
 	target->setFertilizer(true);
 }
 
+Store* Player::getStore()
+{
+	return this->store;
+}
+
 void Player::reduce_MO_HP(MapObject* mo)
 {
 	int hp = mo->getHealth();
