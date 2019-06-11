@@ -115,8 +115,8 @@ namespace CLRFInal {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(gamePage::typeid));
-			this->rs = resources;
 			this->pnl_background = (gcnew System::Windows::Forms::Panel());
+			rs = resources;
 			this->pnl_itemOpen = (gcnew System::Windows::Forms::Panel());
 			this->panel9 = (gcnew System::Windows::Forms::Panel());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -203,10 +203,10 @@ namespace CLRFInal {
 			this->icon_pos->BackColor = System::Drawing::Color::Transparent;
 			this->icon_pos->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"icon_pos.BackgroundImage")));
 			this->icon_pos->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->icon_pos->Location = System::Drawing::Point(15, 11);
+			this->icon_pos->Location = System::Drawing::Point(14, 38);
 			this->icon_pos->Margin = System::Windows::Forms::Padding(2);
 			this->icon_pos->Name = L"icon_pos";
-			this->icon_pos->Size = System::Drawing::Size(26, 27);
+			this->icon_pos->Size = System::Drawing::Size(24, 23);
 			this->icon_pos->TabIndex = 0;
 			this->icon_pos->Visible = false;
 			// 
@@ -491,12 +491,13 @@ private: System::Void Pnl_npc_DoubleClick(System::Object^ sender, System::EventA
 	CLRFInal::MyForm2 storeForm;
 	storeForm.ShowDialog();
 }
-		 //¾ÆÀÌÅÛ ¹öÆ° Å¬¸¯½Ã
+//¾ÆÀÌÅÛ ¹öÆ° Å¬¸¯½Ã
 private: System::Void Pnl_item_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
 	pnl_itemOpen->Show();
 	panel8->Show();
 	panel9->Show();
 	button1->Show();
+	setItemList();
 }
 private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	//panel8->Visible = false;
@@ -509,6 +510,58 @@ private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e
 
 	//this->pnl_background->ResumeLayout(false);
 }
+
+		 string setItemImg(Item* item)
+		 {
+			 string name = item->getName();
+			 string src = "";
+			//this->panel8->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel8.BackgroundImage")));
+			 if (name == "µþ±â¾¾¾Ñ" || name == "strawSeed") src = "seed1";
+			 else if (name == "¹èÃß¾¾¾Ñ") src = "seed2";
+			 else if (name == "¼ö¹Ú¾¾¾Ñ") src = "seed3";
+			 else if (name == "·£´ý¾¾¾Ñ") src = "seed4";
+			 else if (name == "ax") src = "ax";
+			 else if (name == "hammer") src = "hammer";
+			 else if (name == "sprinkle") src = "sprinkle";
+			 else if (name == "sickle") src = "sickle";
+			 return src;
+
+		 }
+
+		 void setItemList()
+		 {
+			 Inventory* inven = controller->getPlayer()->getInven();
+			 int _x = icon_pos->Location.X;
+			 int _y = icon_pos->Location.Y;
+			 for (auto& item : inven->items)
+			 {
+
+				 string src = setItemImg(item.first);
+				 if (src == "") continue;
+
+				 System::Windows::Forms::Panel^ newPanel = gcnew System::Windows::Forms::Panel();
+				 newPanel->BackColor = System::Drawing::Color::Transparent;
+
+				 newPanel->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(rs->GetObject(string_to_system(src))));
+				 newPanel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+				 newPanel->Margin = System::Windows::Forms::Padding(4);
+				 newPanel->Size = System::Drawing::Size(24, 23);
+				 newPanel->Location = System::Drawing::Point(_x, _y);
+				 this->panel8->Controls->Add(newPanel);
+
+				 //TODO: add event listner;;  ¾ÆÀÌÅÛ ±³Ã¼
+
+
+				 _x += icon_pos->Width + 2;
+				 if (_x >= 24 * 6)
+				 {
+					 _x = icon_pos->Location.X;
+					 _y += icon_pos->Height;
+				 }
+				 
+			 }
+		 }
+
 };
 }
 
