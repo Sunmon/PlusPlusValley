@@ -146,7 +146,6 @@ namespace CLRFInal {
 			this->Name = L"gamePage";
 			this->Text = L"gamePage";
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &gamePage::movePlayer);
-			//this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &gamePage::KeyDDown);
 			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &gamePage::do_nothing);
 			this->pnl_background->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBox_player))->EndInit();

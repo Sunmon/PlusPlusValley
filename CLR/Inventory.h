@@ -9,7 +9,6 @@
 #include <fstream>
 
 using namespace std;
-//using namespace System::Windows::Forms;
 
 /**
 * 인벤토리를 관리하는 클래스
